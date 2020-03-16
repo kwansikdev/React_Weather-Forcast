@@ -9,7 +9,6 @@ const sagaMiddleware = createSagaMiddleware();
 export default function create() {
   const store = createStore(
     reducer,
-    {},
     composeWithDevTools(applyMiddleware(sagaMiddleware)),
   );
 
