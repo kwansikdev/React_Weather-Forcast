@@ -26,6 +26,26 @@ export const NavButton = styled.button`
   border: none;
 `;
 
+export const Dim = styled.div`
+  position: absolute;
+  /* width: 200px; */
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
+export const Menu = styled.div`
+  position: absolute;
+  background: blue;
+  width: 250px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+`;
+
 // CutrrnetTime
 export const CurrentTime = styled.p`
   color: red;
