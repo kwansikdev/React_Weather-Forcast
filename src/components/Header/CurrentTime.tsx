@@ -13,12 +13,11 @@ export default function CurrentTime() {
   const dayName = today.toLocaleDateString('ko-KR', {
     weekday: 'long',
   });
-  console.log(dataString);
-  console.log(dayName);
+
   return (
     <S.CurrentTime>
-      {dataString}
-      {dayName}
+      <S.Data>{dataString}</S.Data>
+      <S.Day>{dayName}</S.Day>
     </S.CurrentTime>
   );
 }
