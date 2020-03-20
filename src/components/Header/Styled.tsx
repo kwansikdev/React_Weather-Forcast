@@ -101,6 +101,12 @@ export const MenuInfo = styled.div`
   width: 100%;
   height: 100px;
   border-bottom: 1px solid #222;
+
+  p {
+    font-size: 3rem;
+    line-height: 4;
+    text-align: center;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -118,34 +124,65 @@ export const CloseButton = styled.button`
 export const MenuLists = styled.ul`
   padding: 10px;
 
-  li:first-child {
-    border-bottom: 1px solid #222;
-    button {
-      color: red;
+  li {
+    position: relative;
+    font-size: 3rem;
+    list-style-type: none;
+    padding: 10px 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background: #222;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: all 0.3s;
     }
+
+    &:hover {
+      color: red;
+      transition: all 0.3s;
+
+      &:after {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  li + li {
+    margin-top: 10px;
   }
 `;
 
-export const List = styled.li`
+interface ListButtonProps {
+  status: boolean;
+}
+
+export const ListButton = styled.button`
   width: 100%;
-  list-style-type: none;
+  font-size: 3rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
 
-  button {
-    font-size: 4rem;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-  }
-
-  & + & {
-    margin-top: 20px;
-  }
+  ${({ status }: ListButtonProps) =>
+    status &&
+    css`
+      color: blue;
+    `}
 `;
 
 // CutrrnetTime
 export const CurrentTime = styled.div`
   color: red;
-  font-size: 2rem;
+  font-size: 1.6rem;
 
   p {
     display: inline-block;

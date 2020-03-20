@@ -5,6 +5,11 @@ import ModalPortal from '../Popup/ModalPotal';
 
 export default function Nav() {
   const [open, isOpen] = useState(false);
+  const [menuSelct, setMenuSelect] = useState({
+    home: true,
+    add: false,
+    lists: false,
+  });
 
   const openMenu = () => {
     isOpen(!open);
@@ -17,7 +22,12 @@ export default function Nav() {
       </S.NavButton>
       {open && (
         <ModalPortal>
-          <Menu open={open} openMenu={openMenu} />
+          <Menu
+            open={open}
+            openMenu={openMenu}
+            menuSelct={menuSelct}
+            setMenuSelect={setMenuSelect}
+          />
         </ModalPortal>
       )}
     </>
