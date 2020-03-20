@@ -63,9 +63,9 @@ const fadeOut = keyframes`
 `;
 
 // Menu
-// interface MenuProps {
-//   close: boolean;
-// }
+interface MenuProps {
+  open: boolean;
+}
 
 export const Dim = styled.div`
   position: absolute;
@@ -75,10 +75,20 @@ export const Dim = styled.div`
   left: 0;
   right: 0;
 
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
+  ${({ open }: MenuProps) =>
+    open
+      ? css`
+          animation-duration: 0.3s;
+          animation-timing-function: ease-out;
+          animation-name: ${fadeIn};
+          animation-fill-mode: forwards;
+        `
+      : css`
+          animation-duration: 0.3s;
+          animation-timing-function: ease-out;
+          animation-name: ${fadeOut};
+          animation-fill-mode: forwards;
+        `}
 `;
 
 export const Menu = styled.div`
@@ -90,10 +100,20 @@ export const Menu = styled.div`
   left: 0;
   padding: 10px;
 
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-name: ${openMenu};
-  animation-fill-mode: forwards;
+  ${({ open }: MenuProps) =>
+    open
+      ? css`
+          animation-duration: 0.3s;
+          animation-timing-function: ease-out;
+          animation-name: ${openMenu};
+          animation-fill-mode: forwards;
+        `
+      : css`
+          animation-duration: 0.3s;
+          animation-timing-function: ease-out;
+          animation-name: ${closeMenu};
+          animation-fill-mode: forwards;
+        `}
 `;
 
 export const MenuInfo = styled.div`
@@ -199,6 +219,70 @@ export const Data = styled.p``;
 export const Day = styled.p``;
 
 // Light-Dark Mode
-export const ThemeMode = styled.div``;
+export const ThemeMode = styled.div`
+  display: flex;
+  position: relative;
+  font-size: 1.4rem;
+  /* line-height: 2; */
 
-export const ToggleInput = styled.input``;
+  span + label {
+    margin-left: 5px;
+  }
+
+  label + span {
+    margin-left: 5px;
+  }
+`;
+
+export const ToggleLabel = styled.label`
+  position: relative;
+  width: 30px;
+  cursor: pointer;
+
+  input {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+`;
+
+interface toggleProps {
+  status: boolean;
+}
+
+export const ToggleBg = styled.div`
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  height: 1rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  transition: background-color 300ms linear;
+
+  ${({ status }: toggleProps) =>
+    status &&
+    css`
+      background-color: #ff0070;
+    `}
+`;
+
+export const ToggleCircle = styled.div`
+  height: 1.3rem;
+  width: 1.3rem;
+  background-color: #2b244d;
+  position: absolute;
+  top: 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(0, 0, 255, 0.5);
+  transition: left 300ms linear;
+  left: 1px;
+
+  ${({ status }: toggleProps) =>
+    status &&
+    css`
+      /* background-color: white; */
+      left: 19px;
+    `}
+`;

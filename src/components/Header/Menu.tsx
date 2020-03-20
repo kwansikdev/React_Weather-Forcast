@@ -1,4 +1,4 @@
-import React, { createRef, useState, useEffect } from 'react';
+import React, { createRef } from 'react';
 import * as S from './Styled';
 
 interface Props {
@@ -48,8 +48,8 @@ export default function Menu({
 
   return (
     <>
-      <S.Dim ref={dimRef} onClick={close} />
-      <S.Menu>
+      <S.Dim ref={dimRef} open={open} onClick={close} />
+      <S.Menu open={open}>
         <S.MenuInfo>
           <S.CloseButton onClick={buttonClose}>
             <img src="/images/close.svg" alt="메뉴닫기" />
