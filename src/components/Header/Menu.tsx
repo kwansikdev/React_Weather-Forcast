@@ -1,7 +1,8 @@
 import React, { createRef } from 'react';
 import * as S from './Styled';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-interface Props {
+type Props = {
   open: boolean;
   openMenu: () => void;
   menuSelct: {
@@ -16,14 +17,17 @@ interface Props {
       lists: boolean;
     }>
   >;
-}
+};
 
-export default function Menu({
+type RouteComponent = RouteComponentProps & Props;
+
+const Menu: React.FC<RouteComponent> = ({
   open,
   openMenu,
   menuSelct,
   setMenuSelect,
-}: Props) {
+  history,
+}) => {
   const dimRef: any = createRef();
 
   const close = (e: React.MouseEvent<HTMLElement>) => {
@@ -43,7 +47,10 @@ export default function Menu({
         add: selectMenu === 'Add Weather' ? true : false,
         lists: selectMenu === 'Weather Lists' ? true : false,
       });
-    // openMenu();
+
+    if (selectMenu === 'Home') history.push('/');
+    else if (selectMenu === 'Add Weather') history.push('/weathers/add');
+    if (selectMenu === 'Weather Lists') history.push('/weathers/view');
   };
 
   return (
@@ -76,4 +83,6 @@ export default function Menu({
       </S.Menu>
     </>
   );
-}
+};
+
+export default withRouter(Menu);
