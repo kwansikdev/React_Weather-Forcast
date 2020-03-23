@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
-import * as S from './Styled';
+import React, { createRef, useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
+import * as S from './Styled';
 
 type Props = {
   open: boolean;
@@ -27,8 +27,12 @@ const Menu: React.FC<RouteComponent> = ({
   menuSelct,
   setMenuSelect,
   history,
+  location,
 }) => {
   const dimRef: any = createRef();
+  const menuName = location.pathname.split('/')[
+    location.pathname.split('/').length - 1
+  ];
 
   const close = (e: React.MouseEvent<HTMLElement>) => {
     if (dimRef.current.contains(e.target)) openMenu();
@@ -52,6 +56,14 @@ const Menu: React.FC<RouteComponent> = ({
     else if (selectMenu === 'Add Weather') history.push('/weathers/add');
     if (selectMenu === 'Weather Lists') history.push('/weathers/view');
   };
+
+  useEffect(() => {
+    setMenuSelect({
+      home: menuName === '' ? true : false,
+      add: menuName === 'add' ? true : false,
+      lists: menuName === 'view' ? true : false,
+    });
+  }, [menuName, setMenuSelect]);
 
   return (
     <>
