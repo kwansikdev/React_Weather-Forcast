@@ -148,7 +148,6 @@ export const MenuLists = styled.ul`
   li {
     position: relative;
     font-size: 3rem;
-    list-style-type: none;
     padding: 10px 0;
 
     &:after {
