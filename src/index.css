@@ -26,3 +26,9 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #222;
 }
+
+ul,
+ol,
+li {
+  list-style: none;
+}
