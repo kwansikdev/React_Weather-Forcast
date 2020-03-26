@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../components/Header';
-import WeatherView from '../components/WeatherView';
+import DetailView from '../components/WeatherView/DetailView';
 
 export default function View() {
   return (
     <>
       <Header />
-      <WeatherView />
+      <DetailView />
     </>
   );
 }

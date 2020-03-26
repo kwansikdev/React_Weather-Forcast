@@ -143,7 +143,7 @@ export const ListTemHigh = styled.p`
 `;
 
 export const GotoView = styled.button`
-  background: #eee;
+  background: transparent;
   position: absolute;
   width: 50px;
   height: 50px;
@@ -155,7 +155,8 @@ export const GotoView = styled.button`
 
   &:hover {
     /* box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.2); */
-    box-shadow: 0 0 10px 10px rgba(133, 254, 230, 0.5);
+    /* box-shadow: 0 0 10px 10px rgba(133, 254, 230, 0.5); */
+    background: #fff;
   }
 
   img {
