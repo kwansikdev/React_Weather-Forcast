@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const View = styled.div`
-  /* background-image: linear-gradient(to top, #5ee7df 0, #66a6ff 100%); */
-  /* background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%); */
-  min-height: 90vh;
+  /* height: 100%; */
+  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
   padding: 45px 45px 0 45px;
 `;
 
@@ -11,19 +10,19 @@ export const WeatherLists = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background: #eee;
-  height: 100%;
-  padding: 0 15px;
+  /* height: 100%; */
+  /* margin: 0 15px; */
 `;
 
 export const WeatherList = styled.li`
-  width: 370px;
+  width: 432px;
   /* height: 500px; */
   /* margin: 15px; */
   padding: 32px;
 `;
 
 export const WeatherButton = styled.button`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,6 +32,7 @@ export const WeatherButton = styled.button`
   padding: 32px;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
 
   section {
     margin-top: 25px;
