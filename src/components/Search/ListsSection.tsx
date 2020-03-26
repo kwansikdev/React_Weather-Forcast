@@ -6,7 +6,7 @@ type RouteComponent = RouteComponentProps;
 
 const ListsSection: React.FC<RouteComponent> = ({ history }) => {
   const goView = () => {
-    history.push('/weathers/view');
+    history.push('/');
   };
 
   return (
