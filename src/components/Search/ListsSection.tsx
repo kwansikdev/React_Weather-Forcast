@@ -2,9 +2,7 @@ import React from 'react';
 import * as S from './Styled';
 import { withRouter, RouteComponentProps } from 'react-router';
 
-type RouteComponent = RouteComponentProps;
-
-const ListsSection: React.FC<RouteComponent> = ({ history }) => {
+const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
   const goView = () => {
     history.push('/');
   };

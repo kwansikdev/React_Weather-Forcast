@@ -1,23 +1,19 @@
 import styled, { css } from 'styled-components';
 
+// Weather View
 export const View = styled.div`
-  /* height: 100%; */
   background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
-  padding: 45px 45px 0 45px;
+  padding: 0 45px;
 `;
 
 export const WeatherLists = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* height: 100%; */
-  /* margin: 0 15px; */
 `;
 
 export const WeatherList = styled.li`
   width: 432px;
-  /* height: 500px; */
-  /* margin: 15px; */
   padding: 32px;
 `;
 
@@ -106,3 +102,64 @@ export const ItemTempHigh = styled.div`
     color: #ff0000;
   }
 `;
+
+// Detaul View
+export const DetailView = styled.div`
+  display: flex;
+`;
+
+export const MenuListsSection = styled.section`
+  position: relative;
+  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
+  width: 12vw;
+  height: 93.5vh;
+  padding: 32px 0 50px 32px;
+  text-align: center;
+`;
+
+export const MenuListsUL = styled.ul`
+  width: 100%;
+  overflow-y: auto;
+`;
+
+export const ListAddMenu = styled.div`
+  margin-top: 30px;
+`;
+
+export const ListAddButton = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  img {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+export const AddModal = styled.div`
+  position: absolute;
+`;
+
+export const DetailSection = styled.section`
+  position: relative;
+  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
+  width: 88vw;
+  height: 93.5vh;
+  padding: 32px 32px 50px 32px;
+`;
+
+export const BackButton = styled.button`
+  position: absolute;
+  background: transparent;
+  border: none;
+`;
+
+export const ButtonCircle = styled.div`
+  background: #2b244d;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+export const BackArrow = styled.div``;

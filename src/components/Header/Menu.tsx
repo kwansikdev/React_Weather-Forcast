@@ -19,9 +19,7 @@ type Props = {
   >;
 };
 
-type RouteComponent = RouteComponentProps & Props;
-
-const Menu: React.FC<RouteComponent> = ({
+const Menu: React.FC<RouteComponentProps & Props> = ({
   open,
   openMenu,
   menuSelct,

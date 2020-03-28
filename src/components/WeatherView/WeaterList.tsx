@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as S from './Styled';
 
-type RouteComponent = RouteComponentProps;
-
-const WeatherList: React.FC<RouteComponent> = ({ history }) => {
+const WeatherList: React.FC<RouteComponentProps> = ({ history }) => {
   function gotoDetail() {
     history.push('/weathers/view');
   }

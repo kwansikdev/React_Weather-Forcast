@@ -201,8 +201,9 @@ export const ListButton = styled.button`
 
 // CutrrnetTime
 export const CurrentTime = styled.div`
-  color: red;
-  font-size: 1.6rem;
+  color: #4d47ff;
+  font-size: 1.8rem;
+  font-weight: 700;
 
   p {
     display: inline-block;
@@ -222,8 +223,8 @@ export const Day = styled.p``;
 export const ThemeMode = styled.div`
   display: flex;
   position: relative;
-  font-size: 1.4rem;
-  /* line-height: 2; */
+  font-size: 1.6rem;
+  line-height: 2.2;
 
   span + label {
     margin-left: 5px;
@@ -236,7 +237,7 @@ export const ThemeMode = styled.div`
 
 export const ToggleLabel = styled.label`
   position: relative;
-  width: 30px;
+  width: 44px;
   cursor: pointer;
 
   input {
@@ -252,11 +253,11 @@ interface toggleProps {
 
 export const ToggleBg = styled.div`
   position: absolute;
-  top: 6px;
+  top: 11px;
   left: 6px;
-  height: 1rem;
-  width: 2rem;
-  border-radius: 0.5rem;
+  height: 14px;
+  width: 32px;
+  border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
   display: inline-block;
   transition: background-color 300ms linear;
@@ -269,11 +270,11 @@ export const ToggleBg = styled.div`
 `;
 
 export const ToggleCircle = styled.div`
-  height: 1.3rem;
-  width: 1.3rem;
+  height: 20px;
+  width: 20px;
   background-color: #2b244d;
   position: absolute;
-  top: 4px;
+  top: 8px;
   border-radius: 50%;
   box-shadow: 0 0 0 rgba(0, 0, 255, 0.5);
   transition: left 300ms linear;
@@ -283,6 +284,6 @@ export const ToggleCircle = styled.div`
     status &&
     css`
       /* background-color: white; */
-      left: 19px;
+      left: 24px;
     `}
 `;

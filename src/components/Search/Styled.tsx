@@ -3,7 +3,7 @@ import media from '../../libs/MediaQuery';
 
 export const AddDiv = styled.div`
   display: flex;
-  /* background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%); */
+  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
   height: 93vh;
   padding: 60px;
 `;
