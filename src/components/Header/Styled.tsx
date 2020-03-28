@@ -50,7 +50,8 @@ const closeMenu = keyframes`
 const fadeIn = keyframes`
   from {
     opacity: 0;
-  } to {
+  }
+  to {
     opacity: 1;
   }
 `;
@@ -58,7 +59,8 @@ const fadeIn = keyframes`
 const fadeOut = keyframes`
   from {
     opacity: 1;
-  } to {
+  }
+  to {
     opacity: 0;
   }
 `;
@@ -75,20 +77,17 @@ export const Dim = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 
   ${({ open }: MenuProps) =>
     open
       ? css`
-          animation-duration: 0.3s;
-          animation-timing-function: ease-out;
           animation-name: ${fadeIn};
-          animation-fill-mode: forwards;
         `
       : css`
-          animation-duration: 0.3s;
-          animation-timing-function: ease-out;
           animation-name: ${fadeOut};
-          animation-fill-mode: forwards;
         `}
 `;
 
@@ -100,20 +99,17 @@ export const Menu = styled.div`
   top: 0;
   left: 0;
   padding: 10px;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 
   ${({ open }: MenuProps) =>
     open
       ? css`
-          animation-duration: 0.3s;
-          animation-timing-function: ease-out;
           animation-name: ${openMenu};
-          animation-fill-mode: forwards;
         `
       : css`
-          animation-duration: 0.3s;
-          animation-timing-function: ease-out;
           animation-name: ${closeMenu};
-          animation-fill-mode: forwards;
         `}
 `;
 
