@@ -2,7 +2,7 @@ import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { createAction, createActions, handleActions } from 'redux-actions';
 
 const options = {
-  prefix: 'weather-forecast/weathers',
+  prefix: 'weather-forecast/search',
   namespace: '/',
 };
 
@@ -15,27 +15,35 @@ const { success, pending, fail } = createActions(
   options,
 );
 
-export function* weathersSaga() {}
+export const addCitySaga = createAction('add_city_SAGA');
+
+function* addCity({ payload }) {
+  try {
+    yield put(pending());
+    console.log();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* searchSaga() {}
 
 type initialStateType = {
   loading: boolean;
   error: null | {};
-  current: {};
-  fiveDays: {};
+  city: string[];
 };
 
 const initialState: initialStateType = {
   loading: false,
   error: null,
-  current: {},
-  fiveDays: {},
+  city: [],
 };
 
-const weathers = handleActions(
+const search = handleActions(
   {
     PENDING: (state, action) => ({
       ...state,
-      ...action.payload,
       loading: true,
       error: null,
     }),
@@ -55,4 +63,4 @@ const weathers = handleActions(
   options,
 );
 
-export default weathers;
+export default search;

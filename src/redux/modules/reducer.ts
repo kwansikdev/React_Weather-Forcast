@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
+import weathers from './weathers';
+import search from './search';
 
-export default function reducer() {
-  combineReducers({});
-}
+const reducer = () => {
+  combineReducers({
+    weathers,
+    search,
+  });
+};
+
+export default reducer;
