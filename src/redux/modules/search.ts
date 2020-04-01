@@ -1,66 +1,62 @@
-import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
-import { createAction, createActions, handleActions } from 'redux-actions';
+import { createReducer, createAction, ActionType } from 'typesafe-actions';
 
-const options = {
-  prefix: 'weather-forecast/search',
-  namespace: '/',
-};
+import { takeLatest } from 'redux-saga/effects';
 
-const { success, pending, fail } = createActions(
-  {
-    SUCCESS: (weather: any) => ({ weather }),
-  },
-  'PENDING',
-  'FAIL',
-  options,
-);
+const prefix: string = 'weathers/search/';
 
-export const addCitySaga = createAction('add_city_SAGA');
+// 액션
+const PENDING = `${prefix}PENDING`;
+const SUCCESS = `${prefix}SUCCESS`;
+const FAIL = `${prefix}FAIL`;
 
-function* addCity({ payload }) {
-  try {
-    yield put(pending());
-    console.log();
-  } catch (error) {
-    console.log(error);
-  }
+// 액션 생성 함수 만들기
+export const pending = createAction(PENDING)();
+export const success = createAction(SUCCESS)<string>();
+export const fail = createAction(FAIL)();
+
+const actions = { pending, success, fail };
+
+type Action = ActionType<typeof actions>;
+
+// saga 함수
+
+//
+export function* searchSaga() {
+  // yield takeLatest('GET_SESSION_SAGA', createSession);
 }
 
-export function* searchSaga() {}
-
-type initialStateType = {
+// initialState
+export type TInitialState = {
   loading: boolean;
   error: null | {};
   city: string[];
 };
 
-const initialState: initialStateType = {
+const initialState: TInitialState = {
   loading: false,
   error: null,
   city: [],
 };
 
-const search = handleActions(
-  {
-    PENDING: (state, action) => ({
-      ...state,
-      loading: true,
-      error: null,
-    }),
-    SUCCESS: (state, action) => ({
-      ...state,
-      ...action.payload,
-      loading: false,
-      error: null,
-    }),
-    FAIL: (state, action) => ({
-      ...state,
-      loading: false,
-      error: action.payload,
-    }),
-  },
-  initialState,
-  options,
-);
+// Reducer
+const search = createReducer<TInitialState>(initialState, {
+  [PENDING]: (state, action) => ({
+    ...state,
+    ...action.payload,
+    loading: true,
+    error: null,
+  }),
+  [SUCCESS]: (state, action) => ({
+    ...state,
+    ...action.payload,
+    loading: false,
+    error: null,
+  }),
+  [FAIL]: (state, action) => ({
+    ...state,
+    loading: false,
+    error: action.payload,
+  }),
+});
 
 export default search;
