@@ -1,6 +1,5 @@
 import { createReducer, createAction, ActionType } from 'typesafe-actions';
-
-import { takeLatest } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 
 const prefix: string = 'weathers/search/';
 
@@ -11,7 +10,7 @@ const FAIL = `${prefix}FAIL`;
 
 // 액션 생성 함수 만들기
 export const pending = createAction(PENDING)();
-export const success = createAction(SUCCESS)<string>();
+export const success = createAction(SUCCESS)();
 export const fail = createAction(FAIL)();
 
 const actions = { pending, success, fail };
@@ -19,23 +18,39 @@ const actions = { pending, success, fail };
 type Action = ActionType<typeof actions>;
 
 // saga 함수
+export const addCitySaga = createAction('ADD_CITY_SAGA');
+
+function* addCity(city: string) {
+  const cities = yield select(state => state.search.cities);
+
+  try {
+    yield put(pending());
+    yield put(
+      success({
+        cities: [...cities, city],
+      }),
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //
 export function* searchSaga() {
-  // yield takeLatest('GET_SESSION_SAGA', createSession);
+  yield takeLatest('ADD_CITY_SAGA', addCity);
 }
 
 // initialState
 export type TInitialState = {
   loading: boolean;
   error: null | {};
-  city: string[];
+  cities: string[];
 };
 
 const initialState: TInitialState = {
   loading: false,
   error: null,
-  city: [],
+  cities: [],
 };
 
 // Reducer

@@ -1,11 +1,15 @@
 import React, { createRef } from 'react';
 import * as S from './Styled';
+interface TProps {
+  addCity: () => void;
+}
 
-export default function SearchSection() {
+export default function SearchSection({ addCity }: TProps) {
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
-  function addCity(e: React.MouseEvent<HTMLButtonElement>) {
-    console.log(searchRef.current !== null && searchRef.current.value);
+  function add(e: React.MouseEvent<HTMLButtonElement>) {
+    const cityName = searchRef.current !== null && searchRef.current.value;
+    addCity(cityName);
   }
 
   return (
@@ -23,7 +27,7 @@ export default function SearchSection() {
               <span>자동완성</span>
             </S.SearchAutoList> */}
           </S.SearchBox>
-          <S.SearchButton onClick={addCity}>
+          <S.SearchButton onClick={add}>
             <img src="/images/search_black.svg" alt="검색버튼" />
           </S.SearchButton>
         </S.SearchForm>
