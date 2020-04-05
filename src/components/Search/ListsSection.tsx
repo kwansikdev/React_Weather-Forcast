@@ -2,10 +2,18 @@ import React from 'react';
 import * as S from './Styled';
 import { withRouter, RouteComponentProps } from 'react-router';
 
-const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
+type TProps = {
+  cities: string[];
+};
+
+const ListsSection: React.FC<RouteComponentProps & TProps> = (
+  { cities }: TProps,
+  { history },
+) => {
   const goView = () => {
     history.push('/');
   };
+  console.log('ListSection', cities);
 
   return (
     <>
@@ -13,7 +21,7 @@ const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
         <S.ListsUl>
           <S.ListLi>
             <S.ListButton>
-              <S.ListCountry>LONDON</S.ListCountry>
+              <S.ListCountry>{cities[0]}</S.ListCountry>
               <S.ListTem>
                 <S.ListTemLow>최저 10</S.ListTemLow>
                 <S.ListTemHigh>최고 23</S.ListTemHigh>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchSection from '../components/Search/SearchSection';
+import ListsSection from '../components/Search/ListsSection';
 import { RouteState } from '../redux/modules/reducer';
 
 export default connect(
@@ -7,4 +7,4 @@ export default connect(
     cities: state.search.cities,
   }),
   dispatch => ({}),
-)(SearchSection);
+)(ListsSection);
