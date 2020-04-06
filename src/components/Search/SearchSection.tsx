@@ -3,13 +3,17 @@ import * as S from './Styled';
 
 interface TProps {
   cities: string[];
+  addCity: (city: string) => void;
 }
 
-export default function SearchSection({ cities }: TProps) {
+export default function SearchSection({ cities, addCity }: TProps) {
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
-    const cityName = searchRef.current !== null && searchRef.current.value;
+    if (!searchRef.current) return;
+    const cityName = searchRef.current.value;
+    addCity(cityName);
+    searchRef.current.value = '';
   }
 
   console.log(cities);

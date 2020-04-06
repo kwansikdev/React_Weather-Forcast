@@ -1,43 +1,48 @@
-import { createReducer, createAction, ActionType } from 'typesafe-actions';
-import { put, select, takeLatest } from 'redux-saga/effects';
+import {
+  createReducer,
+  createAction,
+  ActionType,
+  createAsyncAction,
+} from 'typesafe-actions';
+import { put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
 const prefix: string = 'weathers/search/';
 
-// 액션
-const PENDING = `${prefix}PENDING`;
-const SUCCESS = `${prefix}SUCCESS`;
-const FAIL = `${prefix}FAIL`;
+// 액션 및 액션 생성 함수 만들기
+type TCities = {
+  cities: string[];
+};
 
-// 액션 생성 함수 만들기
-export const pending = createAction(PENDING)();
-export const success = createAction(SUCCESS)();
-export const fail = createAction(FAIL)();
+const pending = `${prefix}PENDING`;
+const success = `${prefix}SUCCESS`;
+const fail = `${prefix}FAIL`;
 
-const actions = { pending, success, fail };
+export const actions = createAsyncAction(pending, success, fail)<
+  undefined,
+  string,
+  undefined
+>();
 
-type Action = ActionType<typeof actions>;
+// ActionType 을 사용하여 모든 액션 객체들의 타입을 준비해줄 수 있다.
+type SearchAction = ActionType<typeof actions>;
 
 // saga 함수
-export const addCitySaga = createAction('ADD_CITY_SAGA');
+export const addCitySaga = createAction(`${prefix}ADD_CITY_SAGA`)<string>();
 
-function* addCity(city: string) {
+export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
   const cities = yield select(state => state.search.cities);
 
   try {
-    yield put(pending());
-    yield put(
-      success({
-        cities: [...cities, city],
-      }),
-    );
-  } catch (error) {
-    console.log(error);
+    yield put(actions.request());
+    yield put(actions.success(cities.push(payload.toUpperCase())));
+  } catch {
+    console.log(Error);
   }
 }
 
 //
 export function* searchSaga() {
-  yield takeLatest('ADD_CITY_SAGA', addCity);
+  yield takeLatest(addCitySaga, addCity);
 }
 
 // initialState
@@ -50,24 +55,24 @@ export type TInitialState = {
 const initialState: TInitialState = {
   loading: false,
   error: null,
-  cities: [],
+  cities: ['London'],
 };
 
 // Reducer
-const search = createReducer<TInitialState>(initialState, {
-  [PENDING]: (state, action) => ({
+const search = createReducer(initialState, {
+  pending: (state, action) => ({
     ...state,
     ...action.payload,
     loading: true,
     error: null,
   }),
-  [SUCCESS]: (state, action) => ({
+  success: (state, action) => ({
     ...state,
     ...action.payload,
     loading: false,
     error: null,
   }),
-  [FAIL]: (state, action) => ({
+  fail: (state, action) => ({
     ...state,
     loading: false,
     error: action.payload,
