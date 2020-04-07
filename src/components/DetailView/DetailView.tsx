@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
-import WeatherDetail from './WeatherDetail';
-import * as S from './Styled';
+import WeatherDetail from '../WeatherView/WeatherDetail';
+import * as S from '../WeatherView/Styled';
 
 type TProps = {
   cities: string[];

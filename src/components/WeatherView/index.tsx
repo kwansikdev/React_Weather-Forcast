@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Styled';
-import WeatherList from './WeaterList';
+import WeatherList from '../DetailView/WeaterList';
 
 type TProps = {
   cities: string[];

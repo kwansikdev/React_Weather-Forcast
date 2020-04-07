@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import * as S from './Styled';
+import * as S from '../WeatherView/Styled';
 
 type TProps = {
   city: string;
