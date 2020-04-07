@@ -6,7 +6,7 @@ import {
 } from 'typesafe-actions';
 import { put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
-const prefix: string = 'weathers/search/';
+const prefix: string = 'search/';
 
 // 액션 및 액션 생성 함수 만들기
 type TCities = {
@@ -59,20 +59,19 @@ const initialState: TInitialState = {
 };
 
 // Reducer
-const search = createReducer(initialState, {
-  pending: (state, action) => ({
+const search = createReducer<TInitialState>(initialState, {
+  [pending]: state => ({
     ...state,
-    ...action.payload,
     loading: true,
     error: null,
   }),
-  success: (state, action) => ({
+  [success]: (state, action) => ({
     ...state,
     ...action.payload,
     loading: false,
     error: null,
   }),
-  fail: (state, action) => ({
+  [fail]: (state, action) => ({
     ...state,
     loading: false,
     error: action.payload,

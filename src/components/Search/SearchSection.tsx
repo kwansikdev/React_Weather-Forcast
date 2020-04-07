@@ -2,21 +2,19 @@ import React, { createRef } from 'react';
 import * as S from './Styled';
 
 interface TProps {
-  cities: string[];
   addCity: (city: string) => void;
 }
 
-export default function SearchSection({ cities, addCity }: TProps) {
+export default function SearchSection({ addCity }: TProps) {
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
     if (!searchRef.current) return;
     const cityName = searchRef.current.value;
-    addCity(cityName);
     searchRef.current.value = '';
+    searchRef.current.focus();
+    addCity(cityName);
   }
-
-  console.log(cities);
 
   return (
     <>

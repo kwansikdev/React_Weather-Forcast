@@ -4,9 +4,7 @@ import { RouteState } from '../redux/modules/reducer';
 import { addCitySaga } from '../redux/modules/search';
 
 export default connect(
-  (state: RouteState) => ({
-    cities: state.search.cities,
-  }),
+  (state: RouteState) => ({}),
   dispatch => ({
     addCity: (city: string) => {
       dispatch(addCitySaga(city));
