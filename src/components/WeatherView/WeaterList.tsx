@@ -2,15 +2,22 @@ import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as S from './Styled';
 
-const WeatherList: React.FC<RouteComponentProps> = ({ history }) => {
+type TProps = {
+  city: string;
+};
+
+const WeatherList: React.FC<RouteComponentProps & TProps> = ({
+  city,
+  history,
+}) => {
   function gotoDetail() {
-    history.push('/weathers/view');
+    history.push(`/weathers/view/detail/${city.toLowerCase()}`);
   }
   return (
     <>
       <S.WeatherList>
         <S.WeatherButton onClick={gotoDetail}>
-          <S.ItemTitle>런던</S.ItemTitle>
+          <S.ItemTitle>{city}</S.ItemTitle>
           <S.CurrentWeatherIcon>
             <img src="/" alt="날씨" />
           </S.CurrentWeatherIcon>

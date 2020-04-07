@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../components/Header';
-import DetailView from '../components/WeatherView/DetailView';
+import DetailViewContainer from '../container/DetailViewContainer';
 
 export default function View() {
   return (
     <>
       <Header />
-      <DetailView />
+      <DetailViewContainer />
     </>
   );
 }

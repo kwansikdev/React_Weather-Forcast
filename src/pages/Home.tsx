@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../components/Header';
-import WeatherView from '../components/WeatherView';
+import WeatherViewContainer from '../container/WeatherViewContainer';
 
 export default function Home() {
   return (
     <>
       <Header />
-      <WeatherView />
+      <WeatherViewContainer />
     </>
   );
 }

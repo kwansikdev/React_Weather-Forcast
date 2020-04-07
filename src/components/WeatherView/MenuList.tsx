@@ -19,10 +19,18 @@ const List = styled.li`
   }
 `;
 
-export default function MenuList() {
+type TProps = {
+  city: string;
+};
+
+export default function MenuList({ city }: TProps) {
+  function ListClick(e: React.MouseEvent<HTMLLIElement>) {
+    const selectList = e.currentTarget.children[0].innerHTML;
+  }
+
   return (
-    <List>
-      <p>런던</p>
+    <List onClick={ListClick}>
+      <p>{city}</p>
     </List>
   );
 }

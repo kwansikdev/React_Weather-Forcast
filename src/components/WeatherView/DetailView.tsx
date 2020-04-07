@@ -4,7 +4,14 @@ import MenuList from './MenuList';
 import WeatherDetail from './WeatherDetail';
 import * as S from './Styled';
 
-const DetailView: React.FC<RouteComponentProps> = ({ history }) => {
+type TProps = {
+  cities: string[];
+};
+
+const DetailView: React.FC<RouteComponentProps & TProps> = ({
+  cities,
+  history,
+}) => {
   function gotoAddMenu() {
     history.push('/weathers/add');
   }
@@ -13,7 +20,8 @@ const DetailView: React.FC<RouteComponentProps> = ({ history }) => {
     <S.DetailView>
       <S.MenuListsSection>
         <S.MenuListsUL>
-          <MenuList />
+          {cities &&
+            cities.map((city, index) => <MenuList key={index} city={city} />)}
         </S.MenuListsUL>
         <S.ListAddMenu>
           <S.ListAddButton onClick={gotoAddMenu}>
@@ -25,7 +33,10 @@ const DetailView: React.FC<RouteComponentProps> = ({ history }) => {
         {/* <S.BackButton>
           <S.ButtonCircle />
         </S.BackButton> */}
-        <WeatherDetail />
+        {cities &&
+          cities.map((city, index) => (
+            <WeatherDetail key={index} city={city} />
+          ))}
       </S.DetailSection>
     </S.DetailView>
   );

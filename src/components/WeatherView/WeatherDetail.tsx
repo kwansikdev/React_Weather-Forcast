@@ -141,7 +141,11 @@ const ForecastTemp = styled.p`
   font-size: 2.2rem;
 `;
 
-export default function WeatherDetail() {
+type TProps = {
+  city: string;
+};
+
+export default function WeatherDetail({ city }: TProps) {
   return (
     <DetailBox>
       <DetailWeatherBox>
@@ -163,7 +167,7 @@ export default function WeatherDetail() {
         </ConditionBox>
         <CityBox>
           <CityName>
-            <span>LONDON</span>
+            <span>{city}</span>
           </CityName>
         </CityBox>
       </DetailWeatherBox>
