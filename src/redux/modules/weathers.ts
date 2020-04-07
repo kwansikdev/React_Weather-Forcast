@@ -2,7 +2,7 @@ import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { createAction, createActions, handleActions } from 'redux-actions';
 
 const options = {
-  prefix: 'weather-forecast/weathers',
+  prefix: 'weathers/',
   namespace: '/',
 };
 
