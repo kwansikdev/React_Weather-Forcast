@@ -4,22 +4,23 @@ import {
   ActionType,
   createAsyncAction,
 } from 'typesafe-actions';
-import { put, select, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, call, select, takeLatest, takeEvery } from 'redux-saga/effects';
+import WeatherServices from '../../services/WeatherServices';
 
 const prefix: string = 'search/';
 
 // 액션 및 액션 생성 함수 만들기
-type TCities = {
-  cities: string[];
-};
-
 const pending = `${prefix}PENDING`;
 const success = `${prefix}SUCCESS`;
 const fail = `${prefix}FAIL`;
 
+type TSuccess = {
+  cities: string[];
+};
+
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
-  string,
+  TSuccess,
   undefined
 >();
 
@@ -34,7 +35,13 @@ export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
 
   try {
     yield put(actions.request());
-    yield put(actions.success(cities.push(payload.toUpperCase())));
+    yield put(
+      actions.success({
+        cities: [...cities, payload],
+      }),
+    );
+    const { data } = yield call(WeatherServices.getCurrentWeather, payload);
+    console.log(data);
   } catch {
     console.log(Error);
   }

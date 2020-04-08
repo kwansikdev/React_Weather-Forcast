@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 import ListCountry from './ListCountry';
 import * as S from './Styled';
+import { useSelector } from 'react-redux';
+import { RouteState } from '../../redux/modules/reducer';
 
-type TProps = {
-  cities: string[];
-};
+const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
+  const cities = useSelector((state: RouteState) => state.search.cities);
 
-const ListsSection: React.FC<RouteComponentProps & TProps> = ({
-  cities,
-  history,
-}) => {
   const goHome = () => {
     history.push('/');
   };
+
+  useEffect(() => {
+    console.log(cities);
+  }, [cities]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useState } from 'react';
 import * as S from './Styled';
 
 interface TProps {
@@ -6,6 +6,7 @@ interface TProps {
 }
 
 export default function SearchSection({ addCity }: TProps) {
+  const [state, setState] = useState(['LONDON']);
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
@@ -13,7 +14,9 @@ export default function SearchSection({ addCity }: TProps) {
     const cityName = searchRef.current.value;
     searchRef.current.value = '';
     searchRef.current.focus();
+
     addCity(cityName);
+    setState([...state, cityName]);
   }
 
   return (
@@ -30,6 +33,9 @@ export default function SearchSection({ addCity }: TProps) {
             {/* <S.SearchAutoList>
               <span>자동완성</span>
             </S.SearchAutoList> */}
+            {state.map(city => (
+              <li>{city}</li>
+            ))}
           </S.SearchBox>
           <S.SearchButton onClick={add}>
             <img src="/images/search_black.svg" alt="검색버튼" />
