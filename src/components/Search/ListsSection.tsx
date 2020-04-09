@@ -8,20 +8,25 @@ import { RouteState } from '../../redux/modules/reducer';
 const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
   const cities = useSelector((state: RouteState) => state.search.cities);
 
+  //
+  const cityWeathers = useSelector(
+    (state: RouteState) => state.search.city_weathers,
+  );
+
   const goHome = () => {
     history.push('/');
   };
-
-  useEffect(() => {
-    console.log(cities);
-  }, [cities]);
 
   return (
     <>
       <S.ListsSection>
         <S.ListsUl>
           {cities.map((city, index) => (
-            <ListCountry key={index} city={city} />
+            <ListCountry
+              key={index}
+              city={city}
+              weather={cityWeathers[index]}
+            />
           ))}
         </S.ListsUl>
         <S.GotoView onClick={goHome}>

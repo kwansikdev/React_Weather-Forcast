@@ -18,9 +18,13 @@ type TSuccess = {
   cities: string[];
 };
 
+type TSuccess1 = {
+  city_weathers: {};
+};
+
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
-  TSuccess,
+  TSuccess | TSuccess1,
   undefined
 >();
 
@@ -32,6 +36,7 @@ export const addCitySaga = createAction(`${prefix}ADD_CITY_SAGA`)<string>();
 
 export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
   const cities = yield select(state => state.search.cities);
+  const city_weathers = yield select(state => state.search.city_weathers);
 
   try {
     yield put(actions.request());
@@ -41,7 +46,11 @@ export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
       }),
     );
     const { data } = yield call(WeatherServices.getCurrentWeather, payload);
-    console.log(data);
+    yield put(
+      actions.success({
+        city_weathers: [...city_weathers, data],
+      }),
+    );
   } catch {
     console.log(Error);
   }
@@ -57,12 +66,14 @@ export type TInitialState = {
   loading: boolean;
   error: null | {};
   cities: string[];
+  city_weathers: [];
 };
 
 const initialState: TInitialState = {
   loading: false,
   error: null,
-  cities: ['London'],
+  cities: [],
+  city_weathers: [],
 };
 
 // Reducer
