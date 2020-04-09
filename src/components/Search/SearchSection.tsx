@@ -6,7 +6,6 @@ interface TProps {
 }
 
 export default function SearchSection({ addCity }: TProps) {
-  const [state, setState] = useState(['LONDON']);
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
@@ -16,7 +15,14 @@ export default function SearchSection({ addCity }: TProps) {
     searchRef.current.focus();
 
     addCity(cityName);
-    setState([...state, cityName]);
+  }
+
+  function enter({ keyCode, target }: React.KeyboardEvent<HTMLInputElement>) {
+    if (keyCode !== 13 || !searchRef.current) return;
+    const cityName = (target as HTMLInputElement).value;
+
+    addCity(cityName);
+    searchRef.current.value = '';
   }
 
   return (
@@ -29,13 +35,11 @@ export default function SearchSection({ addCity }: TProps) {
               ref={searchRef}
               placeholder="SEARCH CITY"
               type="search"
+              onKeyUp={enter}
             />
             {/* <S.SearchAutoList>
               <span>자동완성</span>
             </S.SearchAutoList> */}
-            {state.map(city => (
-              <li>{city}</li>
-            ))}
           </S.SearchBox>
           <S.SearchButton onClick={add}>
             <img src="/images/search_black.svg" alt="검색버튼" />
