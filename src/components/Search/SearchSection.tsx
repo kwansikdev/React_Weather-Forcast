@@ -18,11 +18,12 @@ export default function SearchSection({ addCity }: TProps) {
   }
 
   function enter({ keyCode, target }: React.KeyboardEvent<HTMLInputElement>) {
-    if (keyCode !== 13 || !searchRef.current) return;
-    const cityName = (target as HTMLInputElement).value;
+    const _target = target as HTMLInputElement;
 
-    addCity(cityName);
-    searchRef.current.value = '';
+    if (keyCode !== 13 || _target.value === '' || _target.value === null)
+      return;
+
+    addCity(_target.value);
   }
 
   return (

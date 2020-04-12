@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './Styled';
 import { TWeahter } from '../../Type/weahterType';
 type TProps = {
