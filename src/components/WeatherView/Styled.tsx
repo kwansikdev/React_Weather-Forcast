@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 export const View = styled.div`
   background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
   padding: 0 45px;
+  min-height: 93.2vh;
 `;
 
 export const WeatherLists = styled.ul`
@@ -36,11 +37,12 @@ export const WeatherButton = styled.button`
 `;
 
 export const ItemTitle = styled.p`
-  font-size: 2rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 5px;
 `;
 
 export const CurrentWeatherIcon = styled.div`
-  background: yellow;
   width: 160px;
   height: 200px;
   margin-top: 25px;
@@ -57,19 +59,17 @@ export const CurrentWeather = styled.section`
 `;
 
 export const CurrentTemp = styled.p`
-  background: gray;
   font-size: 4.8rem;
 `;
 
 export const CurrentStatus = styled.p`
-  background: pink;
   display: flex;
   flex-direction: column;
   font-size: 1.6rem;
+  letter-spacing: 5px;
 `;
 
 export const ItemTemp = styled.section`
-  background: green;
   display: flex;
 
   div + div {

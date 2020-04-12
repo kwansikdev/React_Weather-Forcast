@@ -1,39 +1,51 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import * as S from '../WeatherView/Styled';
+import * as S from './Styled';
+import { TWeahter } from '../../Type/weahterType';
 
 type TProps = {
   city: string;
+  weather: TWeahter;
 };
 
 const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   city,
   history,
+  weather,
 }) => {
+  const weatherInfo = weather && {
+    name: weather.name.toUpperCase(),
+    temp: (weather.main.temp - 275.15).toFixed(1),
+    status: weather.weather[0].main.toUpperCase(),
+    min: (weather.main.temp_min - 275.15).toFixed(1),
+    max: (weather.main.temp_max - 275.15).toFixed(1),
+  };
+
   function gotoDetail() {
     history.push(`/weathers/view/detail/${city.toLowerCase()}`);
   }
+
   return (
     <>
       <S.WeatherList>
         <S.WeatherButton onClick={gotoDetail}>
-          <S.ItemTitle>{city}</S.ItemTitle>
+          <S.ItemTitle>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>
             <img src="/" alt="날씨" />
           </S.CurrentWeatherIcon>
           <S.CurrentWeather>
-            <S.CurrentTemp>35°</S.CurrentTemp>
-            <S.CurrentStatus>CLOUDS</S.CurrentStatus>
+            <S.CurrentTemp>{weatherInfo.temp}°</S.CurrentTemp>
+            <S.CurrentStatus>{weatherInfo.status}</S.CurrentStatus>
           </S.CurrentWeather>
           <S.ItemTemp>
             <S.ItemTempLow>
               <img src="/images/down-arrow.svg" alt="최저온도" />
-              <p>23</p>
+              <p>{weatherInfo.min}</p>
               <span>min</span>
             </S.ItemTempLow>
             <S.ItemTempHigh>
               <img src="/images/up-arrow.svg" alt="최고온도" />
-              <p>34</p>
+              <p>{weatherInfo.max}</p>
               <span>max</span>
             </S.ItemTempHigh>
           </S.ItemTemp>
