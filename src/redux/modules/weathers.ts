@@ -1,58 +1,82 @@
-import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
-import { createAction, createActions, handleActions } from 'redux-actions';
+import {
+  createReducer,
+  createAction,
+  ActionType,
+  createAsyncAction,
+} from 'typesafe-actions';
+import { put, call, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
-const options = {
-  prefix: 'weathers/',
-  namespace: '/',
+const prefix: string = 'weathers/';
+
+const pending = `${prefix}PENDING`;
+const success = `${prefix}SUCCESS`;
+const fail = `${prefix}FAIL`;
+
+type TSuccess = {
+  cityLists: string[];
 };
 
-const { success, pending, fail } = createActions(
-  {
-    SUCCESS: (weather: any) => ({ weather }),
-  },
-  'PENDING',
-  'FAIL',
-  options,
-);
+export const actions = createAsyncAction(pending, success, fail)<
+  undefined,
+  TSuccess,
+  undefined
+>();
 
-export function* weathersSaga() {}
+// saga 함수
+export const addListSaga = createAction(`${prefix}ADD_LIST_SAGA`)<string[]>();
 
-type initialStateType = {
+function* addList({ payload }: ReturnType<typeof addListSaga>) {
+  const cityLists = yield select(state => state.weathers.cityLists);
+
+  try {
+    yield put(actions.request());
+    yield put(
+      actions.success({
+        cityLists: payload,
+      }),
+    );
+  } catch {
+    yield put(actions.failure());
+  }
+}
+
+export function* weathersSaga() {
+  yield takeLatest(addListSaga, addList);
+}
+
+type TInitialState = {
   loading: boolean;
   error: null | {};
-  current: {};
+  current: string;
+  cityLists: string[];
   fiveDays: {};
 };
 
-const initialState: initialStateType = {
+const initialState: TInitialState = {
   loading: false,
   error: null,
-  current: {},
+  current: '',
+  cityLists: [],
   fiveDays: {},
 };
 
-const weathers = handleActions(
-  {
-    PENDING: (state, action) => ({
-      ...state,
-      ...action.payload,
-      loading: true,
-      error: null,
-    }),
-    SUCCESS: (state, action) => ({
-      ...state,
-      ...action.payload,
-      loading: false,
-      error: null,
-    }),
-    FAIL: (state, action) => ({
-      ...state,
-      loading: false,
-      error: action.payload,
-    }),
-  },
-  initialState,
-  options,
-);
+const weathers = createReducer<TInitialState>(initialState, {
+  [pending]: state => ({
+    ...state,
+    loading: true,
+    error: null,
+  }),
+  [success]: (state, action) => ({
+    ...state,
+    ...action.payload,
+    loading: false,
+    error: null,
+  }),
+  [fail]: (state, action) => ({
+    ...state,
+    loading: false,
+    error: action.payload,
+  }),
+});
 
 export default weathers;

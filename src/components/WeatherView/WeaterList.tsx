@@ -6,6 +6,7 @@ import { TWeahter } from '../../Type/weahterType';
 type TProps = {
   city: string;
   weather: TWeahter;
+  onClick: () => void;
 };
 
 const WeatherList: React.FC<RouteComponentProps & TProps> = ({

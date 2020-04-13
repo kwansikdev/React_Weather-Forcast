@@ -13,13 +13,19 @@ export default function WeatherView({ cities }: TProps) {
     (state: RouteState) => state.search.city_weathers,
   );
 
+  function addList(city: string) {}
+
   return (
     <>
       <S.View>
         <S.WeatherLists>
           {cities &&
             cities.map((city, index) => (
-              <WeatherList city={city} weather={cityWeathers[index]} />
+              <WeatherList
+                city={city}
+                weather={cityWeathers[index]}
+                onClick={() => addList(city)}
+              />
             ))}
         </S.WeatherLists>
       </S.View>

@@ -5,7 +5,14 @@ import * as S from './Styled';
 import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
 
-const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
+type TProps = {
+  addList: (cities: string[]) => void;
+};
+
+const ListsSection: React.FC<RouteComponentProps & TProps> = ({
+  history,
+  addList,
+}) => {
   const cities = useSelector((state: RouteState) => state.search.cities);
 
   //
@@ -15,6 +22,7 @@ const ListsSection: React.FC<RouteComponentProps> = ({ history }) => {
 
   const goHome = () => {
     history.push('/');
+    addList(cities);
   };
 
   return (

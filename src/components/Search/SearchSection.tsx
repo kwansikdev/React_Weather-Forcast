@@ -22,8 +22,8 @@ export default function SearchSection({ addCity }: TProps) {
 
     if (keyCode !== 13 || _target.value === '' || _target.value === null)
       return;
-
     addCity(_target.value);
+    _target.value = '';
   }
 
   return (

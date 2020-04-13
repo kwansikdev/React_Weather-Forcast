@@ -19,13 +19,13 @@ type TSuccess = {
   cities: string[];
 };
 
-type TSuccess1 = {
+type TSuccess_Weather = {
   city_weathers: {};
 };
 
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
-  TSuccess | TSuccess1,
+  TSuccess | TSuccess_Weather,
   undefined
 >();
 
