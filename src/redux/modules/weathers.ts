@@ -12,13 +12,17 @@ const pending = `${prefix}PENDING`;
 const success = `${prefix}SUCCESS`;
 const fail = `${prefix}FAIL`;
 
-type TSuccess = {
+type TSuccess_cityLists = {
   cityLists: string[];
+};
+
+type TSuccess_success = {
+  current: string;
 };
 
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
-  TSuccess,
+  TSuccess_cityLists | TSuccess_success,
   undefined
 >();
 
@@ -40,8 +44,26 @@ function* addList({ payload }: ReturnType<typeof addListSaga>) {
   }
 }
 
+export const addCurrentCitySaga = createAction(
+  `${prefix}ADD_CURRENT_CITY_SAGA`,
+)<string>();
+
+function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
+  try {
+    yield put(actions.request());
+    yield put(
+      actions.success({
+        current: payload.toUpperCase(),
+      }),
+    );
+  } catch {
+    yield put(actions.failure());
+  }
+}
+
 export function* weathersSaga() {
   yield takeLatest(addListSaga, addList);
+  yield takeLatest(addCurrentCitySaga, addCurrentCity);
 }
 
 type TInitialState = {

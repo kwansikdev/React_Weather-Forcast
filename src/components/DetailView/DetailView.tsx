@@ -1,15 +1,15 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
-import WeatherDetail from '../WeatherView/WeatherDetail';
+import WeatherDetail from './WeatherDetail';
 import * as S from '../WeatherView/Styled';
 
 type TProps = {
-  cities: string[];
+  cityLists: string[];
 };
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
-  cities,
+  cityLists,
   history,
 }) => {
   function gotoAddMenu() {
@@ -20,8 +20,10 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
     <S.DetailView>
       <S.MenuListsSection>
         <S.MenuListsUL>
-          {cities &&
-            cities.map((city, index) => <MenuList key={index} city={city} />)}
+          {cityLists &&
+            cityLists.map((city, index) => (
+              <MenuList key={index} city={city} />
+            ))}
         </S.MenuListsUL>
         <S.ListAddMenu>
           <S.ListAddButton onClick={gotoAddMenu}>
@@ -33,8 +35,8 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
         {/* <S.BackButton>
           <S.ButtonCircle />
         </S.BackButton> */}
-        {cities &&
-          cities.map((city, index) => (
+        {cityLists &&
+          cityLists.map((city, index) => (
             <WeatherDetail key={index} city={city} />
           ))}
       </S.DetailSection>

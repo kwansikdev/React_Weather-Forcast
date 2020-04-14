@@ -6,14 +6,17 @@ import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
   cities: string[];
+  currentCity: (city: string) => void;
 };
 
-export default function WeatherView({ cities }: TProps) {
+export default function WeatherView({ cities, currentCity }: TProps) {
   const cityWeathers = useSelector(
     (state: RouteState) => state.search.city_weathers,
   );
 
-  function addList(city: string) {}
+  function addList(city: string) {
+    currentCity(city);
+  }
 
   return (
     <>
@@ -23,6 +26,7 @@ export default function WeatherView({ cities }: TProps) {
             cities.map((city, index) => (
               <WeatherList
                 city={city}
+                key={index}
                 weather={cityWeathers[index]}
                 onClick={() => addList(city)}
               />
