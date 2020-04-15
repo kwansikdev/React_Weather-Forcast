@@ -3,9 +3,10 @@ import * as S from './Styled';
 
 interface TProps {
   addCity: (city: string) => void;
+  addFiveDaysWeather: (city: string) => void;
 }
 
-export default function SearchSection({ addCity }: TProps) {
+export default function SearchSection({ addCity, addFiveDaysWeather }: TProps) {
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
@@ -15,6 +16,7 @@ export default function SearchSection({ addCity }: TProps) {
     searchRef.current.focus();
 
     addCity(cityName);
+    addFiveDaysWeather(cityName);
   }
 
   function enter({ keyCode, target }: React.KeyboardEvent<HTMLInputElement>) {
@@ -23,6 +25,7 @@ export default function SearchSection({ addCity }: TProps) {
     if (keyCode !== 13 || _target.value === '' || _target.value === null)
       return;
     addCity(_target.value);
+    addFiveDaysWeather(_target.value);
     _target.value = '';
   }
 
