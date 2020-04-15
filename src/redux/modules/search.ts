@@ -6,7 +6,7 @@ import {
 } from 'typesafe-actions';
 import { put, call, select, takeLatest, takeEvery } from 'redux-saga/effects';
 import WeatherServices from '../../services/WeatherServices';
-import { TWeahter } from '../../Type/weahterType';
+import { currentWeahterType } from '../../Type/currentWeahterType';
 
 const prefix: string = 'search/';
 
@@ -20,7 +20,7 @@ type TSuccess = {
 };
 
 type TSuccess_Weather = {
-  city_weathers: {};
+  city_weathers: any[];
 };
 
 export const actions = createAsyncAction(pending, success, fail)<
@@ -43,7 +43,7 @@ export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
     yield put(actions.request());
     yield put(
       actions.success({
-        cities: [...cities, payload],
+        cities: [...cities, payload.toUpperCase()],
       }),
     );
     const { data } = yield call(WeatherServices.getCurrentWeather, payload);
@@ -67,7 +67,7 @@ export type TInitialState = {
   loading: boolean;
   error: null | {};
   cities: string[];
-  city_weathers: [TWeahter];
+  city_weathers: [currentWeahterType];
 };
 
 const initialState: TInitialState = {

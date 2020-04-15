@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './Styled';
-import { TWeahter } from '../../Type/weahterType';
+import { currentWeahterType } from '../../Type/currentWeahterType';
 type TProps = {
   city: string;
-  weather: TWeahter;
+  weather: currentWeahterType;
 };
 
 export default function ListCountry({ city, weather }: TProps) {

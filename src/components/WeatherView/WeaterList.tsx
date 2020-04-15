@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as S from './Styled';
-import { TWeahter } from '../../Type/weahterType';
+import { currentWeahterType } from '../../Type/currentWeahterType';
 
 type TProps = {
   city: string;
-  weather: TWeahter;
+  weather: currentWeahterType;
   onClick: () => void;
 };
 
@@ -13,6 +13,7 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   city,
   history,
   weather,
+  onClick,
 }) => {
   const weatherInfo = weather && {
     name: weather.name.toUpperCase(),
@@ -28,7 +29,7 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
 
   return (
     <>
-      <S.WeatherList>
+      <S.WeatherList onClick={onClick}>
         <S.WeatherButton onClick={gotoDetail}>
           <S.ItemTitle>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>

@@ -4,7 +4,8 @@ import DetailView from '../components/DetailView/DetailView';
 
 export default connect(
   (state: RouteState) => ({
-    cities: state.search.cities,
+    cityLists: state.weathers.cityLists,
+    current: state.weathers.current,
   }),
   dispatch => ({}),
 )(DetailView);

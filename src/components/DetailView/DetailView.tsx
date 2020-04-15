@@ -1,16 +1,18 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
-import WeatherDetail from './WeatherDetail';
 import * as S from '../WeatherView/Styled';
+import WeatherDetail from './WeatherDetail';
 
 type TProps = {
   cityLists: string[];
+  current: string;
 };
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
   cityLists,
   history,
+  current,
 }) => {
   function gotoAddMenu() {
     history.push('/weathers/add');
@@ -35,10 +37,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
         {/* <S.BackButton>
           <S.ButtonCircle />
         </S.BackButton> */}
-        {cityLists &&
-          cityLists.map((city, index) => (
-            <WeatherDetail key={index} city={city} />
-          ))}
+        <WeatherDetail city={current} />
       </S.DetailSection>
     </S.DetailView>
   );

@@ -34,7 +34,7 @@ export default function MenuList({ city }: TProps) {
 
   return (
     <List onClick={ListClick}>
-      <p>{city}</p>
+      <p>{city.toUpperCase()}</p>
     </List>
   );
 }
