@@ -15,18 +15,26 @@ export const Header = styled.header`
 // Logo
 export const Logo = styled.h1`
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 70px;
+
+  a {
+    display: inline-block;
+  }
+
+  img {
+    width: 25px;
+  }
+
+  span {
+    font-size: 1.8rem;
+  }
 `;
 
 // Nav
 export const NavButton = styled.button`
   background: transparent;
   border: 0;
-
-  img {
-    width: 35px;
-  }
 `;
 
 const openMenu = keyframes`
@@ -279,7 +287,7 @@ export const ToggleCircle = styled.div`
   ${({ status }: toggleProps) =>
     status &&
     css`
-      /* background-color: white; */
+      background-color: white;
       left: 24px;
     `}
 `;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as S from './Styled';
 import Menu from './Menu';
 import ModalPortal from '../Popup/ModalPotal';
+import HamburgerMenu from '../Common/HambugerMenu';
 
 export default function Nav() {
   const [open, isOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Nav() {
   return (
     <>
       <S.NavButton onClick={openMenu}>
-        <img src="/images/hamburger-menu.svg" alt="logo" />
+        <HamburgerMenu />
       </S.NavButton>
       {open && (
         <ModalPortal>

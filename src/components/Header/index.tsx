@@ -15,7 +15,8 @@ export default function Header() {
     <S.Header>
       <S.Logo>
         <Link to="/">
-          <img src="#" alt="logo" />
+          <img src="/images/k_logo.png" alt="logo" />
+          <span>Kmus</span>
         </Link>
       </S.Logo>
       <Nav />
