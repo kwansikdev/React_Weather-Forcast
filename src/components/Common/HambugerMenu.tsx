@@ -5,7 +5,7 @@ const Svg = styled.svg`
   width: 25px;
   rect {
     /* fill: #2b244d; */
-    fill: red;
+    fill: #242424;
   }
 `;
 

@@ -15,19 +15,25 @@ export const Header = styled.header`
 // Logo
 export const Logo = styled.h1`
   position: absolute;
-  top: 10px;
+  top: 15px;
   left: 70px;
-
   a {
     display: inline-block;
   }
 
   img {
-    width: 25px;
+    width: 26px;
   }
 
   span {
-    font-size: 1.8rem;
+    display: inline-block;
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: 5px;
+  }
+
+  img + span {
+    margin-left: 10px;
   }
 `;
 
