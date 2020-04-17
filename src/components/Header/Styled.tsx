@@ -1,7 +1,13 @@
 import styled, { css, keyframes } from 'styled-components';
+import { darkTheme, lightTheme } from '../../Theme';
+
+type TStatus = {
+  status: boolean;
+};
 
 export const Header = styled.header`
-  background: #eee;
+  background: ${({ status }: TStatus) =>
+    status ? darkTheme.header : lightTheme.header};
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -9,6 +15,11 @@ export const Header = styled.header`
 
   a {
     display: block;
+  }
+
+  span {
+    color: ${({ status }: TStatus) =>
+      status ? lightTheme.header : darkTheme.header};
   }
 `;
 
@@ -107,7 +118,7 @@ export const Dim = styled.div`
 
 export const Menu = styled.div`
   position: absolute;
-  width: 300px;
+  width: 350px;
   height: 100vh;
   background: #fff;
   top: 0;
@@ -157,8 +168,9 @@ export const MenuLists = styled.ul`
 
   li {
     position: relative;
-    font-size: 3rem;
-    padding: 10px 0;
+    margin-left: 50px;
+    padding: 20px 0;
+    font-size: 1.6rem;
 
     &:after {
       content: '';
@@ -196,7 +208,7 @@ interface ListButtonProps {
 
 export const ListButton = styled.button`
   width: 100%;
-  font-size: 3rem;
+  font-size: 1.6rem;
   background: transparent;
   border: 0;
   cursor: pointer;

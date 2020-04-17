@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../Header';
 import DetailViewContainer from '../../container/DetailViewContainer';
+import HeaderContainer from '../../container/HeaderContainer';
 
 export default function DetailView() {
   return (
     <>
-      <Header />
+      <HeaderContainer />
       <DetailViewContainer />
     </>
   );

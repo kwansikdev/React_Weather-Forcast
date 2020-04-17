@@ -18,6 +18,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
     history.push('/weathers/add');
   }
 
+  // 메뉴 라스트 클릭했을시 리덕스 weather의 current 값을 바꾼다
   return (
     <S.DetailView>
       <S.MenuListsSection>

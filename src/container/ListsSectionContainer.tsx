@@ -4,7 +4,9 @@ import { RouteState } from '../redux/modules/reducer';
 import { addListSaga } from '../redux/modules/weathers';
 
 export default connect(
-  (state: RouteState) => ({}),
+  (state: RouteState) => ({
+    status: state.common.status,
+  }),
   dispatch => ({
     addList: (city: string[]) => {
       dispatch(addListSaga(city));

@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
+  status: boolean;
   addList: (cities: string[]) => void;
 };
 
 const ListsSection: React.FC<RouteComponentProps & TProps> = ({
+  status,
   history,
   addList,
 }) => {
@@ -27,7 +29,7 @@ const ListsSection: React.FC<RouteComponentProps & TProps> = ({
 
   return (
     <>
-      <S.ListsSection>
+      <S.ListsSection status={status}>
         <S.ListsUl>
           {cities.map((city, index) => (
             <ListCountry

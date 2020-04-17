@@ -2,11 +2,16 @@ import React, { createRef, useState } from 'react';
 import * as S from './Styled';
 
 interface TProps {
+  status: boolean;
   addCity: (city: string) => void;
   addFiveDaysWeather: (city: string) => void;
 }
 
-export default function SearchSection({ addCity, addFiveDaysWeather }: TProps) {
+export default function SearchSection({
+  addCity,
+  addFiveDaysWeather,
+  status,
+}: TProps) {
   const searchRef: React.RefObject<HTMLInputElement> = createRef();
 
   function add(e: React.MouseEvent<HTMLButtonElement>) {
@@ -28,10 +33,10 @@ export default function SearchSection({ addCity, addFiveDaysWeather }: TProps) {
     addFiveDaysWeather(_target.value);
     _target.value = '';
   }
-
+  console.log(status);
   return (
     <>
-      <S.SearchSection>
+      <S.SearchSection status={status}>
         <S.SearchTitle>search cites</S.SearchTitle>
         <S.SearchForm>
           <S.SearchBox>

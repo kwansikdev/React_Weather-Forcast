@@ -5,7 +5,9 @@ import { addCitySaga } from '../redux/modules/search';
 import { addFiveDaysWeatherSaga } from '../redux/modules/weathers';
 
 export default connect(
-  (state: RouteState) => ({}),
+  (state: RouteState) => ({
+    status: state.common.status,
+  }),
   dispatch => ({
     addCity: (city: string) => {
       dispatch(addCitySaga(city));

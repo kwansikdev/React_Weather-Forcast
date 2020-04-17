@@ -1,20 +1,36 @@
 import styled, { css, keyframes } from 'styled-components';
 import media from '../../libs/MediaQuery';
+import { lightTheme, darkTheme } from '../../Theme';
+
+type TStatus = {
+  status: boolean;
+};
 
 export const AddDiv = styled.div`
   display: flex;
-  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
+  /* background: linear-gradient(to top, #1c003d 0, #8a003c 50%, #1c003d 100%); */
+  background: ${({ status }: TStatus) =>
+    status ? darkTheme.gradient : lightTheme.gradient};
+  /* linear-gradient(to top, #5ee7df 0, #66a6ff 100%); */
   height: 93vh;
   padding: 60px;
+
+  ${({ status }: TStatus) => status && css``}
 `;
 
 // 검색영역
 export const SearchSection = styled.section`
-  background: #fff;
+  background: ${({ status }: TStatus) => (status ? darkTheme.header : '#fff')};
   width: 50%;
   padding: 30px;
+  border-right: 1px solid #616161;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+
+  h2 {
+    color: ${({ status }: TStatus) =>
+      status ? darkTheme.color : lightTheme.color};
+  }
 
   h2 + div {
     margin-top: 30px;
@@ -25,7 +41,6 @@ export const SearchTitle = styled.h2`
   text-align: center;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #4d47ff;
   text-transform: uppercase;
 `;
 
@@ -89,7 +104,12 @@ const leftSlide = keyframes`
 export const ListsSection = styled.section`
   position: relative;
   /* background: #859efe; */
-  background: linear-gradient(to top, #a985fe 0, #859efe 50%, #85fee6 100%);
+  /* background: linear-gradient(to top, #a985fe 0, #859efe 50%, #85fee6 100%); */
+  /* background: linear-gradient(to top, #66a6ff 0, #5ee7df 100%); */
+  background: ${({ status }: TStatus) =>
+    status
+      ? darkTheme.header
+      : `linear-gradient(to top, #66a6ff 0, #5ee7df 100%)`};
   width: 50%;
   padding: 20px;
   border-top-right-radius: 20px;
