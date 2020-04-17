@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
 import Search from '../components/Search';
+import HeaderContainer from '../container/HeaderContainer';
 
 export default function Add() {
   return (
     <>
-      <Header />
+      <HeaderContainer />
       <Search />
     </>
   );
