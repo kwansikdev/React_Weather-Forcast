@@ -25,7 +25,6 @@ export default function WeatherView({ cities, currentCity }: TProps) {
           {cities &&
             cities.map((city, index) => (
               <WeatherList
-                city={city}
                 key={index}
                 weather={cityWeathers[index]}
                 onClick={() => addList(city)}

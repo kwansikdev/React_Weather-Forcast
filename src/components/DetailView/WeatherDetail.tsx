@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { RouteState } from '../../redux/modules/reducer';
+import ForecastList from './ForecastList';
 
 const DetailBox = styled.div`
   height: 100%;
@@ -105,47 +108,35 @@ const ForecastLists = styled.ul`
   margin: 0 auto;
 `;
 
-const ForecastList = styled.li`
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 15%;
-  height: 100%;
-  padding: 10px 0;
-  border-radius: 20px;
-  color: #39437a;
-  text-align: center;
-  font-size: 2rem;
-`;
-
-const ForecastDate = styled.p`
-  font-size: 2.4rem;
-  font-weight: 600;
-`;
-
-const ForecastWeather = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  img {
-  }
-
-  span {
-    font-size: 1.6rem;
-    text-transform: uppercase;
-  }
-`;
-
-const ForecastTemp = styled.p`
-  font-size: 2.2rem;
-`;
-
+// type
 type TProps = {
   city: string;
 };
 
 export default function WeatherDetail({ city }: TProps) {
+  const fiveDaysWeather = useSelector(
+    (state: RouteState) => state.weathers.currentWeather,
+  );
+
+  const currentWeatherArr = useSelector(
+    (state: RouteState) => state.search.city_weathers,
+  );
+
+  const currentWeather =
+    currentWeatherArr &&
+    currentWeatherArr.filter(
+      (country: any) =>
+        country.name.toLocaleLowerCase() === city.toLocaleLowerCase(),
+    )[0];
+
+  const weatherInfo = fiveDaysWeather && {
+    name: fiveDaysWeather.city.name.toUpperCase(),
+    // temp: (weather.main.temp - 275.15).toFixed(1),
+    // status: weather.weather[0].main.toUpperCase(),
+    // min: (weather.main.temp_min - 275.15).toFixed(1),
+    // max: (weather.main.temp_max - 275.15).toFixed(1),
+  };
+
   return (
     <DetailBox>
       <DetailWeatherBox>
@@ -157,11 +148,11 @@ export default function WeatherDetail({ city }: TProps) {
           <HumWindBox>
             <HumidityInfo>
               <p>HUMIDITY</p>
-              <span>16%</span>
+              <span>{}16%</span>
             </HumidityInfo>
             <WindInfo>
               <p>WIND</p>
-              <span>2 K/M</span>
+              <span>{}} K/M</span>
             </WindInfo>
           </HumWindBox>
         </ConditionBox>
@@ -173,38 +164,10 @@ export default function WeatherDetail({ city }: TProps) {
       </DetailWeatherBox>
       <DetailForecastBox>
         <ForecastLists>
-          <ForecastList>
-            <ForecastDate>Mon</ForecastDate>
-            <ForecastWeather>
-              <img src="" alt="날씨" />
-              <span>clouds</span>
-            </ForecastWeather>
-            <ForecastTemp>12°</ForecastTemp>
-          </ForecastList>
-          <ForecastList>
-            <ForecastDate>Mon</ForecastDate>
-            <ForecastWeather>
-              <img src="" alt="날씨" />
-              <span>clouds</span>
-            </ForecastWeather>
-            <ForecastTemp>12°</ForecastTemp>
-          </ForecastList>
-          <ForecastList>
-            <ForecastDate>Mon</ForecastDate>
-            <ForecastWeather>
-              <img src="" alt="날씨" />
-              <span>clouds</span>
-            </ForecastWeather>
-            <ForecastTemp>12°</ForecastTemp>
-          </ForecastList>
-          <ForecastList>
-            <ForecastDate>Mon</ForecastDate>
-            <ForecastWeather>
-              <img src="" alt="날씨" />
-              <span>clouds</span>
-            </ForecastWeather>
-            <ForecastTemp>12°</ForecastTemp>
-          </ForecastList>
+          {fiveDaysWeather &&
+            fiveDaysWeather.weekend.map((day: {}, index: number) => (
+              <ForecastList key={index} day={day} />
+            ))}
         </ForecastLists>
       </DetailForecastBox>
     </DetailBox>

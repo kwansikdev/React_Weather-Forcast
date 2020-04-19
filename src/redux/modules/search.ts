@@ -35,7 +35,7 @@ type SearchAction = ActionType<typeof actions>;
 // saga 함수
 export const addCitySaga = createAction(`${prefix}ADD_CITY_SAGA`)<string>();
 
-export function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
+function* addCity({ payload }: ReturnType<typeof addCitySaga>) {
   const cities = yield select(state => state.search.cities);
   const city_weathers = yield select(state => state.search.city_weathers);
 
@@ -63,7 +63,7 @@ export function* searchSaga() {
 }
 
 // initialState
-export type TInitialState = {
+type TInitialState = {
   loading: boolean;
   error: null | {};
   cities: string[];

@@ -4,13 +4,11 @@ import * as S from './Styled';
 import { currentWeahterType } from '../../Type/currentWeahterType';
 
 type TProps = {
-  city: string;
   weather: currentWeahterType;
   onClick: () => void;
 };
 
 const WeatherList: React.FC<RouteComponentProps & TProps> = ({
-  city,
   history,
   weather,
   onClick,
@@ -24,7 +22,7 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   };
 
   function gotoDetail() {
-    history.push(`/weathers/view/detail/${city.toLowerCase()}`);
+    history.push(`/weathers/view/detail/${weatherInfo.name.toLowerCase()}`);
   }
 
   return (

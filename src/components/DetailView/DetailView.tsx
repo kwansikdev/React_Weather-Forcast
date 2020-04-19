@@ -19,13 +19,28 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
   }
 
   // 메뉴 라스트 클릭했을시 리덕스 weather의 current 값을 바꾼다
+
+  function ListClick(e: React.MouseEvent<HTMLLIElement>) {
+    const selectList = e.currentTarget.children[0].innerHTML;
+
+    console.log(selectList);
+    // 선택한 리스트(나라)를 리덕스에 저장
+    // 이 리스트(나라)와 날씨 데이터가 저장된 배열에서 나라이름과 비교해서 맞는 데이터를
+    // 가가져온다
+  }
+
   return (
     <S.DetailView>
       <S.MenuListsSection>
         <S.MenuListsUL>
           {cityLists &&
             cityLists.map((city, index) => (
-              <MenuList key={index} city={city} />
+              <MenuList
+                key={index}
+                city={city}
+                current={current}
+                onClick={ListClick}
+              />
             ))}
         </S.MenuListsUL>
         <S.ListAddMenu>
