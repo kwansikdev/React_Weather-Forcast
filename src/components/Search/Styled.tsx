@@ -23,7 +23,8 @@ export const SearchSection = styled.section`
   background: ${({ status }: TStatus) => (status ? darkTheme.header : '#fff')};
   width: 50%;
   padding: 30px;
-  border-right: 1px solid #616161;
+  border-right: ${({ status }: TStatus) =>
+    status ? `1px solid #616161` : 'none'};
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 

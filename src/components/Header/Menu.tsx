@@ -1,8 +1,10 @@
 import React, { createRef, useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 import * as S from './Styled';
+import Close from '../Common/Close';
 
 type Props = {
+  status: boolean;
   open: boolean;
   openMenu: () => void;
   menuSelct: {
@@ -20,6 +22,7 @@ type Props = {
 };
 
 const Menu: React.FC<RouteComponentProps & Props> = ({
+  status,
   open,
   openMenu,
   menuSelct,
@@ -66,14 +69,14 @@ const Menu: React.FC<RouteComponentProps & Props> = ({
   return (
     <>
       <S.Dim ref={dimRef} open={open} onClick={close} />
-      <S.Menu open={open}>
-        <S.MenuInfo>
+      <S.Menu open={open} status={status}>
+        <S.MenuInfo status={status}>
           <S.CloseButton onClick={buttonClose}>
-            <img src="/images/close.svg" alt="메뉴닫기" />
+            <Close />
           </S.CloseButton>
           <p>Welcome !</p>
         </S.MenuInfo>
-        <S.MenuLists>
+        <S.MenuLists status={status}>
           <li>
             <S.ListButton status={menuSelct.home} onClick={clickMenu}>
               <span>Home</span>

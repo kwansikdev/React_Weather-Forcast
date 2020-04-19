@@ -3,6 +3,8 @@ import * as S from './Styled';
 import Menu from './Menu';
 import ModalPortal from '../Popup/ModalPotal';
 import HamburgerMenu from '../Common/HambugerMenu';
+import { useSelector } from 'react-redux';
+import { RouteState } from '../../redux/modules/reducer';
 
 export default function Nav() {
   const [open, isOpen] = useState(false);
@@ -11,6 +13,7 @@ export default function Nav() {
     add: false,
     lists: false,
   });
+  const status = useSelector((state: RouteState) => state.common.status);
 
   const openMenu = () => {
     isOpen(!open);
@@ -24,6 +27,7 @@ export default function Nav() {
       {open && (
         <ModalPortal>
           <Menu
+            status={status}
             open={open}
             openMenu={openMenu}
             menuSelct={menuSelct}

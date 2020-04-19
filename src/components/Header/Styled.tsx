@@ -92,6 +92,7 @@ const fadeOut = keyframes`
 
 // Menu
 interface MenuProps {
+  status?: boolean;
   open: boolean;
 }
 
@@ -120,7 +121,8 @@ export const Menu = styled.div`
   position: absolute;
   width: 350px;
   height: 100vh;
-  background: #fff;
+  background: ${({ status }: MenuProps) =>
+    status ? darkTheme.header : '#fff'};
   top: 0;
   left: 0;
   padding: 10px;
@@ -136,13 +138,18 @@ export const Menu = styled.div`
       : css`
           animation-name: ${closeMenu};
         `}
+
+  p {
+    color: ${({ status }: MenuProps) => (status ? '#fff' : `#121212`)};
+  }
 `;
 
 export const MenuInfo = styled.div`
   position: relative;
   width: 100%;
   height: 100px;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid
+    ${({ status }: TStatus) => (status ? '#5e5e5e' : '#222')};
 
   p {
     font-size: 3rem;
@@ -157,10 +164,7 @@ export const CloseButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-
-  img {
-    height: 35px;
-  }
+  cursor: pointer;
 `;
 
 export const MenuLists = styled.ul`
@@ -171,6 +175,7 @@ export const MenuLists = styled.ul`
     margin-left: 50px;
     padding: 20px 0;
     font-size: 1.6rem;
+    color: ${({ status }: TStatus) => (status ? '#fff' : `#121212`)};
 
     &:after {
       content: '';
@@ -180,7 +185,7 @@ export const MenuLists = styled.ul`
       right: 0;
       width: 100%;
       height: 2px;
-      background: #222;
+      background: ${({ status }: TStatus) => (status ? '#5e5e5e' : '#222')};
       opacity: 0;
       transform: scaleX(0);
       transition: all 0.3s;
@@ -230,6 +235,7 @@ export const CurrentTime = styled.div`
   p {
     display: inline-block;
     line-height: 2.1;
+    color: ${({ status }: TStatus) => status && lightTheme.header};
   }
 
   p + p {

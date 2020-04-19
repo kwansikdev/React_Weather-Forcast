@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
+  status: boolean;
   addThemeStatus: (status: boolean) => void;
 };
 
-export default function Header({ addThemeStatus }: TProps) {
-  const [toggleStatus, setToggleStatus] = useState(false);
-  const status = useSelector((state: RouteState) => state.common.status);
+export default function Header({ addThemeStatus, status }: TProps) {
+  const [toggleStatus, setToggleStatus] = useState(status);
 
   const toggleSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setToggleStatus(e.target.checked);
