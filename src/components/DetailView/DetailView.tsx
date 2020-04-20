@@ -3,30 +3,36 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
 import * as S from '../WeatherView/Styled';
 import WeatherDetail from './WeatherDetail';
+import { currentWeahterType } from '../../Type/currentWeahterType';
+import { List, City } from '../../Type/fiveDaysWeatherType';
 
 type TProps = {
   cityLists: string[];
   current: string;
+  currentWeather: currentWeahterType;
+  currentFiveDaysWeather: {
+    city: City;
+    weekend: List[];
+  };
+  currentCity: (city: string) => void;
 };
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
   cityLists,
   history,
   current,
+  currentFiveDaysWeather,
+  currentCity,
+  currentWeather,
 }) => {
   function gotoAddMenu() {
     history.push('/weathers/add');
   }
 
-  // 메뉴 라스트 클릭했을시 리덕스 weather의 current 값을 바꾼다
-
   function ListClick(e: React.MouseEvent<HTMLLIElement>) {
     const selectList = e.currentTarget.children[0].innerHTML;
 
-    console.log(selectList);
-    // 선택한 리스트(나라)를 리덕스에 저장
-    // 이 리스트(나라)와 날씨 데이터가 저장된 배열에서 나라이름과 비교해서 맞는 데이터를
-    // 가가져온다
+    currentCity(selectList);
   }
 
   return (
@@ -53,7 +59,11 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
         {/* <S.BackButton>
           <S.ButtonCircle />
         </S.BackButton> */}
-        <WeatherDetail city={current} />
+        <WeatherDetail
+          city={current}
+          currentWeather={currentWeather}
+          currentFiveDaysWeather={currentFiveDaysWeather}
+        />
       </S.DetailSection>
     </S.DetailView>
   );

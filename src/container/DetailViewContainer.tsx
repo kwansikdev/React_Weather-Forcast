@@ -1,11 +1,18 @@
 import { connect } from 'react-redux';
 import { RouteState } from '../redux/modules/reducer';
 import DetailView from '../components/DetailView/DetailView';
+import { addCurrentCitySaga } from '../redux/modules/weathers';
 
 export default connect(
   (state: RouteState) => ({
     cityLists: state.weathers.cityLists,
     current: state.weathers.current,
+    currentWeather: state.weathers.currentWeather,
+    currentFiveDaysWeather: state.weathers.currentFiveDaysWeather,
   }),
-  dispatch => ({}),
+  dispatch => ({
+    currentCity: (city: string) => {
+      dispatch(addCurrentCitySaga(city));
+    },
+  }),
 )(DetailView);

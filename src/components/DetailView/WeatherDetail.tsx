@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { RouteState } from '../../redux/modules/reducer';
 import ForecastList from './ForecastList';
+import { currentWeahterType } from '../../Type/currentWeahterType';
+import { City, List } from '../../Type/fiveDaysWeatherType';
 
 const DetailBox = styled.div`
   height: 100%;
@@ -111,30 +111,23 @@ const ForecastLists = styled.ul`
 // type
 type TProps = {
   city: string;
+  currentWeather: currentWeahterType;
+  currentFiveDaysWeather: {
+    city: City;
+    weekend: List[];
+  };
 };
 
-export default function WeatherDetail({ city }: TProps) {
-  const fiveDaysWeather = useSelector(
-    (state: RouteState) => state.weathers.currentWeather,
-  );
-
-  const currentWeatherArr = useSelector(
-    (state: RouteState) => state.search.city_weathers,
-  );
-
-  const currentWeather =
-    currentWeatherArr &&
-    currentWeatherArr.filter(
-      (country: any) =>
-        country.name.toLocaleLowerCase() === city.toLocaleLowerCase(),
-    )[0];
-
-  const weatherInfo = fiveDaysWeather && {
-    name: fiveDaysWeather.city.name.toUpperCase(),
-    // temp: (weather.main.temp - 275.15).toFixed(1),
-    // status: weather.weather[0].main.toUpperCase(),
-    // min: (weather.main.temp_min - 275.15).toFixed(1),
-    // max: (weather.main.temp_max - 275.15).toFixed(1),
+export default function WeatherDetail({
+  city,
+  currentWeather,
+  currentFiveDaysWeather,
+}: TProps) {
+  const WeatherInfo = {
+    temp: currentWeather && (currentWeather.main.temp - 275.15).toFixed(0),
+    condition: currentWeather && currentWeather.weather[0].main.toUpperCase(),
+    humidity: currentWeather && currentWeather.main.humidity,
+    wind: currentWeather && currentWeather.wind.speed,
   };
 
   return (
@@ -142,17 +135,17 @@ export default function WeatherDetail({ city }: TProps) {
       <DetailWeatherBox>
         <ConditionBox>
           <TempBox>
-            <p>12°</p>
-            <span>clear</span>
+            <p>{WeatherInfo.temp}°</p>
+            <span>{WeatherInfo.condition}</span>
           </TempBox>
           <HumWindBox>
             <HumidityInfo>
               <p>HUMIDITY</p>
-              <span>{}16%</span>
+              <span>{WeatherInfo.humidity}%</span>
             </HumidityInfo>
             <WindInfo>
               <p>WIND</p>
-              <span>{}} K/M</span>
+              <span>{WeatherInfo.wind} K/M</span>
             </WindInfo>
           </HumWindBox>
         </ConditionBox>
@@ -164,8 +157,8 @@ export default function WeatherDetail({ city }: TProps) {
       </DetailWeatherBox>
       <DetailForecastBox>
         <ForecastLists>
-          {fiveDaysWeather &&
-            fiveDaysWeather.weekend.map((day: {}, index: number) => (
+          {currentFiveDaysWeather &&
+            currentFiveDaysWeather.weekend.map((day, index: number) => (
               <ForecastList key={index} day={day} />
             ))}
         </ForecastLists>
