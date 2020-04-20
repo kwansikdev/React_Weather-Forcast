@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import * as S from './Styled';
 import Nav from './Nav';
 import CurrentTime from './CurrentTime';
-import { useSelector } from 'react-redux';
-import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
   status: boolean;

@@ -4,7 +4,7 @@ import {
   ActionType,
   createAsyncAction,
 } from 'typesafe-actions';
-import { put, call, select, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, call, select, takeLatest } from 'redux-saga/effects';
 import WeatherServices from '../../services/WeatherServices';
 import { currentWeahterType } from '../../Type/currentWeahterType';
 

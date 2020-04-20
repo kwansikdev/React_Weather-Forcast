@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { createRef } from 'react';
 import * as S from './Styled';
 
 interface TProps {
@@ -33,7 +33,7 @@ export default function SearchSection({
     addFiveDaysWeather(_target.value);
     _target.value = '';
   }
-  console.log(status);
+
   return (
     <>
       <S.SearchSection status={status}>

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
-import { darkTheme, lightTheme } from '../../Theme';
 
 type TSvg = {
   status: boolean;

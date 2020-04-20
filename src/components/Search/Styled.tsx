@@ -1,5 +1,4 @@
 import styled, { css, keyframes } from 'styled-components';
-import media from '../../libs/MediaQuery';
 import { lightTheme, darkTheme } from '../../Theme';
 
 type TStatus = {

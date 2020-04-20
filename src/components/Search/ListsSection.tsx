@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 import ListCountry from './ListCountry';
 import * as S from './Styled';

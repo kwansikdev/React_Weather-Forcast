@@ -21,6 +21,10 @@ type TSuccess_current = {
   current: string;
 };
 
+type TSuccess_currentFiveDaysWeather = {
+  currentFiveDaysWeather: {};
+};
+
 type TSuccess_currentWeather = {
   currentWeather: {};
 };
@@ -33,12 +37,15 @@ export const actions = createAsyncAction(pending, success, fail)<
   undefined,
   | TSuccess_cityLists
   | TSuccess_current
-  | TSuccess_fiveDays
-  | TSuccess_currentWeather,
+  | TSuccess_currentFiveDaysWeather
+  | TSuccess_currentWeather
+  | TSuccess_fiveDays,
   undefined
 >();
 
 // saga 함수
+
+// 메인홈페이지에서 나라를 선택시 그 나라에 대한 날씨 데이터를 따로 저장하는 saga람수
 export const addListSaga = createAction(`${prefix}ADD_LIST_SAGA`)<string[]>();
 
 function* addList({ payload }: ReturnType<typeof addListSaga>) {
@@ -63,11 +70,7 @@ export const addCurrentCitySaga = createAction(
 
 function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
   const fiveDays = yield select(state => state.weathers.fiveDays);
-
-  const currentCityWeather = fiveDays.filter(
-    (weather: any) => weather.city.name.toLowerCase() === payload.toLowerCase(),
-  );
-  console.log(`currentCityWeather`, currentCityWeather);
+  const city_weathers = yield select(state => state.search.city_weathers);
 
   try {
     yield put(actions.request());
@@ -79,7 +82,19 @@ function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
 
     yield put(
       actions.success({
-        currentWeather: currentCityWeather[0],
+        currentWeather: city_weathers.filter(
+          (country: any) =>
+            country.name.toLowerCase() === payload.toLowerCase(),
+        )[0],
+      }),
+    );
+
+    yield put(
+      actions.success({
+        currentFiveDaysWeather: fiveDays.filter(
+          (weather: any) =>
+            weather.city.name.toLowerCase() === payload.toLowerCase(),
+        )[0],
       }),
     );
   } catch {
@@ -169,6 +184,7 @@ type TInitialState = {
   cityLists: string[];
   fiveDays: [];
   current: string;
+  currentFiveDaysWeather?: any;
   currentWeather?: any;
 };
 

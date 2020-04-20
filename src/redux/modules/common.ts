@@ -4,7 +4,7 @@ import {
   ActionType,
   createReducer,
 } from 'typesafe-actions';
-import { put, select, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 const prefix: string = `common/`;
 
