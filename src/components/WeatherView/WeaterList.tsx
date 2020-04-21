@@ -4,12 +4,14 @@ import * as S from './Styled';
 import { currentWeahterType } from '../../Type/currentWeahterType';
 
 type TProps = {
+  status: boolean;
   weather: currentWeahterType;
   onClick: () => void;
 };
 
 const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   history,
+  status,
   weather,
   onClick,
 }) => {
@@ -56,7 +58,7 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   return (
     <>
       <S.WeatherList onClick={onClick}>
-        <S.WeatherButton onClick={gotoDetail}>
+        <S.WeatherButton onClick={gotoDetail} status={status}>
           <S.ItemTitle>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>
             <img src={weather_img} alt="날씨" />

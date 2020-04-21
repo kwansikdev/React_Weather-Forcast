@@ -7,10 +7,8 @@ type TStatus = {
 
 export const AddDiv = styled.div`
   display: flex;
-  /* background: linear-gradient(to top, #1c003d 0, #8a003c 50%, #1c003d 100%); */
   background: ${({ status }: TStatus) =>
     status ? darkTheme.gradient : lightTheme.gradient};
-  /* linear-gradient(to top, #5ee7df 0, #66a6ff 100%); */
   height: 93vh;
   padding: 60px;
 

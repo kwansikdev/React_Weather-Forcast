@@ -1,12 +1,13 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
-import * as S from '../WeatherView/Styled';
+import * as S from './Styled';
 import WeatherDetail from './WeatherDetail';
 import { currentWeahterType } from '../../Type/currentWeahterType';
 import { List, City } from '../../Type/fiveDaysWeatherType';
 
 type TProps = {
+  status: boolean;
   cityLists: string[];
   current: string;
   currentWeather: currentWeahterType;
@@ -18,6 +19,7 @@ type TProps = {
 };
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
+  status,
   cityLists,
   history,
   current,
@@ -36,13 +38,14 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
   }
 
   return (
-    <S.DetailView>
+    <S.DetailView status={status}>
       <S.MenuListsSection>
         <S.MenuListsUL>
           {cityLists &&
             cityLists.map((city, index) => (
               <MenuList
                 key={index}
+                status={status}
                 city={city}
                 current={current}
                 onClick={ListClick}
@@ -60,6 +63,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
           <S.ButtonCircle />
         </S.BackButton> */}
         <WeatherDetail
+          status={status}
           city={current}
           currentWeather={currentWeather}
           currentFiveDaysWeather={currentFiveDaysWeather}

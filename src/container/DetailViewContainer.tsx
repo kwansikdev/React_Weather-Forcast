@@ -5,6 +5,7 @@ import { addCurrentCitySaga } from '../redux/modules/weathers';
 
 export default connect(
   (state: RouteState) => ({
+    status: state.common.status,
     cityLists: state.weathers.cityLists,
     current: state.weathers.current,
     currentWeather: state.weathers.currentWeather,

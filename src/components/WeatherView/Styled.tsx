@@ -1,8 +1,14 @@
 import styled from 'styled-components';
+import { darkTheme, lightTheme } from '../../Theme';
+
+type TStatus = {
+  status: boolean;
+};
 
 // Weather View
 export const View = styled.div`
-  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
+  background: ${({ status }: TStatus) =>
+    status ? darkTheme.gradient : lightTheme.gradient};
   padding: 0 45px;
   min-height: 93.2vh;
 `;
@@ -30,6 +36,15 @@ export const WeatherButton = styled.button`
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  color: ${({ status }: TStatus) =>
+    status ? darkTheme.color : lightTheme.color};
+  background: ${({ status }: TStatus) => status && darkTheme.listGradient};
+
+  &:hover {
+    box-shadow: 0 0 10px 3px
+      ${({ status }: TStatus) =>
+        status ? darkTheme.shadow : lightTheme.shadow};
+  }
 
   section {
     margin-top: 25px;
@@ -102,64 +117,3 @@ export const ItemTempHigh = styled.div`
     color: #ff0000;
   }
 `;
-
-// Detaul View
-export const DetailView = styled.div`
-  display: flex;
-`;
-
-export const MenuListsSection = styled.section`
-  position: relative;
-  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
-  width: 12vw;
-  height: 93.5vh;
-  padding: 32px 0 50px 32px;
-  text-align: center;
-`;
-
-export const MenuListsUL = styled.ul`
-  width: 100%;
-  overflow-y: auto;
-`;
-
-export const ListAddMenu = styled.div`
-  margin-top: 30px;
-`;
-
-export const ListAddButton = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  img {
-    width: 35px;
-    height: 35px;
-  }
-`;
-
-export const AddModal = styled.div`
-  position: absolute;
-`;
-
-export const DetailSection = styled.section`
-  position: relative;
-  background: linear-gradient(to top, #86dbff 0, #e0c3fc 100%);
-  width: 88vw;
-  height: 93.5vh;
-  padding: 32px 32px 50px 32px;
-`;
-
-export const BackButton = styled.button`
-  position: absolute;
-  background: transparent;
-  border: none;
-`;
-
-export const ButtonCircle = styled.div`
-  background: #2b244d;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-`;
-
-export const BackArrow = styled.div``;
