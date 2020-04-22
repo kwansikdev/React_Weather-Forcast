@@ -3,6 +3,7 @@ import * as S from './Styled';
 import WeatherList from './WeaterList';
 import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 type TProps = {
   cities: string[];
@@ -10,13 +11,22 @@ type TProps = {
   currentCity: (city: string) => void;
 };
 
-export default function WeatherView({ cities, status, currentCity }: TProps) {
+const WeatherView: React.FC<RouteComponentProps & TProps> = ({
+  cities,
+  status,
+  currentCity,
+  history,
+}) => {
   const cityWeathers = useSelector(
     (state: RouteState) => state.search.city_weathers,
   );
 
   function addList(city: string) {
     currentCity(city);
+  }
+
+  function gotoAddMenu() {
+    history.push('/weathers/add');
   }
 
   return (
@@ -32,8 +42,16 @@ export default function WeatherView({ cities, status, currentCity }: TProps) {
                 onClick={() => addList(city)}
               />
             ))}
+          <S.AddCountryCard onClick={gotoAddMenu}>
+            <S.CountryCardButton status={status}>
+              <p> ADD CITY</p>
+              <img src="/images/airballoon.svg" alt="도시추가" />
+            </S.CountryCardButton>
+          </S.AddCountryCard>
         </S.WeatherLists>
       </S.View>
     </>
   );
-}
+};
+
+export default withRouter(WeatherView);

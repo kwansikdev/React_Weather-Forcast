@@ -117,3 +117,41 @@ export const ItemTempHigh = styled.div`
     color: #ff0000;
   }
 `;
+
+export const AddCountryCard = styled.li`
+  width: 432px;
+  padding: 32px;
+`;
+
+export const CountryCardButton = styled.button`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: ${({ status }: TStatus) =>
+    status ? darkTheme.color : lightTheme.color};
+  background: ${({ status }: TStatus) => status && darkTheme.listGradient};
+  font-size: 2.4rem;
+
+  &:hover {
+    box-shadow: 0 0 10px 3px
+      ${({ status }: TStatus) =>
+        status ? darkTheme.shadow : lightTheme.shadow};
+  }
+
+  section {
+    margin-top: 25px;
+  }
+
+  img {
+    width: 100%;
+    /* height: 200px; */
+  }
+`;

@@ -16,10 +16,6 @@ export default function ForecastList({ status, day }: TProps) {
     temp: day && (day.main.temp - 275.15).toFixed(0),
     img: day && day.weather[0].icon.slice(0, 2),
   };
-  console.log(new Date(day.dt_txt));
-  console.log(new Date(day.dt_txt).getDay());
-  console.log(dayInfo.day);
-  console.log(dayInfo.img);
 
   const weather_imgs = {
     suuny: `/images/sunny.svg`,
