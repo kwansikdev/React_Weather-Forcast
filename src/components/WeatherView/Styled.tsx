@@ -20,8 +20,15 @@ export const WeatherLists = styled.ul`
 `;
 
 export const WeatherList = styled.li`
+  position: relative;
   width: 432px;
   padding: 32px;
+
+  &:hover {
+    button:first-child {
+      visibility: visible;
+    }
+  }
 `;
 
 export const WeatherButton = styled.button`
@@ -120,6 +127,7 @@ export const ItemTempHigh = styled.div`
 
 export const AddCountryCard = styled.li`
   width: 432px;
+  /* height: 561px; */
   padding: 32px;
 `;
 
@@ -139,6 +147,7 @@ export const CountryCardButton = styled.button`
     status ? darkTheme.color : lightTheme.color};
   background: ${({ status }: TStatus) => status && darkTheme.listGradient};
   font-size: 2.4rem;
+  font-weight: 700;
 
   &:hover {
     box-shadow: 0 0 10px 3px
@@ -150,8 +159,24 @@ export const CountryCardButton = styled.button`
     margin-top: 25px;
   }
 
-  img {
-    width: 100%;
-    /* height: 200px; */
+  p + svg {
+    margin-top: 41px;
   }
+
+  svg + img {
+    margin-top: 41px;
+  }
+`;
+
+export const Plusicon = styled.img`
+  width: 75px;
+  height: 75px;
+  background: #f5f8ff;
+  border-radius: 50%;
+`;
+
+export const AddCityIcon = styled.img`
+  width: 100%;
+
+  fill: #c495fd;
 `;

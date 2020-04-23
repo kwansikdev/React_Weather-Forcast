@@ -13,33 +13,17 @@ const pending = `${prefix}PENDING`;
 const success = `${prefix}SUCCESS`;
 const fail = `${prefix}FAIL`;
 
-type TSuccess_cityLists = {
-  cityLists: string[];
-};
-
-type TSuccess_current = {
-  current: string;
-};
-
-type TSuccess_currentFiveDaysWeather = {
-  currentFiveDaysWeather: {};
-};
-
-type TSuccess_currentWeather = {
-  currentWeather: {};
-};
-
-type TSuccess_fiveDays = {
-  fiveDays: any[];
+type TSuccess = {
+  cityLists?: string[];
+  current?: string;
+  currentFiveDaysWeather?: {};
+  currentWeather?: {};
+  fiveDays?: any[];
 };
 
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
-  | TSuccess_cityLists
-  | TSuccess_current
-  | TSuccess_currentFiveDaysWeather
-  | TSuccess_currentWeather
-  | TSuccess_fiveDays,
+  TSuccess,
   undefined
 >();
 
@@ -76,7 +60,7 @@ function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
     yield put(actions.request());
     yield put(
       actions.success({
-        current: payload.toUpperCase(),
+        current: payload.replace(/(\s*)/g, '').toUpperCase(),
       }),
     );
 
@@ -84,7 +68,8 @@ function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
       actions.success({
         currentWeather: city_weathers.filter(
           (country: any) =>
-            country.name.toLowerCase() === payload.toLowerCase(),
+            country.name.replace(/(\s*)/g, '').toLowerCase() ===
+            payload.replace(/(\s*)/g, '').toLowerCase(),
         )[0],
       }),
     );
@@ -93,7 +78,8 @@ function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
       actions.success({
         currentFiveDaysWeather: fiveDays.filter(
           (weather: any) =>
-            weather.city.name.toLowerCase() === payload.toLowerCase(),
+            weather.city.name.replace(/(\s*)/g, '').toLowerCase() ===
+            payload.replace(/(\s*)/g, '').toLowerCase(),
         )[0],
       }),
     );

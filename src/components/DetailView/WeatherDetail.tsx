@@ -7,7 +7,6 @@ import * as S from './Styled';
 // type
 type TProps = {
   status: boolean;
-  city: string;
   currentWeather: currentWeahterType;
   currentFiveDaysWeather: {
     city: City;
@@ -17,11 +16,11 @@ type TProps = {
 
 export default function WeatherDetail({
   status,
-  city,
   currentWeather,
   currentFiveDaysWeather,
 }: TProps) {
   const WeatherInfo = {
+    name: currentWeather && currentWeather.name,
     temp: currentWeather && (currentWeather.main.temp - 275.15).toFixed(0),
     condition: currentWeather && currentWeather.weather[0].main.toUpperCase(),
     humidity: currentWeather && currentWeather.main.humidity,
@@ -49,7 +48,7 @@ export default function WeatherDetail({
         </S.ConditionBox>
         <S.CityBox>
           <S.CityName>
-            <span>{city}</span>
+            <span>{WeatherInfo.name}</span>
           </S.CityName>
         </S.CityBox>
       </S.DetailWeatherBox>

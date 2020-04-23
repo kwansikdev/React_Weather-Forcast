@@ -8,6 +8,7 @@ export default connect(
     status: state.common.status,
     cityLists: state.weathers.cityLists,
     current: state.weathers.current,
+    fiveDays: state.weathers.fiveDays,
     currentWeather: state.weathers.currentWeather,
     currentFiveDaysWeather: state.weathers.currentFiveDaysWeather,
   }),

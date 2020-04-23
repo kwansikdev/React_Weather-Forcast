@@ -6,7 +6,6 @@ import {
 } from 'typesafe-actions';
 import { put, call, select, takeLatest } from 'redux-saga/effects';
 import WeatherServices from '../../services/WeatherServices';
-import { currentWeahterType } from '../../Type/currentWeahterType';
 
 const prefix: string = 'search/';
 
@@ -67,58 +66,14 @@ type TInitialState = {
   loading: boolean;
   error: null | {};
   cities: string[];
-  city_weathers: [currentWeahterType];
+  city_weathers: [];
 };
 
 const initialState: TInitialState = {
   loading: false,
   error: null,
-  cities: ['seoul'],
-  city_weathers: [
-    {
-      coord: {
-        lon: 126.98,
-        lat: 37.57,
-      },
-      weather: [
-        {
-          id: 800,
-          main: 'Clear',
-          description: 'clear sky',
-          icon: '01n',
-        },
-      ],
-      base: 'stations',
-      main: {
-        temp: 279.78,
-        feels_like: 276.82,
-        temp_min: 278.15,
-        temp_max: 281.15,
-        pressure: 1024,
-        humidity: 65,
-      },
-      visibility: 10000,
-      wind: {
-        speed: 1.5,
-        deg: 170,
-      },
-      clouds: {
-        all: 1,
-      },
-      dt: 1586447042,
-      sys: {
-        type: 1,
-        id: 8117,
-        country: 'KR',
-        sunrise: 1586466247,
-        sunset: 1586512933,
-      },
-      timezone: 32400,
-      id: 1835848,
-      name: 'Seoul',
-      cod: 200,
-    },
-  ],
+  cities: [],
+  city_weathers: [],
 };
 
 // Reducer

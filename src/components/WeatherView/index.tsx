@@ -4,6 +4,7 @@ import WeatherList from './WeaterList';
 import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
 import { RouteComponentProps, withRouter } from 'react-router';
+import PlusButton from '../Common/PlusButton';
 
 type TProps = {
   cities: string[];
@@ -45,7 +46,8 @@ const WeatherView: React.FC<RouteComponentProps & TProps> = ({
           <S.AddCountryCard onClick={gotoAddMenu}>
             <S.CountryCardButton status={status}>
               <p> ADD CITY</p>
-              <img src="/images/airballoon.svg" alt="도시추가" />
+              <PlusButton status={status} />
+              <S.AddCityIcon src="/images/airballoon.svg" alt="도시추가" />
             </S.CountryCardButton>
           </S.AddCountryCard>
         </S.WeatherLists>

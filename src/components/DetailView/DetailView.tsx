@@ -10,6 +10,7 @@ type TProps = {
   status: boolean;
   cityLists: string[];
   current: string;
+  fiveDays: any[];
   currentWeather: currentWeahterType;
   currentFiveDaysWeather: {
     city: City;
@@ -23,6 +24,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
   cityLists,
   history,
   current,
+  fiveDays,
   currentFiveDaysWeather,
   currentCity,
   currentWeather,
@@ -37,16 +39,18 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
     currentCity(selectList);
   }
 
+  console.log(fiveDays);
+
   return (
     <S.DetailView status={status}>
       <S.MenuListsSection>
         <S.MenuListsUL>
-          {cityLists &&
-            cityLists.map((city, index) => (
+          {fiveDays &&
+            fiveDays.map((city, index) => (
               <MenuList
                 key={index}
                 status={status}
-                city={city}
+                city={city.city.name}
                 current={current}
                 onClick={ListClick}
               />
@@ -64,7 +68,6 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
         </S.BackButton> */}
         <WeatherDetail
           status={status}
-          city={current}
           currentWeather={currentWeather}
           currentFiveDaysWeather={currentFiveDaysWeather}
         />

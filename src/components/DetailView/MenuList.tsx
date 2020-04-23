@@ -8,16 +8,17 @@ const List = styled.li`
     status
       ? darkTheme.listColor
       : `linear-gradient(to top, #ff8bee 0, #8b70c7 50%, #7081c7 100%)`};
-  width: 100%;
+  min-width: 70px;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
 
   p {
     color: ${({ current, city }: TProps) =>
-      current === city ? `red` : `#fff`};
-    font-size: 2rem;
+      current === city ? `#c495fd` : `#fff`};
+    font-size: 1.8rem;
     font-weight: 700;
+    word-break: keep-all;
   }
 
   & + & {
