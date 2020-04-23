@@ -19,8 +19,8 @@ export default function ForecastList({ status, day }: TProps) {
 
   const weather_imgs = {
     suuny: `/images/sunny.svg`,
-    sun_cloud: `/images/sun_cloud.svg`,
-    cloud: `/images/cloud.svg`,
+    sun_cloud: `/images/sun-clouds.svg`,
+    cloud: `/images/clouds.svg`,
     rain: `/images/umbrella.svg`,
     snow: `/images/snow.svg`,
     thunder: `/images/thunder.svg`,
