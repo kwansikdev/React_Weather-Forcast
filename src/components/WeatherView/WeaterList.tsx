@@ -1,33 +1,40 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as S from './Styled';
 import { currentWeahterType } from '../../Type/currentWeahterType';
+import RemoveButton from '../Common/RemoveButton';
+import { useDispatch } from 'react-redux';
+import {
+  addCurrentCitySaga,
+  removeCitySaga,
+} from '../../redux/modules/weathers';
 
 type TProps = {
   status: boolean;
   weather: currentWeahterType;
-  onClick: () => void;
 };
 
 const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   history,
   status,
   weather,
-  onClick,
 }) => {
-  const weatherInfo = weather && {
-    name: weather.name.toUpperCase(),
-    temp: (weather.main.temp - 275.15).toFixed(1),
-    status: weather.weather[0].main.toUpperCase(),
-    min: (weather.main.temp_min - 275.15).toFixed(1),
-    max: (weather.main.temp_max - 275.15).toFixed(1),
-    img: weather.weather[0].icon.slice(0, 2),
+  const cityName: any = createRef();
+  const dispatch = useDispatch();
+
+  const weatherInfo = {
+    name: weather && weather.name,
+    temp: weather && (weather.main.temp - 275.15).toFixed(1),
+    status: weather && weather.weather[0].main.toUpperCase(),
+    min: weather && (weather.main.temp_min - 275.15).toFixed(1),
+    max: weather && (weather.main.temp_max - 275.15).toFixed(1),
+    img: weather && weather.weather[0].icon.slice(0, 2),
   };
 
   const weather_imgs = {
     suuny: `/images/sunny.svg`,
-    sun_cloud: `/images/sun_cloud.svg`,
-    cloud: `/images/cloud.svg`,
+    sun_cloud: `/images/sun-clouds.svg`,
+    cloud: `/images/clouds.svg`,
     rain: `/images/umbrella.svg`,
     snow: `/images/snow.svg`,
     thunder: `/images/thunder.svg`,
@@ -53,13 +60,22 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
 
   function gotoDetail() {
     history.push(`/weathers/view/detail/${weatherInfo.name.toLowerCase()}`);
+
+    // 리덕스의 current에 city이름 추가
+    dispatch(addCurrentCitySaga(cityName.current.innerHTML));
+  }
+
+  function removeCard() {
+    // 사가함수 하나로 합치기
+    dispatch(removeCitySaga(cityName.current.innerHTML));
   }
 
   return (
     <>
-      <S.WeatherList onClick={onClick}>
+      <S.WeatherList>
+        <RemoveButton status={status} onClick={removeCard} />
         <S.WeatherButton onClick={gotoDetail} status={status}>
-          <S.ItemTitle>{weatherInfo.name}</S.ItemTitle>
+          <S.ItemTitle ref={cityName}>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>
             <img src={weather_img} alt="날씨" />
           </S.CurrentWeatherIcon>

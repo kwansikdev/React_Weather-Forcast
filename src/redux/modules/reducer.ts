@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 import weathers from './weathers';
-import search from './search';
 import common from './common';
 
 const reducer = combineReducers({
   common,
-  search,
   weathers,
 });
 

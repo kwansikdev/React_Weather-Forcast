@@ -3,12 +3,12 @@ import * as S from './Styled';
 
 interface TProps {
   status: boolean;
-  addCity: (city: string) => void;
+  addList: (city: string) => void;
   addFiveDaysWeather: (city: string) => void;
 }
 
 export default function SearchSection({
-  addCity,
+  addList,
   addFiveDaysWeather,
   status,
 }: TProps) {
@@ -20,8 +20,8 @@ export default function SearchSection({
     searchRef.current.value = '';
     searchRef.current.focus();
 
-    addCity(cityName);
     addFiveDaysWeather(cityName);
+    addList(cityName);
   }
 
   function enter({ keyCode, target }: React.KeyboardEvent<HTMLInputElement>) {
@@ -29,8 +29,9 @@ export default function SearchSection({
 
     if (keyCode !== 13 || _target.value === '' || _target.value === null)
       return;
-    addCity(_target.value);
+
     addFiveDaysWeather(_target.value);
+    addList(_target.value);
     _target.value = '';
   }
 

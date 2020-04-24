@@ -5,7 +5,11 @@ import {
 } from 'typesafe-actions';
 import { put, call, select, takeLatest } from 'redux-saga/effects';
 import WeatherServices from '../../services/WeatherServices';
-import { FiveDaysWeatherType } from '../../Type/fiveDaysWeatherType';
+import {
+  FiveDaysWeatherType,
+  List,
+  City,
+} from '../../Type/fiveDaysWeatherType';
 
 const prefix: string = 'weathers/';
 
@@ -16,6 +20,7 @@ const fail = `${prefix}FAIL`;
 type TSuccess = {
   cityLists?: string[];
   current?: string;
+  city_weathers?: any[];
   currentFiveDaysWeather?: {};
   currentWeather?: {};
   fiveDays?: any[];
@@ -30,17 +35,24 @@ export const actions = createAsyncAction(pending, success, fail)<
 // saga 함수
 
 // 메인홈페이지에서 나라를 선택시 그 나라에 대한 날씨 데이터를 따로 저장하는 saga람수
-export const addListSaga = createAction(`${prefix}ADD_LIST_SAGA`)<string[]>();
+export const addListSaga = createAction(`${prefix}ADD_LIST_SAGA`)<string>();
 
 function* addList({ payload }: ReturnType<typeof addListSaga>) {
   const cityLists = yield select(state => state.weathers.cityLists);
+  const city_weathers = yield select(state => state.weathers.city_weathers);
 
   try {
-    if (cityLists.length === payload.length) return;
+    // if (cityLists.length === payload.length) return;
     yield put(actions.request());
     yield put(
       actions.success({
-        cityLists: payload,
+        cityLists: [...cityLists, payload.toUpperCase()],
+      }),
+    );
+    const { data } = yield call(WeatherServices.getCurrentWeather, payload);
+    yield put(
+      actions.success({
+        city_weathers: [...city_weathers, data],
       }),
     );
   } catch {
@@ -54,7 +66,7 @@ export const addCurrentCitySaga = createAction(
 
 function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
   const fiveDays = yield select(state => state.weathers.fiveDays);
-  const city_weathers = yield select(state => state.search.city_weathers);
+  const city_weathers = yield select(state => state.weathers.city_weathers);
 
   try {
     yield put(actions.request());
@@ -144,8 +156,8 @@ function* addFiveDaysWeather({
 
   try {
     yield put(actions.request());
-    const { data } = yield call(WeatherServices.getFiveDayWeather, payload);
 
+    const { data } = yield call(WeatherServices.getFiveDayWeather, payload);
     const weekend = getWeekendWeather(data);
 
     yield put(
@@ -158,16 +170,51 @@ function* addFiveDaysWeather({
   }
 }
 
+export const removeCitySaga = createAction(`${prefix}REMOVE_CITY_SAGA`)<
+  string
+>();
+
+function* removeCity({ payload }: ReturnType<typeof removeCitySaga>) {
+  const cityLists = yield select(state => state.weathers.cityLists);
+  const fiveDays = yield select(state => state.weathers.fiveDays);
+
+  try {
+    yield put(actions.request());
+    yield put(
+      actions.success({
+        cityLists: [
+          ...cityLists.filter(
+            (city: string) =>
+              city.replace(/(\s*)/g, '').toLowerCase() !==
+              payload.replace(/(\s*)/g, '').toLowerCase(),
+          ),
+        ],
+        fiveDays: [
+          ...fiveDays.filter(
+            (city: { city: City; weekend: List[] }) =>
+              city.city.name.replace(/(\s*)/g, '').toLowerCase() !==
+              payload.replace(/(\s*)/g, '').toLowerCase(),
+          ),
+        ],
+      }),
+    );
+  } catch {
+    console.log(Error);
+  }
+}
+
 export function* weathersSaga() {
   yield takeLatest(addListSaga, addList);
   yield takeLatest(addCurrentCitySaga, addCurrentCity);
   yield takeLatest(addFiveDaysWeatherSaga, addFiveDaysWeather);
+  yield takeLatest(addFiveDaysWeatherSaga, removeCity);
 }
 
 type TInitialState = {
   loading: boolean;
   error: null | {};
   cityLists: string[];
+  city_weathers: [];
   fiveDays: [];
   current: string;
   currentFiveDaysWeather?: any;
@@ -178,6 +225,7 @@ const initialState: TInitialState = {
   loading: false,
   error: null,
   cityLists: [],
+  city_weathers: [],
   fiveDays: [],
   current: '',
 };

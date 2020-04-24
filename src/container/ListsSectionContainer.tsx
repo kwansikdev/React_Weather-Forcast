@@ -8,7 +8,7 @@ export default connect(
     status: state.common.status,
   }),
   dispatch => ({
-    addList: (city: string[]) => {
+    addList: (city: string) => {
       dispatch(addListSaga(city));
     },
   }),

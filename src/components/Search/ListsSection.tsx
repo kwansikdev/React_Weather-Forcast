@@ -7,31 +7,30 @@ import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
   status: boolean;
-  addList: (cities: string[]) => void;
 };
 
 const ListsSection: React.FC<RouteComponentProps & TProps> = ({
   status,
   history,
-  addList,
 }) => {
-  const cities = useSelector((state: RouteState) => state.search.cities);
+  const cityLists = useSelector(
+    (state: RouteState) => state.weathers.cityLists,
+  );
 
   //
   const cityWeathers = useSelector(
-    (state: RouteState) => state.search.city_weathers,
+    (state: RouteState) => state.weathers.city_weathers,
   );
 
   const goHome = () => {
     history.push('/');
-    addList(cities);
   };
 
   return (
     <>
       <S.ListsSection status={status}>
         <S.ListsUl>
-          {cities.map((city, index) => (
+          {cityLists.map((city, index) => (
             <ListCountry
               key={index}
               city={city}

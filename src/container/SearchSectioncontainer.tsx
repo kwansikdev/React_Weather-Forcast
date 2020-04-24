@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import SearchSection from '../components/Search/SearchSection';
 import { RouteState } from '../redux/modules/reducer';
-import { addCitySaga } from '../redux/modules/search';
-import { addFiveDaysWeatherSaga } from '../redux/modules/weathers';
+import { addFiveDaysWeatherSaga, addListSaga } from '../redux/modules/weathers';
 
 export default connect(
   (state: RouteState) => ({
     status: state.common.status,
   }),
   dispatch => ({
-    addCity: (city: string) => {
-      dispatch(addCitySaga(city));
+    addList: (city: string) => {
+      dispatch(addListSaga(city));
     },
     addFiveDaysWeather: (city: string) => {
       dispatch(addFiveDaysWeatherSaga(city));

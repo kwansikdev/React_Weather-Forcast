@@ -5,10 +5,10 @@ import * as S from './Styled';
 import WeatherDetail from './WeatherDetail';
 import { currentWeahterType } from '../../Type/currentWeahterType';
 import { List, City } from '../../Type/fiveDaysWeatherType';
+import PlusButton from '../Common/PlusButton';
 
 type TProps = {
   status: boolean;
-  cityLists: string[];
   current: string;
   fiveDays: any[];
   currentWeather: currentWeahterType;
@@ -21,7 +21,6 @@ type TProps = {
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
   status,
-  cityLists,
   history,
   current,
   fiveDays,
@@ -39,8 +38,6 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
     currentCity(selectList);
   }
 
-  console.log(fiveDays);
-
   return (
     <S.DetailView status={status}>
       <S.MenuListsSection>
@@ -57,9 +54,10 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
             ))}
         </S.MenuListsUL>
         <S.ListAddMenu>
-          <S.ListAddButton onClick={gotoAddMenu}>
+          {/* <S.ListAddButton onClick={gotoAddMenu}>
             <img src="/images/plus.svg" alt="도시추가" />
-          </S.ListAddButton>
+          </S.ListAddButton> */}
+          <PlusButton status={status} />
         </S.ListAddMenu>
       </S.MenuListsSection>
       <S.DetailSection>

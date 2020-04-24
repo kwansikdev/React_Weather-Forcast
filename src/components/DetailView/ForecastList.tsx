@@ -8,7 +8,6 @@ type TProps = {
 };
 
 export default function ForecastList({ status, day }: TProps) {
-  console.log(day);
   const weekend = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
   const dayInfo = {
     day: day && weekend[new Date(day.dt_txt).getDay()],

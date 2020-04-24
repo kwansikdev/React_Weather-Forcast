@@ -7,24 +7,16 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import PlusButton from '../Common/PlusButton';
 
 type TProps = {
-  cities: string[];
   status: boolean;
-  currentCity: (city: string) => void;
 };
 
 const WeatherView: React.FC<RouteComponentProps & TProps> = ({
-  cities,
   status,
-  currentCity,
   history,
 }) => {
   const cityWeathers = useSelector(
-    (state: RouteState) => state.search.city_weathers,
+    (state: RouteState) => state.weathers.city_weathers,
   );
-
-  function addList(city: string) {
-    currentCity(city);
-  }
 
   function gotoAddMenu() {
     history.push('/weathers/add');
@@ -34,14 +26,9 @@ const WeatherView: React.FC<RouteComponentProps & TProps> = ({
     <>
       <S.View status={status}>
         <S.WeatherLists>
-          {cities &&
-            cities.map((city, index) => (
-              <WeatherList
-                key={index}
-                status={status}
-                weather={cityWeathers[index]}
-                onClick={() => addList(city)}
-              />
+          {cityWeathers &&
+            cityWeathers.map((cityWeather, index) => (
+              <WeatherList key={index} status={status} weather={cityWeather} />
             ))}
           <S.AddCountryCard onClick={gotoAddMenu}>
             <S.CountryCardButton status={status}>
