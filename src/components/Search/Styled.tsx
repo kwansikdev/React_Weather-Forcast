@@ -10,7 +10,7 @@ export const AddDiv = styled.div`
   background: ${({ status }: TStatus) =>
     status ? darkTheme.gradient : lightTheme.gradient};
   height: 93vh;
-  padding: 60px;
+  padding: 60px 200px;
 
   ${({ status }: TStatus) => status && css``}
 `;
@@ -105,9 +105,7 @@ export const ListsSection = styled.section`
   /* background: linear-gradient(to top, #a985fe 0, #859efe 50%, #85fee6 100%); */
   /* background: linear-gradient(to top, #66a6ff 0, #5ee7df 100%); */
   background: ${({ status }: TStatus) =>
-    status
-      ? darkTheme.header
-      : `linear-gradient(to top, #66a6ff 0, #5ee7df 100%)`};
+    status ? darkTheme.header : lightTheme.gradient1};
   width: 50%;
   padding: 20px;
   border-top-right-radius: 20px;

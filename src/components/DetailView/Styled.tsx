@@ -26,7 +26,11 @@ export const MenuListsUL = styled.ul`
 `;
 
 export const ListAddMenu = styled.div`
-  margin-top: 30px;
+  margin: 30px auto 0 auto;
+  background: #eee;
+  width: 75px;
+  border-radius: 50%;
+  height: 75px;
 `;
 
 export const ListAddButton = styled.button`
@@ -58,9 +62,7 @@ export const DetailBox = styled.div`
 
 export const DetailWeatherBox = styled.div`
   background: ${({ status }: TStatus) =>
-    status
-      ? darkTheme.listColor
-      : `linear-gradient(to top, #ff8bee 0, #8b70c7 50%, #7081c7 100%)`};
+    status ? darkTheme.listColor : lightTheme.gradient2};
   display: flex;
   height: 50%;
   padding: 32px;
