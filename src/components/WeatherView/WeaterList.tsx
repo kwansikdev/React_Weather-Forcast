@@ -65,15 +65,16 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
     dispatch(addCurrentCitySaga(cityName.current.innerHTML));
   }
 
-  function removeCard() {
+  const removeCard = () => {
     // 사가함수 하나로 합치기
+    console.log(cityName.current.innerHTML);
     dispatch(removeCitySaga(cityName.current.innerHTML));
-  }
+  };
 
   return (
     <>
       <S.WeatherList>
-        <RemoveButton status={status} onClick={removeCard} />
+        <RemoveButton status={status} onClick={removeCard} size={'12'} />
         <S.WeatherButton onClick={gotoDetail} status={status}>
           <S.ItemTitle ref={cityName}>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>

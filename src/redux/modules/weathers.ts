@@ -10,6 +10,7 @@ import {
   List,
   City,
 } from '../../Type/fiveDaysWeatherType';
+import { currentWeahterType } from '../../Type/currentWeahterType';
 
 const prefix: string = 'weathers/';
 
@@ -177,6 +178,7 @@ export const removeCitySaga = createAction(`${prefix}REMOVE_CITY_SAGA`)<
 function* removeCity({ payload }: ReturnType<typeof removeCitySaga>) {
   const cityLists = yield select(state => state.weathers.cityLists);
   const fiveDays = yield select(state => state.weathers.fiveDays);
+  const city_weathers = yield select(state => state.weathers.city_weathers);
 
   try {
     yield put(actions.request());
@@ -196,6 +198,13 @@ function* removeCity({ payload }: ReturnType<typeof removeCitySaga>) {
               payload.replace(/(\s*)/g, '').toLowerCase(),
           ),
         ],
+        city_weathers: [
+          ...city_weathers.filter(
+            (city: currentWeahterType) =>
+              city.name.replace(/(\s*)/g, '').toLowerCase() !==
+              payload.replace(/(\s*)/g, '').toLowerCase(),
+          ),
+        ],
       }),
     );
   } catch {
@@ -207,7 +216,7 @@ export function* weathersSaga() {
   yield takeLatest(addListSaga, addList);
   yield takeLatest(addCurrentCitySaga, addCurrentCity);
   yield takeLatest(addFiveDaysWeatherSaga, addFiveDaysWeather);
-  yield takeLatest(addFiveDaysWeatherSaga, removeCity);
+  yield takeLatest(removeCitySaga, removeCity);
 }
 
 type TInitialState = {
