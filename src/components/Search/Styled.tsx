@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { lightTheme, darkTheme } from '../../Theme';
+import media from '../../libs/MediaQuery';
 
 type TStatus = {
   status: boolean;
@@ -9,10 +10,17 @@ export const AddDiv = styled.div`
   display: flex;
   background: ${({ status }: TStatus) =>
     status ? darkTheme.gradient : lightTheme.gradient};
-  height: 93vh;
-  padding: 60px 200px;
+  min-height: 93.5vh;
+  padding: 60px 100px;
+  justify-content: center;
 
   ${({ status }: TStatus) => status && css``}
+
+  ${media.mobile`
+    flex-direction:column;
+    padding: 40px;
+    justify-content: space-between;
+  `}
 `;
 
 // 검색영역
@@ -28,11 +36,26 @@ export const SearchSection = styled.section`
   h2 {
     color: ${({ status }: TStatus) =>
       status ? darkTheme.color : lightTheme.color};
+    word-break: keep-all;
   }
 
   h2 + div {
     margin-top: 30px;
   }
+
+  ${media.tablet`
+    width: 50%;
+  `};
+
+  ${media.mobile`
+    width: 100%;
+    height: 250px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-right: none;
+    border-bottom: ${({ status }: TStatus) =>
+      status ? `1px solid #616161` : 'none'};
+  `}
 `;
 
 export const SearchTitle = styled.h2`
@@ -40,6 +63,14 @@ export const SearchTitle = styled.h2`
   font-size: 3.5rem;
   font-weight: 700;
   text-transform: uppercase;
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `}
+
+  ${media.mobile`
+    font-size: 2rem;
+  `}
 `;
 
 export const SearchForm = styled.div`
@@ -49,7 +80,11 @@ export const SearchForm = styled.div`
 `;
 
 export const SearchBox = styled.div`
-  width: 70%;
+  width: 80%;
+
+  ${media.mobile`
+    width: 100%;
+  `}
 `;
 
 export const SearchInput = styled.input`
@@ -61,6 +96,15 @@ export const SearchInput = styled.input`
   box-shadow: 0 0 10px 3px rgba(0, 0, 255, 0.2);
   font-size: 1.6rem;
   outline: none;
+
+  ${media.tablet`
+    font-size: 1.4rem;
+  `}
+
+  ${media.mobile`
+    height: 45px;
+    font-size: 1.4rem;
+  `}
 `;
 
 export const SearchButton = styled.button`
@@ -82,6 +126,16 @@ export const SearchButton = styled.button`
   img {
     height: 35px;
   }
+
+  ${media.mobile`
+    width: 55px;
+    height: 55px;
+    top: -6px;
+    right: 0;
+    img {
+      height: 25px;
+    }
+  `}
 `;
 
 export const SearchAutoList = styled.ul``;
@@ -101,15 +155,31 @@ const leftSlide = keyframes`
 
 export const ListsSection = styled.section`
   position: relative;
-  /* background: #859efe; */
-  /* background: linear-gradient(to top, #a985fe 0, #859efe 50%, #85fee6 100%); */
-  /* background: linear-gradient(to top, #66a6ff 0, #5ee7df 100%); */
   background: ${({ status }: TStatus) =>
     status ? darkTheme.header : lightTheme.gradient1};
   width: 50%;
+  /* min-width: 450px; */
   padding: 20px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+
+  ${media.tablet`
+    width: 50%;
+  `}
+
+  ${media.mobile`
+    width: 100%;
+    height: 474px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+  `}
+
+  /* ${media.mobile2`
+    width: 100%;
+    height: 474px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+  `} */
 `;
 
 export const ListsUl = styled.ul`
@@ -164,7 +234,7 @@ export const GotoView = styled.button`
   width: 50px;
   height: 50px;
   bottom: 1.5%;
-  left: 47%;
+  left: calc(50% - 20px);
   border: none;
   border-radius: 30px;
   cursor: pointer;

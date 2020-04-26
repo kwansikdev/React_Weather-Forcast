@@ -4,6 +4,7 @@ const sizes = {
   desktop: 1025,
   tablet: 1024,
   mobile: 768,
+  mobile2: 525,
 };
 
 const sizeCheck = (label: string) => {
@@ -13,18 +14,12 @@ const sizeCheck = (label: string) => {
       sizes[label]
     }px)`;
   if (label === 'mobile') return `all and (max-width: ${sizes[label]}px)`;
+  // if (label === 'mobile')
+  //   return `all and (min-width: ${+sizes['mobile2'] + 1}px) and (max-width: ${
+  //     sizes[label]
+  //   }px)`;
+  // if (label === 'mobile2') return `all and (max-width: ${sizes[label]}px)`;
 };
-
-// const media = Object.keys(sizes).reduce((acc: any, label) => {
-//   acc[label] = (literals: TemplateStringsArray, ...placeholders: any[]) =>
-//     css`
-//       @media ${sizeCheck(label)} {
-//         ${css(literals, ...placeholders)};
-//       }
-//     `;
-
-//   return acc;
-// }, {} as Record<keyof typeof sizes, (l: TemplateStringsArray, ...p: any[]) => string>);
 
 const media = Object.keys(sizes).reduce((points: any, label) => {
   points[label] = (literals: TemplateStringsArray, ...args: any[]) => css`

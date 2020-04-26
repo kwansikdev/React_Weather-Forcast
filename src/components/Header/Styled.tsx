@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { darkTheme, lightTheme } from '../../Theme';
+import media from '../../libs/MediaQuery';
 
 type TStatus = {
   status: boolean;
@@ -28,6 +29,7 @@ export const Logo = styled.h1`
   position: absolute;
   top: 15px;
   left: 70px;
+
   a {
     display: inline-block;
   }
@@ -46,6 +48,37 @@ export const Logo = styled.h1`
   img + span {
     margin-left: 10px;
   }
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+    top: 17px;
+    left: calc(50% - 66px);
+    /* left: 40%; */
+
+    img {
+      width: 20px;
+    }
+
+    span {
+      font-size: 1.6rem;
+    }
+  `}
+
+  /* ${media.mobile2`
+    top: 17px;
+    left: calc(50% - 66px);
+
+    img {
+      width: 15px;
+    }
+
+    span {
+      font-size: 1.4rem;
+    }
+  `} */
 `;
 
 // Nav
@@ -228,19 +261,30 @@ export const ListButton = styled.button`
 
 // CutrrnetTime
 export const CurrentTime = styled.div`
+  position: absolute;
+  top: 7px;
+  left: 43%;
   color: #4d47ff;
   font-size: 1.8rem;
   font-weight: 700;
 
   p {
     display: inline-block;
-    line-height: 2.1;
+    line-height: 2.3;
     color: ${({ status }: TStatus) => status && lightTheme.header};
   }
 
   p + p {
     margin-left: 10px;
   }
+
+  ${media.mobile`
+    visibility: hidden;
+  `}
+
+  /* ${media.mobile2`
+    visibility: hidden;
+  `} */
 `;
 
 export const Data = styled.p``;
@@ -261,6 +305,28 @@ export const ThemeMode = styled.div`
   label + span {
     margin-left: 5px;
   }
+
+  ${media.tablet`
+    font-size: 1.6rem;
+  `}
+
+  ${media.mobile`
+    font-size: 1.4rem;
+
+    span {
+      display: none;
+    }
+  `}
+
+  /* ${media.mobile2`
+    font-size: 1.2rem;
+
+    span {
+      display: none;
+    }
+  `} */
+
+
 `;
 
 export const ToggleLabel = styled.label`
@@ -270,8 +336,8 @@ export const ToggleLabel = styled.label`
 
   input {
     position: relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    visibility: hidden;
+    border: 0;
   }
 `;
 
@@ -295,6 +361,15 @@ export const ToggleBg = styled.div`
     css`
       background-color: #ff0070;
     `}
+
+  ${media.mobile`
+    top: 6px;
+  `};
+
+  /* ${media.mobile2`
+    top: 6px;
+
+  `}; */
 `;
 
 export const ToggleCircle = styled.div`
@@ -314,4 +389,13 @@ export const ToggleCircle = styled.div`
       background-color: white;
       left: 24px;
     `}
+
+  ${media.mobile`
+    top: 3px;
+  `};
+
+  /* ${media.mobile2`
+    top: 3px;
+
+  `}; */
 `;

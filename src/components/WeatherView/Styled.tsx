@@ -10,7 +10,7 @@ export const View = styled.div`
   background: ${({ status }: TStatus) =>
     status ? darkTheme.gradient : lightTheme.gradient};
   padding: 0 45px;
-  min-height: 93.2vh;
+  min-height: 93.5vh;
 `;
 
 export const WeatherLists = styled.ul`
