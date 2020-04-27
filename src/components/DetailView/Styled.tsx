@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darkTheme, lightTheme } from '../../Theme';
+import media from '../../libs/MediaQuery';
 
 type TStatus = {
   status: boolean;
@@ -10,6 +11,14 @@ export const DetailView = styled.div`
   display: flex;
   background: ${({ status }: TStatus) =>
     status ? darkTheme.listGradient : lightTheme.gradient};
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+    justify-content: center;
+  `};
 `;
 
 export const MenuListsSection = styled.section`
@@ -18,11 +27,22 @@ export const MenuListsSection = styled.section`
   height: 93.5vh;
   padding: 32px 0 50px 32px;
   text-align: center;
+
+  ${media.mobile`
+    display: none;
+  `};
 `;
 
 export const MenuListsUL = styled.ul`
   width: 100%;
   overflow-y: auto;
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+  `};
 `;
 
 export const ListAddMenu = styled.div`
@@ -53,12 +73,16 @@ export const DetailSection = styled.section`
   width: 88vw;
   height: 93.5vh;
   padding: 32px 32px 50px 32px;
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+  `};
 `;
 
 // Detail Weather Box
-export const DetailBox = styled.div`
-  height: 100%;
-`;
 
 export const DetailWeatherBox = styled.div`
   background: ${({ status }: TStatus) =>
@@ -72,8 +96,49 @@ export const DetailWeatherBox = styled.div`
 `;
 
 export const ConditionBox = styled.div`
-  width: 50%;
-  padding: 30px;
+  position: relative;
+  width: 100%;
+
+  ${media.mobile`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  `}
+`;
+
+export const CityBox = styled.div`
+  position: absolute;
+  top: 20%;
+  right: 15%;
+
+  ${media.mobile`
+    position: static;
+    text-align: center;
+  `}
+`;
+
+export const CityName = styled.div`
+  font-size: 3rem;
+
+  span {
+    padding-bottom: 10px;
+    box-shadow: 0 4px 0 0 #fff;
+  }
+
+  ${media.mobile`
+    font-size: 5rem;
+  `}
+`;
+
+export const DetailBox = styled.div`
+  display: inline-block;
+  width: 60%;
+
+  ${media.mobile`
+  width: 100%;
+    display: flex;
+    justify-content: space-around;
+  `}
 `;
 
 export const TempBox = styled.div`
@@ -89,6 +154,16 @@ export const TempBox = styled.div`
     text-transform: uppercase;
     letter-spacing: 10px;
   }
+
+  ${media.mobile`
+    p {
+      font-size: 7rem;
+    }
+
+    span {
+      font-size: 2rem;
+    }
+  `}
 `;
 
 export const HumWindBox = styled.div`
@@ -97,6 +172,18 @@ export const HumWindBox = styled.div`
   margin-top: 20px;
   text-align: center;
   font-size: 1.4rem;
+
+  ${media.mobile`
+  display: flex;
+    flex-direction: column;
+
+    div + div {
+      margin
+      border-top: 1px solid #fff;
+      margin-top: 10px;
+    padding-top: 10px;
+    }
+  `}
 `;
 
 export const HumidityInfo = styled.div`
@@ -109,6 +196,16 @@ export const HumidityInfo = styled.div`
     display: block;
     margin-top: 5px;
   }
+
+  ${media.mobile`
+    width: 100%;
+    padding: 0;
+    border: none;
+
+    p {
+      font-weight: 700;
+    }
+  `}
 `;
 
 export const WindInfo = styled.div`
@@ -121,27 +218,16 @@ export const WindInfo = styled.div`
     display: block;
     margin-top: 5px;
   }
-`;
 
-export const CityBox = styled.div`
-  position: relative;
-  width: 50%;
-  padding: 30px;
-`;
+  ${media.mobile`
+    width: 100%;
+    padding: 0;
+    border: none;
 
-export const CityName = styled.div`
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  /* margin-top: 40px; */
-  text-align: center;
-  font-size: 3rem;
-
-  span {
-    padding-bottom: 10px;
-    box-shadow: 0 4px 0 0 #fff;
-  }
+    p {
+      font-weight: 700;
+    }
+  `}
 `;
 
 //Detail Forecast Box

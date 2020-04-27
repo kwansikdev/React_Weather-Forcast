@@ -28,29 +28,31 @@ export default function WeatherDetail({
   };
 
   return (
-    <S.DetailBox>
+    <>
       <S.DetailWeatherBox status={status}>
         <S.ConditionBox>
-          <S.TempBox>
-            <p>{WeatherInfo.temp}°</p>
-            <span>{WeatherInfo.condition}</span>
-          </S.TempBox>
-          <S.HumWindBox>
-            <S.HumidityInfo>
-              <p>HUMIDITY</p>
-              <span>{WeatherInfo.humidity}%</span>
-            </S.HumidityInfo>
-            <S.WindInfo>
-              <p>WIND</p>
-              <span>{WeatherInfo.wind} K/M</span>
-            </S.WindInfo>
-          </S.HumWindBox>
+          <S.CityBox>
+            <S.CityName>
+              <span>{WeatherInfo.name}</span>
+            </S.CityName>
+          </S.CityBox>
+          <S.DetailBox>
+            <S.TempBox>
+              <p>{WeatherInfo.temp}°</p>
+              <span>{WeatherInfo.condition}</span>
+            </S.TempBox>
+            <S.HumWindBox>
+              <S.HumidityInfo>
+                <p>HUMIDITY</p>
+                <span>{WeatherInfo.humidity}%</span>
+              </S.HumidityInfo>
+              <S.WindInfo>
+                <p>WIND</p>
+                <span>{WeatherInfo.wind} K/M</span>
+              </S.WindInfo>
+            </S.HumWindBox>
+          </S.DetailBox>
         </S.ConditionBox>
-        <S.CityBox>
-          <S.CityName>
-            <span>{WeatherInfo.name}</span>
-          </S.CityName>
-        </S.CityBox>
       </S.DetailWeatherBox>
       <S.DetailForecastBox status={status}>
         <S.ForecastLists>
@@ -60,6 +62,6 @@ export default function WeatherDetail({
             ))}
         </S.ForecastLists>
       </S.DetailForecastBox>
-    </S.DetailBox>
+    </>
   );
 }
