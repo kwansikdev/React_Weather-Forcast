@@ -56,7 +56,6 @@ export const Logo = styled.h1`
   ${media.mobile`
     top: 17px;
     left: calc(50% - 66px);
-    /* left: 40%; */
 
     img {
       width: 20px;
@@ -66,19 +65,6 @@ export const Logo = styled.h1`
       font-size: 1.6rem;
     }
   `}
-
-  /* ${media.mobile2`
-    top: 17px;
-    left: calc(50% - 66px);
-
-    img {
-      width: 15px;
-    }
-
-    span {
-      font-size: 1.4rem;
-    }
-  `} */
 `;
 
 // Nav
@@ -89,27 +75,29 @@ export const NavButton = styled.button`
 
 const openMenu = keyframes`
   from {
-    transform: translateX(-300px)
+    opacity: 0;
+    transform: translateX(-100%)
   }
   to {
+    opacity: 1;
     transform: translateX(0)
   }
-`;
+  `;
 
 const closeMenu = keyframes`
   from {
+    opacity: 1;
     transform: translateX(0)
-  }
-  to {
-    transform: translateX(-300px)
+  } to {
+    opacity: 0;
+    transform: translateX(-100%)
   }
 `;
 
 const fadeIn = keyframes`
   from {
     opacity: 0;
-  }
-  to {
+  } to {
     opacity: 1;
   }
 `;
@@ -136,45 +124,48 @@ export const Dim = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+
+  ${({ open }: MenuProps) =>
+    open &&
+    css`
+      animation-name: ${fadeOut};
+    `};
+
+  animation-name: ${fadeIn};
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-
-  ${({ open }: MenuProps) =>
-    open
-      ? css`
-          animation-name: ${fadeIn};
-        `
-      : css`
-          animation-name: ${fadeOut};
-        `}
 `;
 
 export const Menu = styled.div`
   position: absolute;
-  width: 350px;
   height: 100vh;
+  width: 100%;
   background: ${({ status }: MenuProps) =>
     status ? darkTheme.header : '#fff'};
   top: 0;
   left: 0;
   padding: 10px;
+  animation-name: ${openMenu};
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 
-  ${({ open }: MenuProps) =>
-    open
-      ? css`
-          animation-name: ${openMenu};
-        `
-      : css`
-          animation-name: ${closeMenu};
-        `}
+  ${({ open }: MenuProps) => (
+    console.log(open),
+    open &&
+      css`
+        animation-name: ${closeMenu};
+      `
+  )}
 
   p {
     color: ${({ status }: MenuProps) => (status ? '#fff' : `#121212`)};
   }
+
+  ${media.desktop`
+    width: 350px;
+  `}
 `;
 
 export const MenuInfo = styled.div`
@@ -363,13 +354,8 @@ export const ToggleBg = styled.div`
     `}
 
   ${media.mobile`
-    top: 6px;
+    top: 8px;
   `};
-
-  /* ${media.mobile2`
-    top: 6px;
-
-  `}; */
 `;
 
 export const ToggleCircle = styled.div`
@@ -391,11 +377,6 @@ export const ToggleCircle = styled.div`
     `}
 
   ${media.mobile`
-    top: 3px;
+    top: 5px;
   `};
-
-  /* ${media.mobile2`
-    top: 3px;
-
-  `}; */
 `;

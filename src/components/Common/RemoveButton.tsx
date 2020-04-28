@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from '../../libs/MediaQuery';
 
 const Removebutton = styled.button`
   position: absolute;
-  top: 21px;
-  right: 21px;
+  top: -10px;
+  right: -10px;
   width: 40px;
   height: 40px;
   z-index: 1;
-  visibility: hidden;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -20,6 +20,14 @@ const Removebutton = styled.button`
       fill: ${({ status }: TProps) => (status ? `#e0e0e0` : `#424242`)};
     }
   }
+
+  ${media.desktop`
+    visibility: hidden;
+  `};
+
+  ${media.mobile`
+
+  `};
 `;
 
 type TStyled = {

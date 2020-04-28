@@ -39,7 +39,6 @@ input[type='search'],
 input[type='submit'] {
   border: 1px solid #eee;
   background: #fff;
-  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

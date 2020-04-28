@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darkTheme, lightTheme } from '../../Theme';
+import media from '../../libs/MediaQuery';
 
 type TStatus = {
   status: boolean;
@@ -21,14 +22,24 @@ export const WeatherLists = styled.ul`
 
 export const WeatherList = styled.li`
   position: relative;
-  width: 432px;
-  padding: 32px;
+  max-width: 368px;
+  width: 100%;
+  margin: 32px;
 
   &:hover {
     button:first-child {
       visibility: visible;
     }
   }
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+    max-width: 250px;
+    margin: 32px 16px;
+  `};
 `;
 
 export const WeatherButton = styled.button`
@@ -47,11 +58,21 @@ export const WeatherButton = styled.button`
     status ? darkTheme.color : lightTheme.color};
   background: ${({ status }: TStatus) => status && darkTheme.listGradient};
 
-  &:hover {
-    box-shadow: 0 0 10px 3px
-      ${({ status }: TStatus) =>
-        status ? darkTheme.shadow : lightTheme.shadow};
-  }
+  ${media.desktop`
+    &:hover {
+      box-shadow: 0 0 10px 3px
+        ${({ status }: TStatus) =>
+          status ? darkTheme.shadow : lightTheme.shadow};
+    }
+  `};
+
+  ${media.tablet`
+
+  `};
+
+  ${media.mobile`
+
+  `}
 
   section {
     margin-top: 25px;
@@ -62,6 +83,10 @@ export const ItemTitle = styled.p`
   font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: 5px;
+
+  ${media.mobile`
+    font-size: 2rem;
+  `}
 `;
 
 export const CurrentWeatherIcon = styled.div`
@@ -73,6 +98,12 @@ export const CurrentWeatherIcon = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  ${media.mobile`
+    width: 100px;
+    height: 150px;
+
+  `}
 `;
 
 export const CurrentWeather = styled.section`
@@ -82,6 +113,10 @@ export const CurrentWeather = styled.section`
 
 export const CurrentTemp = styled.p`
   font-size: 4.8rem;
+
+  ${media.mobile`
+    font-size: 3.8rem;
+  `}
 `;
 
 export const CurrentStatus = styled.p`
@@ -89,10 +124,16 @@ export const CurrentStatus = styled.p`
   flex-direction: column;
   font-size: 1.6rem;
   letter-spacing: 5px;
+
+  ${media.mobile`
+    font-size: 1.4rem;
+  `}
 `;
 
 export const ItemTemp = styled.section`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 
   div + div {
     margin-left: 100px;
@@ -111,6 +152,16 @@ export const ItemTemp = styled.section`
     font-size: 1.6rem;
     font-weight: 600;
   }
+
+  ${media.mobile`
+    p {
+      font-size: 2.2rem;
+    }
+
+    span {
+      font-size: 1.4rem;
+    }
+  `}
 `;
 
 export const ItemTempLow = styled.div`
@@ -126,9 +177,13 @@ export const ItemTempHigh = styled.div`
 `;
 
 export const AddCountryCard = styled.li`
-  width: 432px;
-  /* height: 561px; */
-  padding: 32px;
+  width: 368px;
+  margin: 32px;
+
+  ${media.mobile`
+  max-width: 250px;
+    margin: 32px 0;
+  `}
 `;
 
 export const CountryCardButton = styled.button`
@@ -149,11 +204,13 @@ export const CountryCardButton = styled.button`
   font-size: 2.4rem;
   font-weight: 700;
 
-  &:hover {
-    box-shadow: 0 0 10px 3px
-      ${({ status }: TStatus) =>
-        status ? darkTheme.shadow : lightTheme.shadow};
-  }
+  ${media.desktop`
+    &:hover {
+      box-shadow: 0 0 10px 3px
+        ${({ status }: TStatus) =>
+          status ? darkTheme.shadow : lightTheme.shadow};
+    }
+  `}
 
   section {
     margin-top: 25px;
