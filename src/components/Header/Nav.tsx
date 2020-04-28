@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Styled';
 import Menu from './Menu';
 import ModalPortal from '../Popup/ModalPotal';
@@ -18,6 +18,10 @@ export default function Nav() {
   const openMenu = () => {
     isOpen(!open);
   };
+
+  useEffect(() => {
+    console.log('open', open);
+  }, [open]);
 
   return (
     <>

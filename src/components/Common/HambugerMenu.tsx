@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RouteState } from '../../redux/modules/reducer';
 import { darkTheme, lightTheme } from '../../Theme';
+import media from '../../libs/MediaQuery';
 
 type TSvg = {
   status: boolean;
@@ -16,6 +17,10 @@ const Svg = styled.svg`
     fill: ${({ status }: TSvg) =>
       status ? lightTheme.header : darkTheme.header};
   }
+
+  ${media.mobile`
+    width: 20px
+  `}
 `;
 
 export default function HamburgerMenu() {

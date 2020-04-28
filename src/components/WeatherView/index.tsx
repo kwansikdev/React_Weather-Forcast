@@ -31,7 +31,7 @@ const WeatherView: React.FC<RouteComponentProps & TProps> = ({
               <WeatherList key={index} status={status} weather={cityWeather} />
             ))}
           <S.AddCountryCard onClick={gotoAddMenu}>
-            <S.CountryCardButton status={status}>
+            <S.CountryCardButton status={status} onClick={gotoAddMenu}>
               <p> ADD CITY</p>
               <PlusButton status={status} location={'home'} />
               <S.AddCityIcon src="/images/airballoon.svg" alt="도시추가" />

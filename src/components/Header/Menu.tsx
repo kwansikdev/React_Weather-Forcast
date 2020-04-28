@@ -67,9 +67,9 @@ const Menu: React.FC<RouteComponentProps & Props> = ({
   }, [menuName, setMenuSelect]);
 
   return (
-    <>
-      <S.Dim ref={dimRef} open={open} onClick={close} />
-      <S.Menu open={open} status={status}>
+    <div>
+      <S.Dim ref={dimRef} open={!open} onClick={close} />
+      <S.Menu open={!open} status={status}>
         <S.MenuInfo status={status}>
           <S.CloseButton onClick={buttonClose}>
             <Close />
@@ -94,7 +94,7 @@ const Menu: React.FC<RouteComponentProps & Props> = ({
           </li>
         </S.MenuLists>
       </S.Menu>
-    </>
+    </div>
   );
 };
 

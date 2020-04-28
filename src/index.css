@@ -32,3 +32,14 @@ ol,
 li {
   list-style: none;
 }
+
+button,
+input[type='button'],
+input[type='search'],
+input[type='submit'] {
+  border: 1px solid #eee;
+  background: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
