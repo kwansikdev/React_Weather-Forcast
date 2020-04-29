@@ -19,7 +19,7 @@ type TSuccess = {
 const actions = createAsyncAction(pending, success, fail)<
   undefined,
   TSuccess,
-  undefined
+  Error
 >();
 
 type CommonAction = ActionType<typeof actions>;
@@ -37,8 +37,8 @@ function* addThemeStatus({ payload }: ReturnType<typeof addThemeStatusSaga>) {
         status: payload,
       }),
     );
-  } catch {
-    console.log(Error);
+  } catch (Error) {
+    yield put(actions.failure(Error));
   }
 }
 
