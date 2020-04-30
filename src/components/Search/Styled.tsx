@@ -157,7 +157,6 @@ export const ListsSection = styled.section`
   background: ${({ status }: TStatus) =>
     status ? darkTheme.header : lightTheme.gradient1};
   width: 50%;
-  /* min-width: 450px; */
   padding: 20px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -172,44 +171,45 @@ export const ListsSection = styled.section`
     border-top-right-radius: 0;
     border-bottom-left-radius: 20px;
   `}
-
-  /* ${media.mobile2`
-    width: 100%;
-    height: 474px;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 20px;
-  `} */
 `;
 
 export const ListsUl = styled.ul`
+  display: flex;
   width: 100%;
-  height: 90%;
+  max-height: 90%;
   overflow-y: auto;
+  flex-wrap: wrap;
 `;
 
 export const ListLi = styled.li`
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width: 100%;
   animation: ${leftSlide} 1s ease-out forwards;
+  margin: 20px;
 
-  & + & {
-    margin-top: 20px;
-  }
+  ${media.desktop`
+    width: 50%;
+  `}
 `;
 
 export const ListButton = styled.button`
   display: flex;
-  justify-content: space-between;
-  width: 98%;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  align-items: center;
   padding: 10px;
   border: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   outline: none;
   font-size: 1.6rem;
+
+  p + div {
+    margin-top: 10px;
+  }
 `;
 
 export const ListCountry = styled.p`
+  font-size: 2.4rem;
   font-weight: 600;
 `;
 
@@ -238,11 +238,11 @@ export const GotoView = styled.button`
   border-radius: 30px;
   cursor: pointer;
 
-  &:hover {
-    /* box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.2); */
-    /* box-shadow: 0 0 10px 10px rgba(133, 254, 230, 0.5); */
-    background: #fff;
-  }
+  ${media.desktop`
+    &:hover {
+      background: #fff;
+    }
+  `}
 
   img {
     width: 40px;

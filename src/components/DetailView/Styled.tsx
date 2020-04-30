@@ -239,6 +239,10 @@ export const DetailForecastBox = styled.div`
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   background: ${({ status }: TStatus) => status && darkTheme.listColor};
+
+  ${media.mobile`
+    padding: 16px;
+  `}
 `;
 
 export const ForecastLists = styled.ul`
@@ -246,6 +250,11 @@ export const ForecastLists = styled.ul`
   justify-content: space-around;
   height: 100%;
   margin: 0 auto;
+
+  ${media.mobile`
+    flex-wrap: wrap;
+    overflow-y: auto;
+  `}
 `;
 
 export const BackButton = styled.button`
@@ -269,12 +278,20 @@ export const ForecastListLi = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 13%;
+  width: 50%;
   height: 100%;
-  padding: 10px 0;
+  padding: 20px 0;
   text-align: center;
   color: ${({ status }: TStatus) => (status ? darkTheme.color : `#39437a`)};
   font-size: 2rem;
+
+  ${media.mobile`
+    /* border-bottom: 1px solid black; */
+
+    &:last-child {
+      border: none;
+    }
+  `}
 `;
 
 export const ForecastDate = styled.p`

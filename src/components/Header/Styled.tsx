@@ -151,13 +151,11 @@ export const Menu = styled.div`
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 
-  ${({ open }: MenuProps) => (
-    console.log(open),
+  ${({ open }: MenuProps) =>
     open &&
-      css`
-        animation-name: ${closeMenu};
-      `
-  )}
+    css`
+      animation-name: ${closeMenu};
+    `}
 
   p {
     color: ${({ status }: MenuProps) => (status ? '#fff' : `#121212`)};

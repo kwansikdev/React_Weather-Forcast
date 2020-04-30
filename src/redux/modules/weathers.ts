@@ -30,7 +30,7 @@ type TSuccess = {
 export const actions = createAsyncAction(pending, success, fail)<
   undefined,
   TSuccess,
-  undefined
+  Error
 >();
 
 // saga 함수
@@ -43,21 +43,27 @@ function* addList({ payload }: ReturnType<typeof addListSaga>) {
   const city_weathers = yield select(state => state.weathers.city_weathers);
 
   try {
-    // if (cityLists.length === payload.length) return;
     yield put(actions.request());
+
+    const { data } = yield call(WeatherServices.getCurrentWeather, payload);
+
     yield put(
       actions.success({
         cityLists: [...cityLists, payload.toUpperCase()],
       }),
     );
-    const { data } = yield call(WeatherServices.getCurrentWeather, payload);
-    yield put(
-      actions.success({
-        city_weathers: [...city_weathers, data],
-      }),
-    );
-  } catch {
-    yield put(actions.failure());
+
+    if (data) {
+      console.log(data);
+      yield put(
+        actions.success({
+          city_weathers: [...city_weathers, data],
+        }),
+      );
+    }
+  } catch (Error) {
+    yield put(actions.failure(Error));
+    return alert('도시이름이 틀렸습니다');
   }
 }
 
@@ -96,8 +102,8 @@ function* addCurrentCity({ payload }: ReturnType<typeof addCurrentCitySaga>) {
         )[0],
       }),
     );
-  } catch {
-    yield put(actions.failure());
+  } catch (Error) {
+    yield put(actions.failure(Error));
   }
 }
 
@@ -166,8 +172,8 @@ function* addFiveDaysWeather({
         fiveDays: [...fiveDays, weekend],
       }),
     );
-  } catch {
-    console.log(Error);
+  } catch (Error) {
+    yield put(actions.failure(Error));
   }
 }
 
@@ -207,8 +213,8 @@ function* removeCity({ payload }: ReturnType<typeof removeCitySaga>) {
         ],
       }),
     );
-  } catch {
-    console.log(Error);
+  } catch (Error) {
+    yield put(actions.failure(Error));
   }
 }
 
