@@ -187,7 +187,7 @@ export const ListLi = styled.li`
   margin: 20px;
 
   ${media.desktop`
-    width: 50%;
+    width: 44%;
   `}
 `;
 
