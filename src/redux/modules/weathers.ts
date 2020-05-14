@@ -125,7 +125,7 @@ function* addFiveDaysWeather({
     const arrTime = [
       today.getFullYear(),
       '0' + (today.getMonth() + 1),
-      today.getDate(),
+      today.getDate() < 10 ? '0' + today.getDate() : today.getDate(),
     ];
 
     const todayDate = arrTime.reduce((pre, cur) => pre + '-' + cur);
@@ -163,8 +163,9 @@ function* addFiveDaysWeather({
 
   try {
     yield put(actions.request());
-
+    console.log('1');
     const { data } = yield call(WeatherServices.getFiveDayWeather, payload);
+
     const weekend = getWeekendWeather(data);
 
     yield put(
