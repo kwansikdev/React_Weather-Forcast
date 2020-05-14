@@ -1,5 +1,5 @@
 # React_Weather Forecast with Typescript
-
+<br>
 
 
 ## 주제
@@ -31,7 +31,7 @@ typescript 과 openweathermaps api 를 사용한 세계 날시 App
 ### 주요 스펙
 
 1. HTML5
-2. CSS#
+2. CSS3
 3. ReactJS
 4. TypeScript
 
