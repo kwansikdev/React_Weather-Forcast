@@ -4,7 +4,7 @@
 
 ## 주제
 
-typescript 과 openweathermaps api 를 사용한 세계 날시 App
+typescript 과 openweathermaps api 를 사용한 세계 날씨 App
 
 
 
