@@ -1,8 +1,8 @@
 import React from 'react';
 import ForecastList from './ForecastList';
-import { currentWeahterType } from '../../Type/currentWeahterType';
-import { City, List } from '../../Type/fiveDaysWeatherType';
 import * as S from './Styled';
+import { currentWeahterType } from '../../Typescript/currentWeahterType';
+import { City, List } from '../../Typescript/fiveDaysWeatherType';
 
 // type
 type TProps = {

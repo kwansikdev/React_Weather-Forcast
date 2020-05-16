@@ -9,8 +9,8 @@ import {
   FiveDaysWeatherType,
   List,
   City,
-} from '../../Type/fiveDaysWeatherType';
-import { currentWeahterType } from '../../Type/currentWeahterType';
+} from '../../Typescript/fiveDaysWeatherType';
+import { currentWeahterType } from '../../Typescript/currentWeahterType';
 
 const prefix: string = 'weathers/';
 

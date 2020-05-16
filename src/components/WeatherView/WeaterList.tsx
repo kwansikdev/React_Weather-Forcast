@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as S from './Styled';
-import { currentWeahterType } from '../../Type/currentWeahterType';
+import { currentWeahterType } from '../../Typescript/currentWeahterType';
 import RemoveButton from '../Common/RemoveButton';
 import { useDispatch } from 'react-redux';
 import {
