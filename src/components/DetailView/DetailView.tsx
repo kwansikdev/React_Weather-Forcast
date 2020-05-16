@@ -3,8 +3,8 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MenuList from './MenuList';
 import * as S from './Styled';
 import WeatherDetail from './WeatherDetail';
-import { currentWeahterType } from '../../Type/currentWeahterType';
-import { List, City } from '../../Type/fiveDaysWeatherType';
+import { currentWeahterType } from '../../Typescript/currentWeahterType';
+import { City, List } from '../../Typescript/fiveDaysWeatherType';
 import PlusButton from '../Common/PlusButton';
 
 type TProps = {

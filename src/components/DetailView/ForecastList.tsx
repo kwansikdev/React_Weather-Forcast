@@ -1,6 +1,6 @@
 import React from 'react';
-import { List } from '../../Type/fiveDaysWeatherType';
 import * as S from './Styled';
+import { List } from '../../Typescript/fiveDaysWeatherType';
 
 type TProps = {
   status: boolean;

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Styled';
-import { currentWeahterType } from '../../Type/currentWeahterType';
+import { currentWeahterType } from '../../Typescript/currentWeahterType';
 type TProps = {
   city: string;
   weather: currentWeahterType;
