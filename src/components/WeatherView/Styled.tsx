@@ -26,6 +26,10 @@ export const WeatherList = styled.li`
   width: 100%;
   margin: 32px;
 
+  button:first-child {
+    visibility: hidden;
+  }
+
   &:hover {
     button:first-child {
       visibility: visible;

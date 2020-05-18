@@ -52,3 +52,19 @@ typescript 과 openweathermaps api 를 사용한 세계 날씨 App
 
 
 <br>
+
+##이미지 및 영상
+
+Light mode
+
+![main](https://user-images.githubusercontent.com/37237125/82225132-bf617700-995f-11ea-81b0-de3737b723f8.png)
+
+![add](https://user-images.githubusercontent.com/37237125/82225371-15361f00-9960-11ea-9d72-bab699faa976.png)
+
+![main2](https://user-images.githubusercontent.com/37237125/82225897-bd4be800-9960-11ea-86c0-ca4e7ee3c58f.png)
+
+
+
+<br />
+
+Dark mode
