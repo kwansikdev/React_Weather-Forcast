@@ -74,7 +74,12 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
   return (
     <>
       <S.WeatherList>
-        <RemoveButton status={status} onClick={removeCard} size={'12'} />
+        <RemoveButton
+          status={status}
+          onClick={removeCard}
+          size={'12'}
+          where="main"
+        />
         <S.WeatherButton onClick={gotoDetail} status={status}>
           <S.ItemTitle ref={cityName}>{weatherInfo.name}</S.ItemTitle>
           <S.CurrentWeatherIcon>

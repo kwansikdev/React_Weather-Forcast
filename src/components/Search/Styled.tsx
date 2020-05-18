@@ -182,12 +182,15 @@ export const ListsUl = styled.ul`
 `;
 
 export const ListLi = styled.li`
+  position: relative;
   width: 100%;
   animation: ${leftSlide} 1s ease-out forwards;
   margin: 20px;
 
   ${media.desktop`
-    width: 44%;
+    min-width: 39%;
+    max-width: 43%;
+    width: auto;
   `}
 `;
 
