@@ -179,6 +179,10 @@ export const ListsUl = styled.ul`
   max-height: 90%;
   overflow-y: auto;
   flex-wrap: wrap;
+
+  ${media.desktop`
+    justify-content: space-around;
+  `}
 `;
 
 export const ListLi = styled.li`
@@ -188,9 +192,18 @@ export const ListLi = styled.li`
   margin: 20px;
 
   ${media.desktop`
-    min-width: 39%;
+    width: 39%;
     max-width: 43%;
-    width: auto;
+
+    button:first-child {
+      visibility: hidden;
+    }
+
+    &:hover {
+      button:first-child {
+        visibility: visible;
+      }
+    }
   `}
 `;
 

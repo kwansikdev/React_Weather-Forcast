@@ -33,7 +33,6 @@ const Removebutton = styled.button`
   }
 
   ${media.desktop`
-    visibility: hidden;
   `};
 
   ${media.mobile`
