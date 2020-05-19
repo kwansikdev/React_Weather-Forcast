@@ -179,15 +179,31 @@ export const ListsUl = styled.ul`
   max-height: 90%;
   overflow-y: auto;
   flex-wrap: wrap;
+
+  ${media.desktop`
+    justify-content: space-around;
+  `}
 `;
 
 export const ListLi = styled.li`
+  position: relative;
   width: 100%;
   animation: ${leftSlide} 1s ease-out forwards;
   margin: 20px;
 
   ${media.desktop`
-    width: 44%;
+    width: 39%;
+    max-width: 43%;
+
+    button:first-child {
+      visibility: hidden;
+    }
+
+    &:hover {
+      button:first-child {
+        visibility: visible;
+      }
+    }
   `}
 `;
 
