@@ -24,8 +24,9 @@ export const DetailView = styled.div`
 export const MenuListsSection = styled.section`
   position: relative;
   width: 12vw;
-  height: 93.5vh;
-  padding: 32px 0 50px 32px;
+  height: 730px;
+  padding: 32px 0 0 32px;
+  margin-bottom: 50px;
   text-align: center;
 
   ${media.mobile`
@@ -35,13 +36,20 @@ export const MenuListsSection = styled.section`
 
 export const MenuListsUL = styled.ul`
   width: 100%;
+  max-height: 600px;
   overflow-y: auto;
+  padding-right: 10px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   ${media.tablet`
 
   `};
 
   ${media.mobile`
+
   `};
 `;
 

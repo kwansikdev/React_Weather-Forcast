@@ -8,7 +8,6 @@ const Svg = styled.svg`
   cursor: pointer;
 
   path {
-    /* fill: ${({ status }: TProps) => (status ? `#757575` : `#85fee6`)}; */
     fill: ${({ status, location }: TProps) =>
       location === 'home'
         ? status
@@ -18,7 +17,7 @@ const Svg = styled.svg`
         ? status
           ? darkTheme.gradient
           : '#6867ab'
-        : ``};;
+        : ``};
   }
 `;
 

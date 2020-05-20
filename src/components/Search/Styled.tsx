@@ -27,6 +27,7 @@ export const AddDiv = styled.div`
 export const SearchSection = styled.section`
   background: ${({ status }: TStatus) => (status ? darkTheme.header : '#fff')};
   width: 50%;
+  height: 664px;
   padding: 30px;
   border-right: ${({ status }: TStatus) =>
     status ? `1px solid #616161` : 'none'};
@@ -157,6 +158,7 @@ export const ListsSection = styled.section`
   background: ${({ status }: TStatus) =>
     status ? darkTheme.header : lightTheme.gradient1};
   width: 50%;
+  height: 664px;
   padding: 20px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
