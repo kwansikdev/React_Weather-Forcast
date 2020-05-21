@@ -24,6 +24,7 @@ typescript 과 openweathermaps api 를 사용한 세계 날씨 App
 2. 도시명 입력시 날씨 데이터 가져오기
 3. HOME 화면에서 검색한 도시별로 UI 구현
 4. 선택한 도시의 현재 날씨와 앞으로의 5일 날씨데이터를 보여주는 UI 구현
+5. 반응형 UI (Mobile, Tablet, Desktop)
 
 <br>
 
@@ -33,7 +34,8 @@ typescript 과 openweathermaps api 를 사용한 세계 날씨 App
 
 1. HTML5
 2. CSS3
-3. ReactJS
+3. JavaScript
+4. ReactJS
 4. TypeScript
 
 
