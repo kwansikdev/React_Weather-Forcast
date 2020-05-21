@@ -64,7 +64,7 @@ Light mode
 
 ![Home](https://user-images.githubusercontent.com/37237125/82225897-bd4be800-9960-11ea-86c0-ca4e7ee3c58f.png)
 
-
+![Detial](https://user-images.githubusercontent.com/37237125/82457595-902e3f80-9af0-11ea-8839-f5d48761d6b1.png)
 
 <br />
 
@@ -75,4 +75,6 @@ Dark mode
 ![Search](https://user-images.githubusercontent.com/37237125/82338841-4e39c680-9a28-11ea-90ac-2fad2af5506c.png)
 
 ![Home](https://user-images.githubusercontent.com/37237125/82338883-585bc500-9a28-11ea-814c-86dcfa3f3fdb.png)
+
+![Detail](https://user-images.githubusercontent.com/37237125/82457630-9de3c500-9af0-11ea-87d9-60e689e0e0a9.png)
 
