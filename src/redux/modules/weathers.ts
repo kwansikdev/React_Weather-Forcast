@@ -54,7 +54,6 @@ function* addList({ payload }: ReturnType<typeof addListSaga>) {
     );
 
     if (data) {
-      console.log(data);
       yield put(
         actions.success({
           city_weathers: [...city_weathers, data],
@@ -163,7 +162,6 @@ function* addFiveDaysWeather({
 
   try {
     yield put(actions.request());
-    console.log('1');
     const { data } = yield call(WeatherServices.getFiveDayWeather, payload);
 
     const weekend = getWeekendWeather(data);

@@ -19,10 +19,6 @@ export default function Nav() {
     isOpen(!open);
   };
 
-  useEffect(() => {
-    console.log('open', open);
-  }, [open]);
-
   return (
     <>
       <S.NavButton onClick={openMenu}>

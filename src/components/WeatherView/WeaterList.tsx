@@ -67,7 +67,6 @@ const WeatherList: React.FC<RouteComponentProps & TProps> = ({
 
   const removeCard = () => {
     // 사가함수 하나로 합치기
-    console.log(cityName.current.innerHTML);
     dispatch(removeCitySaga(cityName.current.innerHTML));
   };
 
