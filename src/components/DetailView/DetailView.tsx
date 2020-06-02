@@ -54,9 +54,6 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
             ))}
         </S.MenuListsUL>
         <S.ListAddMenu>
-          {/* <S.ListAddButton onClick={gotoAddMenu}>
-            <img src="/images/plus.svg" alt="도시추가" />
-          </S.ListAddButton> */}
           <PlusButton
             status={status}
             onClick={gotoAddMenu}

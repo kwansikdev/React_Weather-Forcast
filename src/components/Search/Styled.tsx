@@ -92,7 +92,6 @@ export const SearchInput = styled.input`
   width: 100%;
   padding: 15px 40px 15px 20px;
   border-radius: 30px;
-  border: none;
   box-shadow: 0 0 10px 3px rgba(0, 0, 255, 0.2);
   font-size: 1.6rem;
   outline: none;
