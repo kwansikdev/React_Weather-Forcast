@@ -24,7 +24,6 @@ export const DetailView = styled.div`
 export const MenuListsSection = styled.section`
   position: relative;
   width: 12vw;
-  height: 730px;
   padding: 32px 0 0 32px;
   margin-bottom: 50px;
   text-align: center;
@@ -36,21 +35,13 @@ export const MenuListsSection = styled.section`
 
 export const MenuListsUL = styled.ul`
   width: 100%;
-  max-height: 600px;
+  max-height: calc(100vh - 200px);
   overflow-y: auto;
   padding-right: 10px;
 
   &::-webkit-scrollbar {
     display: none;
   }
-
-  ${media.tablet`
-
-  `};
-
-  ${media.mobile`
-
-  `};
 `;
 
 export const ListAddMenu = styled.div`
@@ -82,11 +73,10 @@ export const DetailSection = styled.section`
   height: 93.5vh;
   padding: 32px 32px 50px 32px;
 
-  ${media.tablet`
-
-  `};
-
-  ${media.mobile`
+  ${media.desktop`
+    div:first-child {
+      visibility: hidden;
+    }
   `};
 `;
 
@@ -114,11 +104,7 @@ export const ConditionBox = styled.div`
   ${media.mobile`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-
-    div + div {
-      margin-top: 10px;
-    }
+    justify-content: space-evenly;
   `}
 `;
 
@@ -134,6 +120,7 @@ export const CityBox = styled.div`
 `;
 
 export const CityName = styled.div`
+  display: inline-block;
   font-size: 3rem;
 
   span {
@@ -142,8 +129,6 @@ export const CityName = styled.div`
   }
 
   ${media.mobile`
-    font-size: 2rem;
-
     span {
       padding-bottom: 5px;
       box-shadow: 0 2px 0 0 #fff;
@@ -160,6 +145,7 @@ export const DetailBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-top: 15px;
   `}
 `;
 
@@ -180,6 +166,7 @@ export const TempBox = styled.div`
   ${media.mobile`
     p {
       font-size: 3.5rem;
+      margin-top: 15px;
     }
 
     span {
