@@ -50,7 +50,7 @@ export const SearchSection = styled.section`
 
   ${media.mobile`
     width: 100%;
-    height: 250px;
+    height: 230px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
     border-right: none;
@@ -113,7 +113,6 @@ export const SearchButton = styled.button`
   position: absolute;
   top: -3px;
   right: 9%;
-  /* background: rgba(49, 264, 174, 1); */
   border: none;
   box-shadow: 0 0 10px 3px rgba(0, 0, 255, 0.2);
   border-radius: 30px;
@@ -168,7 +167,6 @@ export const ListsSection = styled.section`
 
   ${media.mobile`
     width: 100%;
-    height: 474px;
     border-top-right-radius: 0;
     border-bottom-left-radius: 20px;
   `}

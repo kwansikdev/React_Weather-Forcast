@@ -12,7 +12,6 @@ type TSvg = {
 const Svg = styled.svg`
   width: 25px;
   rect {
-    /* fill: #2b244d; */
     fill: #242424;
     fill: ${({ status }: TSvg) =>
       status ? lightTheme.header : darkTheme.header};

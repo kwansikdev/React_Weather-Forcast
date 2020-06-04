@@ -11,7 +11,15 @@ export const View = styled.div`
   background: ${({ status }: TStatus) =>
     status ? darkTheme.gradient : lightTheme.gradient};
   padding: 0 45px;
-  min-height: 93.5vh;
+  min-height: 93.4vh;
+
+  ${media.desktop`
+    min-height: 93.5vh;
+  `}
+
+  ${media.mobile`
+    min-height: 94vh;
+  `}
 `;
 
 export const WeatherLists = styled.ul`
@@ -26,15 +34,17 @@ export const WeatherList = styled.li`
   width: 100%;
   margin: 32px;
 
-  button:first-child {
-    visibility: hidden;
-  }
-
-  &:hover {
+  ${media.desktop`
     button:first-child {
-      visibility: visible;
+      visibility: hidden;
     }
+
+    &:hover {
+      button:first-child {
+        visibility: visible;
+      }
   }
+  `}
 
   ${media.tablet`
 
