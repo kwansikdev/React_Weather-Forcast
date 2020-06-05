@@ -11,7 +11,7 @@ type TSvg = {
   status: boolean;
 };
 
-const Div = styled.div`
+const Button = styled.button`
   position: absolute;
   top: 8px;
   left: 8px;
@@ -29,10 +29,10 @@ const Svg = styled.svg`
 `;
 
 export default function Back({ onClick }: TProps) {
-  const status = useSelector((state: RouteState) => state.common.status);
+  // const status = useSelector((state: RouteState) => state.common.status);
 
   return (
-    <Div onClick={onClick}>
+    <Button onClick={onClick}>
       <Svg viewBox="0 0 492 492">
         <g>
           <g>
@@ -47,6 +47,6 @@ export default function Back({ onClick }: TProps) {
           </g>
         </g>
       </Svg>
-    </Div>
+    </Button>
   );
 }

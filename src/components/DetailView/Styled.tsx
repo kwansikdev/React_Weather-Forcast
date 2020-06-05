@@ -74,7 +74,7 @@ export const DetailSection = styled.section`
   padding: 32px 32px 50px 32px;
 
   ${media.desktop`
-    div:first-child {
+    button:first-child {
       visibility: hidden;
     }
   `};
