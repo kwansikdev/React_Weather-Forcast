@@ -1,15 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RouteState } from '../../redux/modules/reducer';
 import styled from 'styled-components';
 
-type TProps = {
+interface TProps {
   onClick?: () => void;
-};
+}
 
-type TSvg = {
+interface TSvg {
   status: boolean;
-};
+}
 
 const Button = styled.button`
   position: absolute;
@@ -29,8 +27,6 @@ const Svg = styled.svg`
 `;
 
 export default function Back({ onClick }: TProps) {
-  // const status = useSelector((state: RouteState) => state.common.status);
-
   return (
     <Button onClick={onClick}>
       <Svg viewBox="0 0 492 492">

@@ -146,7 +146,7 @@ export const CurrentStatus = styled.p`
 
 export const ItemTemp = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
 
   div + div {

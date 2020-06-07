@@ -243,7 +243,7 @@ export const ListTemHigh = styled.p`
 `;
 
 export const GotoView = styled.button`
-  background: transparent;
+  background: #fff;
   position: absolute;
   width: 50px;
   height: 50px;
