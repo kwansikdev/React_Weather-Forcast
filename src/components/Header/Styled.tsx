@@ -270,10 +270,6 @@ export const CurrentTime = styled.div`
   ${media.mobile`
     visibility: hidden;
   `}
-
-  /* ${media.mobile2`
-    visibility: hidden;
-  `} */
 `;
 
 export const Data = styled.p``;
@@ -306,16 +302,6 @@ export const ThemeMode = styled.div`
       display: none;
     }
   `}
-
-  /* ${media.mobile2`
-    font-size: 1.2rem;
-
-    span {
-      display: none;
-    }
-  `} */
-
-
 `;
 
 export const ToggleLabel = styled.label`

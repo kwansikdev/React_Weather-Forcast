@@ -6,6 +6,7 @@ import WeatherDetail from './WeatherDetail';
 import { currentWeahterType } from '../../Typescript/currentWeahterType';
 import { City, List } from '../../Typescript/fiveDaysWeatherType';
 import PlusButton from '../Common/PlusButton';
+import Back from '../Common/Back';
 
 type TProps = {
   status: boolean;
@@ -38,6 +39,10 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
     currentCity(selectList);
   }
 
+  function gotoHome() {
+    history.push('/');
+  }
+
   return (
     <S.DetailView status={status}>
       <S.MenuListsSection>
@@ -54,9 +59,6 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
             ))}
         </S.MenuListsUL>
         <S.ListAddMenu>
-          {/* <S.ListAddButton onClick={gotoAddMenu}>
-            <img src="/images/plus.svg" alt="도시추가" />
-          </S.ListAddButton> */}
           <PlusButton
             status={status}
             onClick={gotoAddMenu}
@@ -65,9 +67,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
         </S.ListAddMenu>
       </S.MenuListsSection>
       <S.DetailSection>
-        {/* <S.BackButton>
-          <S.ButtonCircle />
-        </S.BackButton> */}
+        <Back onClick={gotoHome} />
         <WeatherDetail
           status={status}
           currentWeather={currentWeather}
