@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import ForecastList from './ForecastList';
 import * as S from './Styled';
 import { currentWeahterType } from '../../Typescript/currentWeahterType';
@@ -31,11 +32,9 @@ export default function WeatherDetail({
     <>
       <S.DetailWeatherBox status={status}>
         <S.ConditionBox>
-          <S.CityBox>
-            <S.CityName>
-              <span>{WeatherInfo.name}</span>
-            </S.CityName>
-          </S.CityBox>
+          <S.InfoBox>
+            <S.CityName>{WeatherInfo.name}</S.CityName>
+          </S.InfoBox>
           <S.DetailBox>
             <S.TempBox>
               <p>{WeatherInfo.temp}°</p>
@@ -61,6 +60,12 @@ export default function WeatherDetail({
               <ForecastList key={index} status={status} day={day} />
             ))}
         </S.ForecastLists>
+        <S.TimeInfo status={status}>
+          {moment(
+            currentFiveDaysWeather && currentFiveDaysWeather.weekend[0].dt_txt,
+          ).format('LT')}{' '}
+          기준
+        </S.TimeInfo>
       </S.DetailForecastBox>
     </>
   );

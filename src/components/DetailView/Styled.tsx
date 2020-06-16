@@ -108,7 +108,7 @@ export const ConditionBox = styled.div`
   `}
 `;
 
-export const CityBox = styled.div`
+export const InfoBox = styled.div`
   position: absolute;
   top: 20%;
   right: 15%;
@@ -119,21 +119,24 @@ export const CityBox = styled.div`
   `}
 `;
 
-export const CityName = styled.div`
+export const CityName = styled.p`
   display: inline-block;
   font-size: 3rem;
-
-  span {
-    padding-bottom: 10px;
-    box-shadow: 0 4px 0 0 #fff;
-  }
+  padding-bottom: 10px;
+  box-shadow: 0 4px 0 0 #fff;
 
   ${media.mobile`
-    span {
-      padding-bottom: 5px;
-      box-shadow: 0 2px 0 0 #fff;
-    }
+    padding-bottom: 5px;
+    box-shadow: 0 2px 0 0 #fff;
   `}
+`;
+
+export const TimeInfo = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 32px;
+  font-size: 1.6rem;
+  color: ${({ status }: TStatus) => status && '#eee'};
 `;
 
 export const DetailBox = styled.div`
@@ -233,6 +236,7 @@ export const WindInfo = styled.div`
 
 //Detail Forecast Box
 export const DetailForecastBox = styled.div`
+  position: relative;
   background: #fff8fb;
   height: 50%;
   padding: 32px;
