@@ -254,6 +254,8 @@ export const GotoView = styled.button`
   cursor: pointer;
 
   ${media.desktop`
+    background: transparent;
+
     &:hover {
       background: #fff;
     }
