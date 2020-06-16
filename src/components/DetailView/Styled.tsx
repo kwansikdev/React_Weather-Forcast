@@ -137,6 +137,12 @@ export const TimeInfo = styled.div`
   right: 32px;
   font-size: 1.6rem;
   color: ${({ status }: TStatus) => status && '#eee'};
+
+  ${media.mobile`
+    top: 8px;
+    right: 16px;
+    font-size: 1.2rem;
+  `}
 `;
 
 export const DetailBox = styled.div`
