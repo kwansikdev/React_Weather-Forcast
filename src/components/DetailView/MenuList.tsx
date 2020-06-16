@@ -6,7 +6,7 @@ const List = styled.li`
   position: relative;
   background: ${({ status }: TStatus) =>
     status ? darkTheme.listColor : lightTheme.gradient2};
-  min-width: 70px;
+  min-width: 50px;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -23,6 +23,7 @@ const List = styled.li`
     font-size: 1.8rem;
     font-weight: 700;
     word-break: keep-all;
+    word-break: break-word;
     /* color */
   }
 
