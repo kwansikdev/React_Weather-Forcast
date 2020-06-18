@@ -25,14 +25,14 @@ export const AddDiv = styled.div`
 
 // 검색영역
 export const SearchSection = styled.section`
-  background: ${({ status }: TStatus) => (status ? darkTheme.header : '#fff')};
+  background: ${({ status }: TStatus) =>
+    status ? darkTheme.header : 'rgba(255, 255, 255, 0.8)'};
   width: 50%;
   height: 664px;
   padding: 30px;
   border-right: ${({ status }: TStatus) =>
     status ? `1px solid #616161` : 'none'};
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius: 20px;
 
   h2 {
     color: ${({ status }: TStatus) =>
@@ -53,6 +53,7 @@ export const SearchSection = styled.section`
     height: 230px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     border-right: none;
     border-bottom: ${({ status }: TStatus) =>
       status ? `1px solid #616161` : 'none'};
@@ -157,18 +158,25 @@ export const ListsSection = styled.section`
     status ? darkTheme.header : lightTheme.gradient1};
   width: 50%;
   height: 664px;
-  padding: 20px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 
   ${media.tablet`
     width: 50%;
+    background: transparent;
   `}
 
   ${media.mobile`
     width: 100%;
+    padding: 20px;
     border-top-right-radius: 0;
     border-bottom-left-radius: 20px;
+    background: ${({ status }: TStatus) =>
+      status ? darkTheme.header : lightTheme.gradient1};
+  `}
+
+  ${media.desktop`
+    background: transparent;
   `}
 `;
 
@@ -209,6 +217,7 @@ export const ListLi = styled.li`
 export const ListButton = styled.button`
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
   width: 100%;
   height: auto;
   align-items: center;
