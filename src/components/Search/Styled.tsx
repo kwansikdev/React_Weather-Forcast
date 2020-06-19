@@ -30,8 +30,6 @@ export const SearchSection = styled.section`
   width: 50%;
   height: 664px;
   padding: 30px;
-  border-right: ${({ status }: TStatus) =>
-    status ? `1px solid #616161` : 'none'};
   border-radius: 20px;
 
   h2 {
@@ -54,7 +52,6 @@ export const SearchSection = styled.section`
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-right: none;
     border-bottom: ${({ status }: TStatus) =>
       status ? `1px solid #616161` : 'none'};
   `}
