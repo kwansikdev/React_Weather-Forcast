@@ -28,7 +28,8 @@ const Removebutton = styled.button`
     height: 100%;
 
     path {
-      fill: ${({ status }: TProps) => (status ? `#e0e0e0` : `#424242`)};
+      /* fill: ${({ status }: TProps) => (status ? `#e0e0e0` : `#424242`)}; */
+      fill: #424242;
     }
   }
 
