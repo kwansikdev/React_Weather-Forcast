@@ -22,7 +22,7 @@ const actions = createAsyncAction(pending, success, fail)<
   Error
 >();
 
-type CommonAction = ActionType<typeof actions>;
+// type CommonAction = ActionType<typeof actions>;
 
 // saga function
 export const addThemeStatusSaga = createAction(

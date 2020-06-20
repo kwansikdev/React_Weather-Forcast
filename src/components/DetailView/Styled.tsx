@@ -140,7 +140,7 @@ export const TimeInfo = styled.div`
 
   ${media.mobile`
     top: 8px;
-    right: 16px;
+    left: 16px;
     font-size: 1.2rem;
   `}
 `;
