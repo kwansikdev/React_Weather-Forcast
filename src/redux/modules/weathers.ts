@@ -27,7 +27,7 @@ type TSuccess = {
   fiveDays?: any[];
 };
 
-export const actions = createAsyncAction(pending, success, fail)<
+const actions = createAsyncAction(pending, success, fail)<
   undefined,
   TSuccess,
   Error

@@ -31,6 +31,10 @@ export const MenuListsSection = styled.section`
   ${media.mobile`
     display: none;
   `};
+
+  ${media.tablet`
+    display: none;
+  `}
 `;
 
 export const MenuListsUL = styled.ul`
@@ -78,6 +82,10 @@ export const DetailSection = styled.section`
       visibility: hidden;
     }
   `};
+
+  ${media.tablet`
+    margin: auto;
+  `}
 `;
 
 // Detail Weather Box
