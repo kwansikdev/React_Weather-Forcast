@@ -1,20 +1,16 @@
 # React_Weather Forecast with Typescript
-<br>
 
+<br>
 
 ## 주제
 
 TypeScript 와 openweathermaps api 를 사용한 세계 날씨 App
-
-
 
 <br>
 
 ## 주제 선정 이유
 
 패스트캠퍼스 프론트앤드 반 수강 시 하루짜리 해커톤 때 했었던 프로젝트였지만, 이번에 TypeScript 를 공부해 적용해서 해보고 싶었습니다.
-
-
 
 <br>
 
@@ -36,10 +32,8 @@ TypeScript 와 openweathermaps api 를 사용한 세계 날씨 App
 2. CSS3
 3. JavaScript
 4. ReactJS
-4. TypeScript
-5. redux-saga
-
-
+5. TypeScript
+6. redux-saga
 
 ### 추가 스펙
 
@@ -52,9 +46,7 @@ TypeScript 와 openweathermaps api 를 사용한 세계 날씨 App
 7. typesafe-actions
 8. redux-devtools-extension
 9. moment
-
-
-
+10. react-autosuggest
 
 <br>
 
@@ -81,4 +73,3 @@ Dark mode
 ![Home](https://user-images.githubusercontent.com/37237125/82338883-585bc500-9a28-11ea-814c-86dcfa3f3fdb.png)
 
 ![Detail](https://user-images.githubusercontent.com/37237125/82457630-9de3c500-9af0-11ea-87d9-60e689e0e0a9.png)
-
