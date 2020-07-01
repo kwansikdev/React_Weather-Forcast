@@ -18,6 +18,7 @@ export const DetailView = styled.div`
 
   ${media.mobile`
     justify-content: center;
+    min-height: 94vh;
   `};
 `;
 
