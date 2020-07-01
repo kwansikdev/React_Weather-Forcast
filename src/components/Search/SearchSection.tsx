@@ -26,7 +26,9 @@ export default function SearchSection({
 
   function enter({ keyCode, target }: React.KeyboardEvent<HTMLInputElement>) {
     const _target = target as HTMLInputElement;
+    const regexr = /[ㄱ-ㅎㅏ-ㅣ,가-힣]/g;
 
+    if (regexr.test(_target.value)) return (_target.value = '');
     if (keyCode !== 13 || _target.value === '' || _target.value === null)
       return;
 
@@ -46,6 +48,7 @@ export default function SearchSection({
               placeholder="SEARCH CITY"
               type="search"
               onKeyUp={enter}
+              autoFocus
             />
             {/* <S.SearchAutoList>
               <span>자동완성</span>

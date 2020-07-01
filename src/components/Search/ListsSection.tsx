@@ -7,17 +7,14 @@ import { RouteState } from '../../redux/modules/reducer';
 
 type TProps = {
   status: boolean;
+  cityLists: string[];
 };
 
 const ListsSection: React.FC<RouteComponentProps & TProps> = ({
   status,
+  cityLists,
   history,
 }) => {
-  const cityLists = useSelector(
-    (state: RouteState) => state.weathers.cityLists,
-  );
-
-  //
   const cityWeathers = useSelector(
     (state: RouteState) => state.weathers.city_weathers,
   );
@@ -38,7 +35,7 @@ const ListsSection: React.FC<RouteComponentProps & TProps> = ({
             />
           ))}
         </S.ListsUl>
-        <S.GotoView onClick={goHome}>
+        <S.GotoView onClick={goHome} status={cityLists.length}>
           <img src="/images/next.svg" alt="메인으로 이동" />
         </S.GotoView>
       </S.ListsSection>

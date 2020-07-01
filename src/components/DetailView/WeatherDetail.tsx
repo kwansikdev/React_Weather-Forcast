@@ -62,7 +62,9 @@ export default function WeatherDetail({
         </S.ForecastLists>
         <S.TimeInfo status={status}>
           {moment(
-            currentFiveDaysWeather && currentFiveDaysWeather.weekend[0].dt_txt,
+            currentFiveDaysWeather &&
+              currentFiveDaysWeather.weekend[0] &&
+              currentFiveDaysWeather.weekend[0].dt_txt,
           ).format('LT')}{' '}
           기준
         </S.TimeInfo>
