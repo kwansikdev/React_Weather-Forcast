@@ -17,6 +17,7 @@ export const AddDiv = styled.div`
   ${({ status }: TStatus) => status && css``}
 
   ${media.mobile`
+    height: 94%;
     flex-direction:column;
     padding: 40px;
     justify-content: space-between;
@@ -48,7 +49,7 @@ export const SearchSection = styled.section`
 
   ${media.mobile`
     width: 100%;
-    height: 230px;
+    height: 200px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -248,6 +249,10 @@ export const ListTemHigh = styled.p`
   display: inline-block;
 `;
 
+type Tbutton = {
+  status: number;
+};
+
 export const GotoView = styled.button`
   background: #fff;
   position: absolute;
@@ -258,6 +263,7 @@ export const GotoView = styled.button`
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  visibility: ${({ status }: Tbutton) => (status === 0 ? 'hidden' : 'visible')};
 
   ${media.desktop`
     background: transparent;
@@ -265,9 +271,7 @@ export const GotoView = styled.button`
     &:hover {
       background: #fff;
     }
-  `}
-
-  img {
+  `} img {
     width: 40px;
   }
 `;
