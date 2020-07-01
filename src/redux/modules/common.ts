@@ -1,7 +1,6 @@
 import {
   createAction,
   createAsyncAction,
-  ActionType,
   createReducer,
 } from 'typesafe-actions';
 import { put, takeLatest } from 'redux-saga/effects';
