@@ -8,7 +8,7 @@ type TStatus = {
 
 export const Header = styled.header`
   background: ${({ status }: TStatus) =>
-    status ? darkTheme.header : lightTheme.header};
+    status ? darkTheme.header : 'transparent'};
   display: flex;
   position: relative;
   justify-content: space-between;
