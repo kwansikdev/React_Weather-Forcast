@@ -1,5 +1,6 @@
 import React, { createRef } from 'react';
 import * as S from './Styled';
+import A11yTitle from '../Common/A11yTitle';
 
 interface TProps {
   status: boolean;
@@ -40,6 +41,7 @@ export default function SearchSection({
   return (
     <>
       <S.SearchSection status={status}>
+        <A11yTitle>도시검색</A11yTitle>
         <S.SearchTitle>search cites</S.SearchTitle>
         <S.SearchForm>
           <S.SearchBox>

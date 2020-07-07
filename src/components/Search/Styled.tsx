@@ -185,6 +185,10 @@ export const ListsUl = styled.ul`
   overflow-y: auto;
   flex-wrap: wrap;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   ${media.desktop`
     justify-content: space-around;
   `}
