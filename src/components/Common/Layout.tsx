@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import HeaderContainer from '../../container/HeaderContainer';
-import { RouteState } from '../../redux/modules/reducer';
+import { RootState } from '../../redux/modules/reducer';
 
 type TLayoutProps = {
   children: React.ReactNode;
@@ -24,21 +24,13 @@ const StyledBg = styled.div`
   overflow: hidden;
 `;
 
-const StyledArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 90%;
-`;
-
 export default function Layout({ children }: TLayoutProps) {
-  const status = useSelector((state: RouteState) => state.common.status);
+  const status = useSelector((state: RootState) => state.common.status);
 
   return (
     <StyledBg status={status}>
       <HeaderContainer />
-      <StyledArea>{children}</StyledArea>
+      {children}
     </StyledBg>
   );
 }

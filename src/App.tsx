@@ -11,7 +11,6 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/weathers/view" component={View} />
-          <Route exact path="/weathers/add" component={Add} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
