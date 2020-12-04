@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import SearchSection from '../components/Search/SearchSection';
-import { RouteState } from '../redux/modules/reducer';
+import SearchSection from '../components/WeatherView/SearchSection';
+import { RootState } from '../redux/modules/reducer';
 import { addFiveDaysWeatherSaga, addListSaga } from '../redux/modules/weathers';
 
 export default connect(
-  (state: RouteState) => ({
+  (state: RootState) => ({
     status: state.common.status,
   }),
   dispatch => ({
