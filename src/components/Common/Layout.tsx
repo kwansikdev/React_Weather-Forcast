@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import HeaderContainer from '../../container/HeaderContainer';
+import media from '../../libs/MediaQuery';
 import { RootState } from '../../redux/modules/reducer';
 
 type TLayoutProps = {
@@ -22,6 +23,10 @@ const StyledBg = styled.div`
   height: 100vh;
   padding: 0 50px;
   overflow: hidden;
+
+  ${media.mobile`
+    padding: 0 20px;
+  `}
 `;
 
 export default function Layout({ children }: TLayoutProps) {

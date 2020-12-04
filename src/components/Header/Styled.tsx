@@ -10,7 +10,7 @@ export const Header = styled.header`
   display: flex;
   position: relative;
   justify-content: space-between;
-  padding: 10px 40px;
+  margin-top: 10px;
 `;
 
 // Logo
@@ -23,22 +23,10 @@ export const Logo = styled.h1`
   font-size: 1.6rem;
   color: #fff;
 
-  ${media.tablet`
-
-  `};
-
   ${media.mobile`
-    top: 17px;
-    left: calc(50% - 66px);
-
-    img {
-      width: 20px;
-    }
-
-    span {
-      font-size: 1.6rem;
-    }
-  `}
+    padding-top: 38px;
+    font-size: 1.2rem;
+  `};
 `;
 
 // Nav
@@ -288,6 +276,14 @@ export const ToggleLabel = styled.label`
     visibility: hidden;
     border: 0;
   }
+
+  ${media.tablet`
+    margin-top: -7px;
+  `}
+
+  ${media.mobile`
+    margin-top: -5px;
+  `}
 `;
 
 interface toggleProps {
