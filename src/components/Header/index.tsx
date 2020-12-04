@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import * as S from './Styled';
-import Nav from './Nav';
 import CurrentTime from './CurrentTime';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 type TProps = {
   status: boolean;
@@ -18,23 +18,23 @@ export default function Header({ addThemeStatus, status }: TProps) {
   };
 
   return (
-    <S.Header status={status}>
-      <S.Logo>
-        <Link to="/">
-          <img src="/images/k_logo.png" alt="logo" />
-          <span>WEACAST</span>
-        </Link>
-      </S.Logo>
-      <Nav />
+    <S.Header>
+      <S.Logo>WEACAST</S.Logo>
       <CurrentTime />
       <S.ThemeMode>
-        <span>Light</span>
+        <FontAwesomeIcon
+          icon={faSun}
+          style={{ fontSize: '2rem', color: `#fff` }}
+        />
         <S.ToggleLabel>
           <input type="checkbox" onChange={toggleSwitch} />
           <S.ToggleBg status={toggleStatus} />
           <S.ToggleCircle status={toggleStatus} />
         </S.ToggleLabel>
-        <span>Dark</span>
+        <FontAwesomeIcon
+          icon={faMoon}
+          style={{ fontSize: '2rem', color: `#fff` }}
+        />
       </S.ThemeMode>
     </S.Header>
   );
