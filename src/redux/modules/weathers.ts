@@ -117,13 +117,14 @@ function* addFiveDaysWeather({
 
   function getWeekendWeather(data: FiveDaysWeatherType) {
     const today = new Date();
+
     const todayToString = today.toUTCString();
 
     const todayMilli = Date.parse(todayToString);
 
     const arrTime = [
       today.getFullYear(),
-      '0' + (today.getMonth() + 1),
+      today.getMonth() < 10 ? '0' + today.getMonth() + 1 : today.getMonth() + 1,
       today.getDate() < 10 ? '0' + today.getDate() : today.getDate(),
     ];
 
@@ -164,11 +165,11 @@ function* addFiveDaysWeather({
     yield put(actions.request());
     const { data } = yield call(WeatherServices.getFiveDayWeather, payload);
 
-    const weekend = getWeekendWeather(data);
+    const sortingData = getWeekendWeather(data);
 
     yield put(
       actions.success({
-        fiveDays: [...fiveDays, weekend],
+        fiveDays: [...fiveDays, sortingData],
       }),
     );
   } catch (Error) {

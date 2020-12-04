@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darkTheme, lightTheme } from '../../Theme';
 import media from '../../libs/MediaQuery';
 
 type TStatus = {
@@ -8,9 +7,13 @@ type TStatus = {
 
 // Detaul View
 export const DetailView = styled.div`
+  position: relative;
   display: flex;
-  background: ${({ status }: TStatus) =>
-    status ? darkTheme.listGradient : lightTheme.gradient};
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 30px;
+  padding: 50px 40px;
+  border-radius: 10px;
 
   ${media.tablet`
 
@@ -74,15 +77,9 @@ export const AddModal = styled.div`
 
 export const DetailSection = styled.section`
   position: relative;
-  width: 88vw;
-  height: 93.5vh;
-  padding: 32px 32px 50px 32px;
-
-  ${media.desktop`
-    button:first-child {
-      visibility: hidden;
-    }
-  `};
+  width: 100%;
+  /* height: calc(100vh - 55px);
+  padding: 32px 32px 50px 32px; */
 
   ${media.tablet`
     margin: auto;
@@ -92,18 +89,8 @@ export const DetailSection = styled.section`
 // Detail Weather Box
 
 export const DetailWeatherBox = styled.div`
-  background: ${({ status }: TStatus) =>
-    status ? darkTheme.listColor : lightTheme.gradient2};
-  display: flex;
-  height: 50%;
-  padding: 32px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  color: ${({ status }: TStatus) => (status ? darkTheme.color : `#eee`)};
-
-  ${media.mobile`
-    padding: 16px;
-  `}
+  /* padding: 32px; */
+  color: #fff;
 `;
 
 export const ConditionBox = styled.div`
@@ -129,23 +116,15 @@ export const InfoBox = styled.div`
 `;
 
 export const CityName = styled.p`
-  display: inline-block;
-  font-size: 3rem;
-  padding-bottom: 10px;
-  box-shadow: 0 4px 0 0 #fff;
-
-  ${media.mobile`
-    padding-bottom: 5px;
-    box-shadow: 0 2px 0 0 #fff;
-  `}
+  font-size: 7.2rem;
 `;
 
 export const TimeInfo = styled.div`
   position: absolute;
-  top: 10px;
-  right: 32px;
+  bottom: 30px;
+  right: 40px;
   font-size: 1.6rem;
-  color: ${({ status }: TStatus) => status && '#eee'};
+  color: #fff;
 
   ${media.mobile`
     top: 8px;
@@ -154,48 +133,20 @@ export const TimeInfo = styled.div`
   `}
 `;
 
-export const DetailBox = styled.div`
-  display: inline-block;
-  width: 60%;
+export const TempBox = styled.div``;
 
-  ${media.mobile`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 15px;
-  `}
+export const TempInfo = styled.p`
+  font-size: 6rem;
 `;
 
-export const TempBox = styled.div`
-  text-align: center;
-
-  p {
-    font-size: 9.6rem;
-  }
-
-  span {
-    font-size: 2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-  }
-
-  ${media.mobile`
-    p {
-      font-size: 3.5rem;
-      margin-top: 15px;
-    }
-
-    span {
-      font-size: 1.5rem;
-    }
-  `}
+export const FeelsLikeTempInpo = styled.p`
+  margin: 10px 0;
+  font-size: 2.4rem;
 `;
 
 export const HumWindBox = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 20px;
   text-align: center;
   font-size: 1.4rem;
@@ -205,60 +156,23 @@ export const HumWindBox = styled.div`
   `}
 `;
 
-export const HumidityInfo = styled.div`
-  width: 30%;
-  text-align: center;
+export const HumidityInfo = styled.p`
   padding-right: 20px;
   border-right: 1px solid #fff;
-
-  span {
-    display: block;
-    margin-top: 5px;
-  }
-
-  ${media.mobile`
-    width: 100%;
-    padding: 0;
-    border: none;
-
-    p {
-      font-weight: 700;
-    }
-  `}
 `;
 
-export const WindInfo = styled.div`
-  width: 30%;
-  text-align: center;
+export const WindInfo = styled.p`
   padding-left: 20px;
   border-left: 1px solid #fff;
-
-  span {
-    display: block;
-    margin-top: 5px;
-  }
-
-  ${media.mobile`
-    width: 100%;
-    padding: 0;
-    border: none;
-
-    p {
-      font-weight: 700;
-    }
-  `}
 `;
 
 //Detail Forecast Box
 export const DetailForecastBox = styled.div`
   position: relative;
-  background: #fff8fb;
-  height: 50%;
-  padding: 32px;
-  border-top: ${({ status }: TStatus) => status && `1px solid #616161`};
+  display: flex;
+  padding: 32px 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background: ${({ status }: TStatus) => status && darkTheme.listColor};
 
   ${media.mobile`
     padding: 16px;
@@ -268,7 +182,6 @@ export const DetailForecastBox = styled.div`
 export const ForecastLists = styled.ul`
   display: flex;
   justify-content: space-around;
-  height: 100%;
   margin: 0 auto;
 
   ${media.mobile`
@@ -295,14 +208,14 @@ export const BackArrow = styled.div``;
 // ForcastList
 
 export const ForecastListLi = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
-  padding: 10px 0;
-  text-align: center;
-  color: ${({ status }: TStatus) => (status ? darkTheme.color : `#39437a`)};
+  background: ${({ status }: TStatus) =>
+    status ? `rgba(35, 28, 30, 0.4)` : `rgba(60, 120, 159, 0.4)`};
+  width: 20%;
+  margin: 0 10px;
+  padding: 20px 0;
+  color: #fff;
   font-size: 2rem;
+  text-align: center;
 
   ${media.mobile`
     /* border-bottom: 1px solid black; */
@@ -322,6 +235,7 @@ export const ForecastListLi = styled.li`
 `;
 
 export const ForecastDate = styled.p`
+  margin-bottom: 25px;
   font-size: 2.4rem;
   font-weight: 600;
 
@@ -333,11 +247,8 @@ export const ForecastDate = styled.p`
 export const ForecastWeather = styled.div`
   display: flex;
   flex-direction: column;
-
-  img {
-    width: 100px;
-    margin: auto;
-  }
+  align-items: center;
+  margin-bottom: 25px;
 
   span {
     font-size: 1.6rem;

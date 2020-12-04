@@ -21,8 +21,6 @@ const actions = createAsyncAction(pending, success, fail)<
   Error
 >();
 
-// type CommonAction = ActionType<typeof actions>;
-
 // saga function
 export const addThemeStatusSaga = createAction(
   `${prefix}ADD_THEME_STATUS_SAGA`,
