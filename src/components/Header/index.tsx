@@ -3,6 +3,7 @@ import * as S from './Styled';
 import CurrentTime from './CurrentTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 type TProps = {
   status: boolean;
@@ -19,7 +20,9 @@ export default function Header({ addThemeStatus, status }: TProps) {
 
   return (
     <S.Header>
-      <S.Logo>WEACAST</S.Logo>
+      <Link to="/">
+        <S.Logo>WEACAST</S.Logo>
+      </Link>
       <CurrentTime />
       <S.ThemeMode>
         <FontAwesomeIcon

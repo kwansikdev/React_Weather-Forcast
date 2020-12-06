@@ -83,9 +83,11 @@ export const WeatherLists = styled.ul`
   justify-content: space-around;
 `;
 
-export const ListsSection = styled.section`
-  width: 400px;
-  min-width: 290px;
+export const ListsDiv = styled.div`
+  width: 500px;
+  min-width: 280px;
+  height: 70vh;
+  overflow: scroll;
 
   ${media.tablet`
     width: 100%;
@@ -93,38 +95,18 @@ export const ListsSection = styled.section`
   `}
 
   ${media.mobile`
-    margin-top: 20px;
     width: 100%;
+    margin-top: 20px;
   `}
 `;
 
-export const ListsUl = styled.ul`
-  display: flex;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  flex-wrap: wrap;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  ${media.desktop`
-    justify-content: space-around;
-  `}
-
-  ${media.tablet`
-    width: 400px;
-    max-height: 60vh;
-    margin: 0 auto;
-  `}
-`;
+export const ListsUl = styled.ul``;
 
 export const ListLi = styled.li`
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   position: relative;
-  width: 95%;
+  width: 100%;
   padding: 20px 30px;
   margin-bottom: 20px;
   backdrop-filter: blur(3px);
@@ -204,6 +186,10 @@ export const ListTemp = styled.div`
     font-weight: 400;
     color: #fff;
   }
+
+  p + p {
+    margin-left: 10px;
+  }
 `;
 
 export const ListTempHigh = styled.p``;
@@ -223,8 +209,9 @@ export const ViewDetailButton = styled.button`
   cursor: pointer;
 
   ${media.mobile`
-    bottom: 15px;
+    bottom: 5px;
     right: 15px;
+    font-size: 1.2rem;
   `}
 `;
 

@@ -26,7 +26,7 @@ const ListsSection: React.FC<RouteComponentProps & TProps> = ({
 
   return (
     <>
-      <S.ListsSection>
+      <S.ListsDiv>
         <A11yTitle>weather list</A11yTitle>
         <S.ListsUl>
           {cityLists.map((city, index) => (
@@ -39,7 +39,7 @@ const ListsSection: React.FC<RouteComponentProps & TProps> = ({
             />
           ))}
         </S.ListsUl>
-      </S.ListsSection>
+      </S.ListsDiv>
     </>
   );
 };
