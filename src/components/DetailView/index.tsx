@@ -11,28 +11,18 @@ import moment from 'moment';
 type TProps = {
   status: boolean;
   current: string;
-  city_weathers: currentWeahterType[];
-  fiveDays: any[];
   currentWeather: currentWeahterType;
   currentFiveDaysWeather: {
     city: City;
     weekend: List[];
   };
-  addList: (currentCity: string) => void;
-  addFiveDaysWeather: (currentCity: string) => void;
-  addCurrentCity: (currentCity: string) => void;
 };
 
 const DetailView: React.FC<RouteComponentProps & TProps> = ({
   status,
   history,
-  city_weathers,
-  fiveDays,
   currentFiveDaysWeather,
   currentWeather,
-  addList,
-  addFiveDaysWeather,
-  addCurrentCity,
 }) => {
   function gotoHome() {
     history.push('/');
@@ -41,11 +31,7 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
   return (
     <S.DetailView>
       <Back onClick={gotoHome} />
-      <WeatherDetail
-        status={status}
-        currentWeather={currentWeather}
-        currentFiveDaysWeather={currentFiveDaysWeather}
-      />
+      <WeatherDetail currentWeather={currentWeather} />
       <ForecastList
         status={status}
         currentFiveDaysWeather={currentFiveDaysWeather}

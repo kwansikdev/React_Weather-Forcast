@@ -1,26 +1,14 @@
 import React from 'react';
-import moment from 'moment';
-import ForecastList from './ForecastList';
 import * as S from './Styled';
 import { currentWeahterType } from '../../Typescript/currentWeahterType';
-import { City, List } from '../../Typescript/fiveDaysWeatherType';
 import A11yTitle from '../Common/A11yTitle';
 
 // type
 type TProps = {
-  status: boolean;
   currentWeather: currentWeahterType;
-  currentFiveDaysWeather: {
-    city: City;
-    weekend: List[];
-  };
 };
 
-export default function WeatherDetail({
-  status,
-  currentWeather,
-  currentFiveDaysWeather,
-}: TProps) {
+export default function WeatherDetail({ currentWeather }: TProps) {
   const WeatherInfo = {
     name: currentWeather && currentWeather.name,
     temp: currentWeather && (currentWeather.main.temp - 275.15).toFixed(0),
@@ -41,7 +29,7 @@ export default function WeatherDetail({
         <S.TempBox>
           <S.TempInfo>{WeatherInfo.temp}°</S.TempInfo>
           <S.FeelsLikeTempInpo>
-            Feels Like Temp {WeatherInfo.feelsLike}°
+            Feels Like {WeatherInfo.feelsLike}°
           </S.FeelsLikeTempInpo>
         </S.TempBox>
         <S.HumWindBox>

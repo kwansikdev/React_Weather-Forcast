@@ -17,12 +17,6 @@ export default function ForecastList({
   currentFiveDaysWeather,
 }: TProps) {
   const weekend = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
-  // const dayInfo = {
-  //   day: day && weekend[new Date(day.dt_txt).getDay()],
-  //   condition: day && day.weather[0].main,
-  //   temp: day && (day.main.temp - 275.15).toFixed(0),
-  //   img: day && day.weather[0].icon.slice(0, 2),
-  // };
 
   return (
     <S.DetailForecastBox>

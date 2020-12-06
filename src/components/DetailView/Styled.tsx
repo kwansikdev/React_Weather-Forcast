@@ -16,70 +16,19 @@ export const DetailView = styled.div`
   border-radius: 10px;
 
   ${media.tablet`
+    padding: 30px;
 
-  `};
-
-  ${media.mobile`
-    justify-content: center;
-    min-height: 94vh;
-  `};
-`;
-
-export const MenuListsSection = styled.section`
-  position: relative;
-  width: 12vw;
-  padding: 32px 0 0 32px;
-  margin-bottom: 50px;
-  text-align: center;
+    `};
 
   ${media.mobile`
-    display: none;
+    padding: 20px;
+
   `};
-
-  ${media.tablet`
-    display: none;
-  `}
-`;
-
-export const MenuListsUL = styled.ul`
-  width: 100%;
-  max-height: calc(100vh - 200px);
-  overflow-y: auto;
-  padding-right: 10px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-export const ListAddMenu = styled.div`
-  margin: 30px auto 0 auto;
-  background: #eee;
-  width: 75px;
-  border-radius: 50%;
-  height: 75px;
-`;
-
-export const ListAddButton = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  img {
-    width: 35px;
-    height: 35px;
-  }
-`;
-
-export const AddModal = styled.div`
-  position: absolute;
 `;
 
 export const DetailSection = styled.section`
   position: relative;
   width: 100%;
-  /* height: calc(100vh - 55px);
-  padding: 32px 32px 50px 32px; */
 
   ${media.tablet`
     margin: auto;
@@ -89,7 +38,6 @@ export const DetailSection = styled.section`
 // Detail Weather Box
 
 export const DetailWeatherBox = styled.div`
-  /* padding: 32px; */
   color: #fff;
 `;
 
@@ -117,6 +65,10 @@ export const InfoBox = styled.div`
 
 export const CityName = styled.p`
   font-size: 7.2rem;
+
+  ${media.mobile`
+    font-size: 3rem;
+  `}
 `;
 
 export const TimeInfo = styled.div`
@@ -127,8 +79,8 @@ export const TimeInfo = styled.div`
   color: #fff;
 
   ${media.mobile`
-    top: 8px;
-    left: 16px;
+    bottom: 8px;
+    right: 20px;
     font-size: 1.2rem;
   `}
 `;
@@ -137,22 +89,30 @@ export const TempBox = styled.div``;
 
 export const TempInfo = styled.p`
   font-size: 6rem;
+
+  ${media.mobile`
+    font-size: 4rem;
+  `}
 `;
 
 export const FeelsLikeTempInpo = styled.p`
   margin: 10px 0;
   font-size: 2.4rem;
+
+  ${media.mobile`
+    font-size: 2rem;
+  `}
 `;
 
 export const HumWindBox = styled.div`
   display: flex;
-  /* justify-content: center; */
   margin-top: 20px;
   text-align: center;
   font-size: 1.4rem;
 
   ${media.mobile`
-    display: flex;
+    margin-top: 10px;
+    font-size: 1.2rem;
   `}
 `;
 
@@ -175,7 +135,8 @@ export const DetailForecastBox = styled.div`
   border-bottom-right-radius: 20px;
 
   ${media.mobile`
-    padding: 16px;
+    padding: 15px 0;
+    overflow-x: auto;
   `}
 `;
 
@@ -218,19 +179,7 @@ export const ForecastListLi = styled.li`
   text-align: center;
 
   ${media.mobile`
-    /* border-bottom: 1px solid black; */
-
-    &:last-child {
-      border: none;
-    }
-
-    p + div {
-      margin-top: 10px;
-    }
-
-    div + p {
-      margin-top: 10px;
-    }
+    width: 100px;
   `}
 `;
 
