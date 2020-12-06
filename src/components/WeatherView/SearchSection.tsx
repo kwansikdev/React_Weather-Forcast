@@ -1,5 +1,7 @@
 import React, { createRef } from 'react';
 import * as S from './Styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 interface TProps {
   status: boolean;
@@ -39,26 +41,21 @@ export default function SearchSection({
 
   return (
     <>
-      <S.SearchSection status={status}>
-        <S.SearchTitle>search cites</S.SearchTitle>
-        <S.SearchForm>
-          <S.SearchBox>
-            <S.SearchInput
-              ref={searchRef}
-              placeholder="SEARCH CITY"
-              type="search"
-              onKeyUp={enter}
-              autoFocus
-            />
-            {/* <S.SearchAutoList>
-              <span>자동완성</span>
-            </S.SearchAutoList> */}
-          </S.SearchBox>
-          <S.SearchButton onClick={add}>
-            <img src="/images/search_black.svg" alt="검색버튼" />
-          </S.SearchButton>
-        </S.SearchForm>
-      </S.SearchSection>
+      <S.SearchDiv>
+        <S.SearchInput
+          ref={searchRef}
+          placeholder="SEARCH CITY"
+          type="search"
+          onKeyUp={enter}
+          autoFocus
+        />
+        <S.SearchButton onClick={add}>
+          <FontAwesomeIcon
+            icon={faSearch}
+            style={{ fontSize: `2.4rem`, color: `#fff` }}
+          />
+        </S.SearchButton>
+      </S.SearchDiv>
     </>
   );
 }

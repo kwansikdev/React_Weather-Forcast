@@ -1,44 +1,45 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 import ListCountry from './ListCountry';
-import * as S from './Styled';
+import * as S from '../WeatherView/Styled';
 import { useSelector } from 'react-redux';
-import { RouteState } from '../../redux/modules/reducer';
+import { RootState } from '../../redux/modules/reducer';
+import A11yTitle from '../Common/A11yTitle';
 
 type TProps = {
   status: boolean;
   cityLists: string[];
+  addCurrentCity: (currentCity: string) => void;
+  addFiveDaysWeather: (currentCity: string) => void;
 };
 
 const ListsSection: React.FC<RouteComponentProps & TProps> = ({
   status,
   cityLists,
   history,
+  addCurrentCity,
+  addFiveDaysWeather,
 }) => {
   const cityWeathers = useSelector(
-    (state: RouteState) => state.weathers.city_weathers,
+    (state: RootState) => state.weathers.city_weathers,
   );
-
-  const goHome = () => {
-    history.push('/');
-  };
 
   return (
     <>
-      <S.ListsSection status={status}>
+      <S.ListsDiv>
+        <A11yTitle>weather list</A11yTitle>
         <S.ListsUl>
           {cityLists.map((city, index) => (
             <ListCountry
               key={index}
               city={city}
               weather={cityWeathers[index]}
+              addCurrentCity={addCurrentCity}
+              addFiveDaysWeather={addFiveDaysWeather}
             />
           ))}
         </S.ListsUl>
-        <S.GotoView onClick={goHome} status={cityLists.length}>
-          <img src="/images/next.svg" alt="메인으로 이동" />
-        </S.GotoView>
-      </S.ListsSection>
+      </S.ListsDiv>
     </>
   );
 };

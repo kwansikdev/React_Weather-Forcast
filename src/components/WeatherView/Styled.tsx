@@ -7,19 +7,74 @@ type TStatus = {
 };
 
 // Weather View
-export const View = styled.div`
-  background: ${({ status }: TStatus) =>
-    status ? darkTheme.gradient : lightTheme.gradient};
-  padding: 0 45px;
-  min-height: 93.4vh;
+export const WeatherView = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
 
-  ${media.desktop`
-    min-height: 93.5vh;
+  ${media.tablet`
+    display: block;
   `}
 
   ${media.mobile`
-    min-height: 94vh;
+    display: block;
   `}
+`;
+
+export const InfoArea = styled.div`
+  h2 {
+    font-size: 7.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  ${media.tablet`
+    h2 {
+      font-size: 5.2rem;
+    }
+  `}
+
+  ${media.mobile`
+    h2 {
+      font-size: 3.2rem;
+    }
+  `}
+`;
+
+export const SearchDiv = styled.div`
+  margin-top: 20px;
+`;
+
+export const SearchInput = styled.input`
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  font-size: 2.4rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 3px solid white;
+  padding: 10px 40px 10px 5px;
+  outline: none;
+  color: #fff;
+
+  ::placeholder {
+    font-size: 2.4rem;
+    color: #fff;
+  }
+
+  ${media.tablet`
+  `}
+`;
+
+export const SearchButton = styled.button`
+  background-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  margin: 10px 0 0 -35px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `;
 
 export const WeatherLists = styled.ul`
@@ -28,32 +83,136 @@ export const WeatherLists = styled.ul`
   justify-content: space-around;
 `;
 
-export const WeatherList = styled.li`
-  position: relative;
-  max-width: 368px;
-  width: 100%;
-  margin: 32px;
-
-  ${media.desktop`
-    button:first-child {
-      visibility: hidden;
-    }
-
-    &:hover {
-      button:first-child {
-        visibility: visible;
-      }
-  }
-  `}
+export const ListsDiv = styled.div`
+  width: 500px;
+  min-width: 280px;
+  height: 70vh;
+  overflow: scroll;
 
   ${media.tablet`
-
-  `};
+    width: 100%;
+    margin-top: 40px;
+  `}
 
   ${media.mobile`
-    max-width: 250px;
-    margin: 32px 16px;
-  `};
+    width: 100%;
+    margin-top: 20px;
+  `}
+`;
+
+export const ListsUl = styled.ul``;
+
+export const ListLi = styled.li`
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(3px);
+
+  :hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  ${media.mobile`
+    width: 100%;
+    padding: 15px;
+  `}
+`;
+
+export const InfoDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const TempInfoDiv = styled.div`
+  text-align: center;
+  color: #fff;
+
+  p:first-child {
+    font-size: 7.2rem;
+  }
+
+  p:last-child {
+    font-size: 1.6rem;
+  }
+
+  ${media.mobile`
+    p:first-child {
+      font-size: 5.2rem;
+    }
+
+    p:last-child {
+      font-size: 1.6rem;
+    }
+  `}
+`;
+
+export const CityInfoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    font-size: 3.2rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  svg {
+    margin-left: 15px;
+  }
+
+  ${media.mobile`
+    h3 {
+      font-size: 2rem;
+      font-weight: 500;
+    }}
+  `}
+`;
+
+export const CityName = styled.p``;
+
+export const ListTemp = styled.div`
+  display: flex;
+  margin-top: 10px;
+
+  p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  p + p {
+    margin-left: 10px;
+  }
+`;
+
+export const ListTempHigh = styled.p``;
+
+export const ListTempLog = styled.p``;
+
+export const ViewDetailButton = styled.button`
+  position: absolute;
+  background: transparent;
+  bottom: 20px;
+  right: 30px;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+
+  ${media.mobile`
+    bottom: 5px;
+    right: 15px;
+    font-size: 1.2rem;
+  `}
 `;
 
 export const WeatherButton = styled.button`
@@ -68,29 +227,6 @@ export const WeatherButton = styled.button`
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  color: ${({ status }: TStatus) =>
-    status ? darkTheme.color : lightTheme.color};
-  background: ${({ status }: TStatus) => status && darkTheme.listGradient};
-
-  ${media.desktop`
-    &:hover {
-      box-shadow: 0 0 10px 3px
-        ${({ status }: TStatus) =>
-          status ? darkTheme.shadow : lightTheme.shadow};
-    }
-  `};
-
-  ${media.tablet`
-
-  `};
-
-  ${media.mobile`
-
-  `}
-
-  section {
-    margin-top: 25px;
-  }
 `;
 
 export const ItemTitle = styled.p`

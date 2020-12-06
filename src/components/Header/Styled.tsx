@@ -7,64 +7,26 @@ type TStatus = {
 };
 
 export const Header = styled.header`
-  background: ${({ status }: TStatus) =>
-    status ? darkTheme.header : lightTheme.header};
   display: flex;
   position: relative;
   justify-content: space-between;
-  padding: 10px 20px;
-
-  a {
-    display: block;
-  }
-
-  span {
-    color: ${({ status }: TStatus) =>
-      status ? lightTheme.header : darkTheme.header};
-  }
+  margin-top: 10px;
 `;
 
 // Logo
 export const Logo = styled.h1`
-  position: absolute;
-  top: 15px;
-  left: 70px;
-
-  a {
-    display: inline-block;
-  }
-
-  img {
-    width: 26px;
-  }
-
-  span {
-    display: inline-block;
-    font-size: 2.6rem;
-    line-height: 1;
-    letter-spacing: 5px;
-  }
-
-  img + span {
-    margin-left: 10px;
-  }
-
-  ${media.tablet`
-
-  `};
+  margin-top: -10px;
+  padding: 50px 5px 2px 5px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-size: 1.6rem;
+  color: #fff;
 
   ${media.mobile`
-    top: 17px;
-    left: calc(50% - 66px);
-
-    img {
-      width: 20px;
-    }
-
-    span {
-      font-size: 1.6rem;
-    }
-  `}
+    padding-top: 38px;
+    font-size: 1.2rem;
+  `};
 `;
 
 // Nav
@@ -250,17 +212,17 @@ export const ListButton = styled.button`
 
 // CutrrnetTime
 export const CurrentTime = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 7px;
-  left: 43%;
-  color: #4d47ff;
-  font-size: 1.8rem;
+  left: 43%; */
+  color: #fff;
+  font-size: 1.6rem;
   font-weight: 700;
 
   p {
     display: inline-block;
-    line-height: 2.3;
-    color: ${({ status }: TStatus) => status && lightTheme.header};
+    /* line-height: 2.3; */
+    /* color: ${({ status }: TStatus) => status && lightTheme.header}; */
   }
 
   p + p {
@@ -281,13 +243,12 @@ export const ThemeMode = styled.div`
   display: flex;
   position: relative;
   font-size: 1.6rem;
-  line-height: 2.2;
 
-  span + label {
+  svg + label {
     margin-left: 5px;
   }
 
-  label + span {
+  label + svg {
     margin-left: 5px;
   }
 
@@ -307,6 +268,7 @@ export const ThemeMode = styled.div`
 export const ToggleLabel = styled.label`
   position: relative;
   width: 44px;
+  margin-top: -10px;
   cursor: pointer;
 
   input {
@@ -314,6 +276,14 @@ export const ToggleLabel = styled.label`
     visibility: hidden;
     border: 0;
   }
+
+  ${media.tablet`
+    margin-top: -7px;
+  `}
+
+  ${media.mobile`
+    margin-top: -5px;
+  `}
 `;
 
 interface toggleProps {
@@ -327,14 +297,14 @@ export const ToggleBg = styled.div`
   height: 14px;
   width: 32px;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   display: inline-block;
   transition: background-color 300ms linear;
 
   ${({ status }: toggleProps) =>
     status &&
     css`
-      background-color: #ff0070;
+      background-color: rgba(255, 255, 255, 0.6);
     `}
 
   ${media.mobile`
@@ -345,7 +315,7 @@ export const ToggleBg = styled.div`
 export const ToggleCircle = styled.div`
   height: 20px;
   width: 20px;
-  background-color: #2b244d;
+  background-color: rgba(255, 255, 255);
   position: absolute;
   top: 8px;
   border-radius: 50%;

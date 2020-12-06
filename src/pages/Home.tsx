@@ -1,13 +1,13 @@
 import React from 'react';
 import WeatherViewContainer from '../container/WeatherViewContainer';
-import HeaderContainer from '../container/HeaderContainer';
-import * as S from './Styled';
+import Layout from '../components/Common/Layout';
 
 export default function Home() {
   return (
-    <S.Layout>
-      <HeaderContainer />
-      <WeatherViewContainer />
-    </S.Layout>
+    <>
+      <Layout>
+        <WeatherViewContainer />
+      </Layout>
+    </>
   );
 }
