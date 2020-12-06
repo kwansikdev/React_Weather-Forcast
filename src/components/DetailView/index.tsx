@@ -7,6 +7,7 @@ import { City, List } from '../../Typescript/fiveDaysWeatherType';
 import Back from '../Common/Back';
 import ForecastList from './ForecastList';
 import moment from 'moment';
+import withAuth from '../../hoc/useCheckWeather';
 
 type TProps = {
   status: boolean;
@@ -48,4 +49,4 @@ const DetailView: React.FC<RouteComponentProps & TProps> = ({
   );
 };
 
-export default withRouter(DetailView);
+export default withAuth(withRouter(DetailView), false);
