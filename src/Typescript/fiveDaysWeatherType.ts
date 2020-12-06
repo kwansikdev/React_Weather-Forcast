@@ -28,6 +28,8 @@ export interface List {
   weather: Weather[];
   clouds: Clouds;
   wind: Wind;
+  visibility: number;
+  pop: number;
   sys: Sys;
   dt_txt: string;
   rain?: Rain;
@@ -66,20 +68,27 @@ export interface Weather {
   id: number;
   main: MainEnum;
   description: Description;
-  icon: string;
+  icon: Icon;
 }
 
 export enum Description {
   BrokenClouds = 'broken clouds',
-  ClearSky = 'clear sky',
   FewClouds = 'few clouds',
   LightRain = 'light rain',
   OvercastClouds = 'overcast clouds',
   ScatteredClouds = 'scattered clouds',
 }
 
+export enum Icon {
+  The02D = '02d',
+  The03D = '03d',
+  The03N = '03n',
+  The04D = '04d',
+  The04N = '04n',
+  The10N = '10n',
+}
+
 export enum MainEnum {
-  Clear = 'Clear',
   Clouds = 'Clouds',
   Rain = 'Rain',
 }
