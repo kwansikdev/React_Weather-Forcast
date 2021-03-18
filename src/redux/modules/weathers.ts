@@ -120,7 +120,9 @@ function* addFiveDaysWeather({
 
     const arrTime = [
       today.getFullYear(),
-      today.getMonth() < 10 ? '0' + today.getMonth() + 1 : today.getMonth() + 1,
+      today.getMonth() < 10
+        ? '0' + (+today.getMonth() + 1)
+        : +today.getMonth() + 1,
       today.getDate() < 10 ? '0' + today.getDate() : today.getDate(),
     ];
 

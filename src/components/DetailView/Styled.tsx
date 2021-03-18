@@ -11,7 +11,7 @@ export const DetailView = styled.div`
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.2);
-  margin-top: 30px;
+  margin-top: 130px;
   padding: 50px 40px;
   border-radius: 10px;
 
@@ -21,6 +21,7 @@ export const DetailView = styled.div`
     `};
 
   ${media.mobile`
+    margin-top: 30px;
     padding: 20px;
 
   `};
@@ -179,7 +180,7 @@ export const ForecastListLi = styled.li`
   text-align: center;
 
   ${media.mobile`
-    width: 100px;
+    min-width: 100px;
   `}
 `;
 
