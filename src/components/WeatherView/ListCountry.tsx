@@ -33,21 +33,30 @@ const ListCountry: React.FC<RouteComponentProps & TProps> = ({
     max: weather && (weather.main.temp_max - 275.15).toFixed(1),
   };
 
-  const removeCard = () => {
-    // 사가함수 하나로 합치기
-    dispatch(removeCitySaga(cityName.current.innerHTML));
-  };
+  const removeCard = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      // 사가함수 하나로 합치기
+      e.stopPropagation();
+      dispatch(removeCitySaga(cityName.current.innerHTML));
+    },
+    [cityName, dispatch],
+  );
 
-  const gotoDetail = useCallback(() => {
-    addCurrentCity(cityName.current.innerHTML);
-    addFiveDaysWeather(cityName.current.innerHTML);
+  const gotoDetail = useCallback(
+    (e: React.MouseEvent<HTMLLIElement>) => {
+      e.stopPropagation();
 
-    history.push(`weathers/view?city=${weatherInfo.name.toLowerCase()}`);
-  }, [addCurrentCity, addFiveDaysWeather, cityName, history, weatherInfo.name]);
+      addCurrentCity(cityName.current.innerHTML);
+      addFiveDaysWeather(cityName.current.innerHTML);
+
+      history.push(`weathers/view?city=${weatherInfo.name.toLowerCase()}`);
+    },
+    [addCurrentCity, addFiveDaysWeather, cityName, history, weatherInfo.name],
+  );
 
   return (
     <>
-      <S.ListLi>
+      <S.ListLi onClick={gotoDetail}>
         <RemoveButton onClick={removeCard} size={'16'} where="search" />
         <S.InfoDiv>
           <S.TempInfoDiv>
@@ -67,9 +76,7 @@ const ListCountry: React.FC<RouteComponentProps & TProps> = ({
               <S.ListTempLog>L {weatherInfo.min}°</S.ListTempLog>
             </S.ListTemp>
           </S.CityInfoDiv>
-          <S.ViewDetailButton onClick={gotoDetail}>
-            View Detail
-          </S.ViewDetailButton>
+          <S.ViewDetailButton>View Detail</S.ViewDetailButton>
         </S.InfoDiv>
       </S.ListLi>
     </>
