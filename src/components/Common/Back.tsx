@@ -7,14 +7,10 @@ interface TProps {
   onClick?: () => void;
 }
 
-interface TSvg {
-  status: boolean;
-}
-
 const Button = styled.button`
   position: absolute;
-  top: 12px;
-  right: 40px;
+  top: 50px;
+  right: 50px;
   background: transparent;
   border: none;
   cursor: pointer;

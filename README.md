@@ -42,15 +42,14 @@ TypeScript 와 openweathermaps api 를 사용한 세계 날씨 App
 3. react-router
 4. React-router-dom
 5. Connected-react-router
-6. redux
-7. typesafe-actions
-8. redux-devtools-extension
-9. moment
-10. react-autosuggest
+6. typesafe-actions
+7. redux-devtools-extension
+8. moment
+9. react-autosuggest
 
 <br>
 
-### 이미지 및 영상
+<!-- ### 이미지 및 영상
 
 Light mode
 
@@ -72,4 +71,4 @@ Dark mode
 
 ![Home](https://user-images.githubusercontent.com/37237125/82338883-585bc500-9a28-11ea-814c-86dcfa3f3fdb.png)
 
-![Detail](https://user-images.githubusercontent.com/37237125/82457630-9de3c500-9af0-11ea-87d9-60e689e0e0a9.png)
+![Detail](https://user-images.githubusercontent.com/37237125/82457630-9de3c500-9af0-11ea-87d9-60e689e0e0a9.png) -->
