@@ -16,13 +16,10 @@ export const WeatherViewLayout = styled.div`
     margin-top: 130px;
   `}
 
-  ${media.tablet`
-    display: block;
-  `}
-
   ${media.mobile`
-    margin-top: 30px;
     display: block;
+    height: calc(100vh - 80px);
+    margin-top: 30px;
   `}
 `;
 
@@ -30,8 +27,13 @@ export const WeatherViewSection = styled.section`
   display: flex;
   width: 100%;
 
+  ${media.desktop`
+    justify-content: space-between;
+  `}
+
   ${media.mobile`
     flex-direction: column;
+    align-items: center;
   `}
 `;
 
@@ -64,13 +66,13 @@ export const Timezone = styled.div`
   color: #fff;
 
   ${media.desktop`
-    width: 60%;
-    margin-left: 100px;
+    width: 50%;
     font-size: 6rem;
   `}
 
   ${media.mobile`
-  margin-top: 30px;
+    width: 80%;
+    margin-top: 30px;
     text-align: center;
     font-size: 2rem;
   `}
@@ -123,18 +125,31 @@ export const ListsDiv = styled.div`
 
   ${media.mobile`
     width: 100%;
+    height: calc(100% - 278px);
     margin-top: 20px;
+    overflow-y: scroll;
   `}
 `;
 
 export const ListsUl = styled.ul`
-  height: 190px;
-  white-space: nowrap;
-  overflow-x: scroll;
+  ${media.desktop`
+    height: 190px;
+    white-space: nowrap;
 
-  li + li {
-    margin-left: 20px;
-  }
+    li + li {
+      margin-left: 20px;
+    }
+  `}
+
+  ${media.mobile`
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    li + li {
+      margin-top: 20px;
+    }
+  `}
 `;
 
 export const ListLi = styled.li`

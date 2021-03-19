@@ -26,10 +26,7 @@ export default function ForecastList({
             {weekend[new Date(list.dt_txt).getDay()]}
           </S.ForecastDate>
           <S.ForecastWeather>
-            <FontAwesomeIcon
-              icon={icon(list.weather[0].main)}
-              style={{ fontSize: `4rem`, color: `#fff` }}
-            />
+            <FontAwesomeIcon icon={icon(list.weather[0].main)} />
             <span>{list.weather[0].main}</span>
           </S.ForecastWeather>
           <S.ForecastTemp>
