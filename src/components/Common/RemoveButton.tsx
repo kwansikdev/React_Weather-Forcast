@@ -1,8 +1,12 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from '../../libs/MediaQuery';
+
+type ButtonType = {
+  where: string;
+};
 
 const Removebutton = styled.button`
   position: absolute;
@@ -11,6 +15,14 @@ const Removebutton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+
+  ${({ where }: ButtonType) =>
+    where === 'search'
+      ? css`
+          top: 20px;
+          right: 20px;
+        `
+      : css``}
 
   ${media.mobile`
     top: 15px;
@@ -21,13 +33,13 @@ const Removebutton = styled.button`
 type TProps = {
   size: string;
   where: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function RemoveButton({ size, where, onClick }: TProps) {
   return (
     <>
-      <Removebutton onClick={onClick}>
+      <Removebutton onClick={onClick} where={where}>
         <FontAwesomeIcon
           icon={faTimes}
           style={{ fontSize: `${size}px`, color: '#fff' }}

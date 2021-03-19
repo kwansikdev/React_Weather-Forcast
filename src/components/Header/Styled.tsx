@@ -7,24 +7,33 @@ type TStatus = {
 };
 
 export const Header = styled.header`
+  position: relative;
   display: flex;
   position: relative;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 10px;
 `;
 
 // Logo
 export const Logo = styled.h1`
-  margin-top: -10px;
-  padding: 50px 5px 2px 5px;
+  position: absolute;
+  top: 0;
+  padding: 70px 5px 2px 5px;
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
   font-size: 1.6rem;
   color: #fff;
 
+  ${media.desktop`
+    left: -92px;
+    transform: rotateZ(-90deg);
+  `}
+
   ${media.mobile`
-    padding-top: 38px;
+    left: 0;
+    margin-top: -10px;
+    padding-top: 10px;
     font-size: 1.2rem;
   `};
 `;
@@ -240,8 +249,8 @@ export const Day = styled.p``;
 
 // Light-Dark Mode
 export const ThemeMode = styled.div`
-  display: flex;
   position: relative;
+  display: flex;
   font-size: 1.6rem;
 
   svg + label {

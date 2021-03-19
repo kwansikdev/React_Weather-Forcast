@@ -11,16 +11,14 @@ export const DetailView = styled.div`
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.2);
-  margin-top: 30px;
+  margin-top: 130px;
   padding: 50px 40px;
   border-radius: 10px;
 
-  ${media.tablet`
-    padding: 30px;
-
-    `};
-
   ${media.mobile`
+    justify-content: space-between;
+    height: calc(100% - 80px);
+    margin-top: 30px;
     padding: 20px;
 
   `};
@@ -67,7 +65,7 @@ export const CityName = styled.p`
   font-size: 7.2rem;
 
   ${media.mobile`
-    font-size: 3rem;
+    font-size: 2rem;
   `}
 `;
 
@@ -91,7 +89,7 @@ export const TempInfo = styled.p`
   font-size: 6rem;
 
   ${media.mobile`
-    font-size: 4rem;
+    font-size: 3rem;
   `}
 `;
 
@@ -127,68 +125,62 @@ export const WindInfo = styled.p`
 `;
 
 //Detail Forecast Box
-export const DetailForecastBox = styled.div`
+export const DetailForecastBox = styled.ul`
   position: relative;
   display: flex;
   padding: 32px 0;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+
+  ${media.desktop`
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  `}
 
   ${media.mobile`
+    flex-direction: column;
+    width: 100%;
+    margin: 15px 0;
     padding: 15px 0;
     overflow-x: auto;
   `}
 `;
 
-export const ForecastLists = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-
-  ${media.mobile`
-    flex-wrap: wrap;
-    overflow-y: auto;
-  `}
-`;
-
-export const BackButton = styled.button`
-  position: absolute;
-  background: transparent;
-  border: none;
-`;
-
-export const ButtonCircle = styled.div`
-  background: #2b244d;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-`;
-
-export const BackArrow = styled.div``;
-
 // ForcastList
-
 export const ForecastListLi = styled.li`
   background: ${({ status }: TStatus) =>
     status ? `rgba(35, 28, 30, 0.4)` : `rgba(60, 120, 159, 0.4)`};
-  width: 20%;
-  margin: 0 10px;
-  padding: 20px 0;
+
   color: #fff;
   font-size: 2rem;
   text-align: center;
 
+  ${media.desktop`
+    width: 20%;
+    margin: 0 10px;
+    padding: 20px 0;
+  `}
+
   ${media.mobile`
-    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+
+    & + & {
+      margin-top: 20px;
+    }
   `}
 `;
 
 export const ForecastDate = styled.p`
-  margin-bottom: 25px;
   font-size: 2.4rem;
   font-weight: 600;
 
+  ${media.desktop`
+    margin-bottom: 25px;
+  `}
+
   ${media.mobile`
+    width: 40px;
     font-size: 2rem;
   `}
 `;
@@ -197,22 +189,24 @@ export const ForecastWeather = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 25px;
-
-  span {
+  color: #fff span {
+    display: inline-block;
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 5px;
   }
 
-  img + span {
+  ${media.desktop`
+    margin-bottom: 25px;
+
+    span {
     margin-top: 10px;
   }
+  `}
 
   ${media.mobile`
-    img {
-      width: 85px;
-    }
+    width: 70px;
+    font-size: 3rem;
 
     span {
       font-size: 1.2rem;
@@ -224,6 +218,7 @@ export const ForecastTemp = styled.p`
   font-size: 2.2rem;
 
   ${media.mobile`
+    width: 40px;
     font-size: 2rem;
   `}
 `;

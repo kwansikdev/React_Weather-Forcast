@@ -7,26 +7,47 @@ type TStatus = {
 };
 
 // Weather View
-export const WeatherView = styled.div`
+export const WeatherViewLayout = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  margin-top: 30px;
 
-  ${media.tablet`
-    display: block;
+  ${media.desktop`
+    margin-top: 130px;
   `}
 
   ${media.mobile`
     display: block;
+    height: calc(100vh - 80px);
+    margin-top: 30px;
+  `}
+`;
+
+export const WeatherViewSection = styled.section`
+  display: flex;
+  width: 100%;
+
+  ${media.desktop`
+    justify-content: space-between;
+  `}
+
+  ${media.mobile`
+    flex-direction: column;
+    align-items: center;
   `}
 `;
 
 export const InfoArea = styled.div`
+
   h2 {
     font-size: 7.2rem;
     font-weight: 700;
     color: #fff;
   }
+
+  ${media.desktop`
+    width: 40%;
+  `}
 
   ${media.tablet`
     h2 {
@@ -38,6 +59,22 @@ export const InfoArea = styled.div`
     h2 {
       font-size: 3.2rem;
     }
+  `}
+`;
+
+export const Timezone = styled.div`
+  color: #fff;
+
+  ${media.desktop`
+    width: 50%;
+    font-size: 6rem;
+  `}
+
+  ${media.mobile`
+    width: 80%;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 2rem;
   `}
 `;
 
@@ -77,17 +114,10 @@ export const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-export const WeatherLists = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
-
 export const ListsDiv = styled.div`
-  width: 500px;
-  min-width: 280px;
-  height: 70vh;
-  overflow: scroll;
+  width: 100%;
+  margin-top: 60px;
+  overflow-y: scroll;
 
   ${media.tablet`
     width: 100%;
@@ -96,20 +126,40 @@ export const ListsDiv = styled.div`
 
   ${media.mobile`
     width: 100%;
+    height: calc(100% - 278px);
     margin-top: 20px;
   `}
 `;
 
-export const ListsUl = styled.ul``;
+export const ListsUl = styled.ul`
+  ${media.desktop`
+    height: 190px;
+    white-space: nowrap;
+
+    li + li {
+      margin-left: 20px;
+    }
+  `}
+
+  ${media.mobile`
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    li + li {
+      margin-top: 20px;
+    }
+  `}
+`;
 
 export const ListLi = styled.li`
   background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
+  display: inline-block;
   position: relative;
-  width: 100%;
+  width: 500px;
   padding: 20px 30px;
-  margin-bottom: 20px;
   backdrop-filter: blur(3px);
+  cursor: pointer;
 
   :hover {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -123,7 +173,6 @@ export const ListLi = styled.li`
 
 export const InfoDiv = styled.div`
   display: flex;
-  justify-content: center;
 `;
 
 export const TempInfoDiv = styled.div`

@@ -21,7 +21,7 @@ const StyledBg = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  padding: 0 50px;
+  padding: 0 100px;
   overflow: hidden;
 
   ${media.mobile`
