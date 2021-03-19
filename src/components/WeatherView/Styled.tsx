@@ -117,6 +117,7 @@ export const SearchButton = styled.button`
 export const ListsDiv = styled.div`
   width: 100%;
   margin-top: 60px;
+  overflow-y: scroll;
 
   ${media.tablet`
     width: 100%;
@@ -127,7 +128,6 @@ export const ListsDiv = styled.div`
     width: 100%;
     height: calc(100% - 278px);
     margin-top: 20px;
-    overflow-y: scroll;
   `}
 `;
 
